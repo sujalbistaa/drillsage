@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * DrillSage design tokens.
+ * Light: drafting-table neutrals. Dark (default): a rig "control room" palette.
+ * Semantic colours carry meaning across the product and must not be used decoratively:
+ *   --ok      nominal / no offset-well history of trouble
+ *   --warn    elevated risk ahead / attention
+ *   --danger  high risk, active alert, failure
+ *   --brand   DrillSage identity (bit-steel amber)
+ */
+:root {
+  --background: oklch(0.985 0.004 250);
+  --foreground: oklch(0.21 0.02 255);
+  --surface: oklch(1 0 0);
+  --surface-muted: oklch(0.965 0.006 250);
+  --border: oklch(0.9 0.008 250);
+  --muted-foreground: oklch(0.5 0.02 255);
+  --brand: oklch(0.7 0.16 62);
+  --brand-foreground: oklch(0.2 0.03 60);
+  --ok: oklch(0.62 0.13 170);
+  --warn: oklch(0.74 0.16 75);
+  --danger: oklch(0.6 0.21 27);
+  --ring: oklch(0.7 0.16 62);
+}
+
+.dark {
+  --background: oklch(0.16 0.018 255);
+  --foreground: oklch(0.93 0.01 250);
+  --surface: oklch(0.2 0.02 255);
+  --surface-muted: oklch(0.24 0.022 255);
+  --border: oklch(0.3 0.025 255);
+  --muted-foreground: oklch(0.68 0.02 255);
+  --brand: oklch(0.76 0.15 65);
+  --brand-foreground: oklch(0.18 0.03 60);
+  --ok: oklch(0.72 0.13 170);
+  --warn: oklch(0.8 0.15 80);
+  --danger: oklch(0.68 0.2 27);
+  --ring: oklch(0.76 0.15 65);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    font-feature-settings: "tnum" 1; /* tabular numerals: depths and rates line up */
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+}

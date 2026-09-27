@@ -1,0 +1,293 @@
+{
+  "document_info": {
+    "document_name": "Synthetic Drill Report",
+    "owner": "DrillSage tests"
+  },
+  "reports": [
+    {
+      "name_well": "NO 99/9-X-1",
+      "name_wellbore": "NO 99/9-X-1 A",
+      "name": "name",
+      "start_at": "2020-01-01T00:00:00+01:00",
+      "end_at": "2020-01-02T00:00:00+01:00",
+      "version_kind": "normal",
+      "created_at": "2020-01-02T08:00:00+01:00",
+      "well_aliases": [
+        {
+          "name": "99/9-X-1",
+          "naming_system": "NPD code"
+        }
+      ],
+      "wellbore_aliases": [
+        {
+          "name": "99/9-X-1 A",
+          "naming_system": "NPD code"
+        },
+        {
+          "name": "9001",
+          "naming_system": "NPD number"
+        }
+      ],
+      "wellbore_info": {
+        "pre_spud_at": "2019-12-20T00:00:00+01:00",
+        "spud_at": "2019-12-24T00:00:00+01:00",
+        "drill_complete_on": "2020-02-01",
+        "days_ahead": 1.5,
+        "days_behind": 0.0,
+        "operator": "Example Operator",
+        "drill_contractor": "Example Drilling",
+        "rig_aliases": [
+          {
+            "name": "EXAMPLE RIG",
+            "naming_system": "NPD Name"
+          }
+        ]
+      },
+      "status": {
+        "report_no": 7,
+        "at": "2020-01-02T00:00:00+01:00",
+        "md_m": 3048.0,
+        "tvd_m": 2800.0,
+        "md_planned_m": null,
+        "dist_drill_m": 150.0,
+        "hole_diameter_m": 0.31115,
+        "hole_diameter_start_at": "2019-12-30T12:00:00+01:00",
+        "md_hole_diameter_start_m": 2500.0,
+        "pilot_diameter_m": 0.21589999999999998,
+        "md_kickoff_m": 1200.0,
+        "md_plug_top_m": 1150.0,
+        "strength_form_gcc": 1.737483196099026,
+        "md_strength_form_m": 2490.0,
+        "tvd_strength_form_m": 2300.0,
+        "pres_test_type": "leak off test",
+        "md_csg_last_m": 2480.0,
+        "tvd_csg_last_m": 2290.0,
+        "elev_kelly_m": 25.0,
+        "wellhead_elevation_m": 106.5,
+        "water_depth_m": 85.0,
+        "summary_24h": "Drilled 12 1/4\" hole from 2900 m to 3048 m. Observed 20 m3/h losses at 3010 m; pumped LCM pill, losses cured.",
+        "forecast_24h": "Drill ahead to section TD.",
+        "rop_current_mph": 10.00000032,
+        "tight_well": false,
+        "hpht": false,
+        "fixed_rig": true,
+        "avg_pres_bh_kpa": 31026.407819257623,
+        "avg_temp_bh_degc": 100.0
+      },
+      "bit_records": [
+        {
+          "bit_number": "5",
+          "diameter_m": 0.31115,
+          "manufacturer": "Example Bits",
+          "code_mfg": "XB-1",
+          "code_iadc": "M323",
+          "cond_inner": "1",
+          "cond_outer": "2",
+          "cond_dull": "WT",
+          "cond_location": "S",
+          "cond_bearing": "X",
+          "cond_gauge": "I",
+          "cond_other": "NO",
+          "cond_reason": "TD",
+          "comment": "Good condition.",
+          "run": {
+            "op_time_h": 30.0,
+            "md_hole_start_m": 2500.0,
+            "md_hole_stop_m": 3048.0,
+            "rop_avg_mph": 18.3,
+            "hole_made_m": 548.0,
+            "hrs_drilled_h": 30.0,
+            "tot_hrs_drilled_h": 30.0,
+            "tot_rop_mph": 18.3
+          },
+          "nozzles": [
+            {
+              "count": 3,
+              "diameter_m": 0.0127
+            }
+          ]
+        }
+      ],
+      "casing_strings": [
+        {
+          "string_type": "c",
+          "inner_diameter_m": 0.3136138,
+          "outer_diameter_m": 0.339725,
+          "weight_kgpm": 107.14780393700788,
+          "grade": "P110",
+          "connection": "BTC",
+          "length_m": 2455.0,
+          "md_top_m": 25.0,
+          "md_bottom_m": 2480.0,
+          "run": {
+            "casing_type": "intermediate",
+            "start_at": "2019-12-28T06:00:00+01:00",
+            "end_at": "2019-12-29T18:00:00+01:00",
+            "description": "Ran and cemented 13 3/8\" casing."
+          }
+        }
+      ],
+      "fluids": [
+        {
+          "fluid_type": "OBM",
+          "location_sample": "Active pit",
+          "at": "2020-01-01T12:00:00+01:00",
+          "md_m": 2950.0,
+          "pres_bop_rating_kpa": 69000.0,
+          "mud_class": "oil based",
+          "density_gcc": 1.35,
+          "vis_funnel_s": null,
+          "pv_mpas": 28.0,
+          "yp_pa": 9.5,
+          "temp_hthp_degc": 120.0,
+          "filtrate_ltlp_m3": 4.2e-06,
+          "filter_cake_ltlp_m": 0.001
+        }
+      ],
+      "pore_pressures": [
+        {
+          "reading_kind": "estimated",
+          "emw_gcc": 1.1,
+          "at": "2020-01-02T00:00:00+01:00",
+          "md_m": 3048.0
+        }
+      ],
+      "survey_stations": [
+        {
+          "at": "2020-01-01T18:00:00+01:00",
+          "md_m": 3000.0,
+          "tvd_m": 2760.5,
+          "incl_deg": 25.5,
+          "azi_deg": 148.3
+        }
+      ],
+      "activities": [
+        {
+          "start_at": "2020-01-01T00:00:00+01:00",
+          "end_at": "2020-01-01T10:30:00+01:00",
+          "md_m": 3010.0,
+          "phase": "fixed",
+          "proprietary_code": "drilling -- drill",
+          "state": "ok",
+          "state_detail": "success",
+          "comments": "Drilled 12 1/4\" hole from 2900 m to 3010 m."
+        },
+        {
+          "start_at": "2020-01-01T10:30:00+01:00",
+          "end_at": "2020-01-01T13:00:00+01:00",
+          "md_m": 3010.0,
+          "phase": "fixed",
+          "proprietary_code": "interruption -- lost circulation",
+          "state": "fail",
+          "state_detail": "circulation loss",
+          "comments": "Observed losses of 20 m3/h at 3010 m. Pumped 10 m3 LCM pill; losses cured."
+        }
+      ],
+      "log_info": [
+        {
+          "run_number": "1A",
+          "service_company": "Example Logging",
+          "md_top_m": 2480.0,
+          "md_bottom_m": 3048.0,
+          "tool": "GR-RES",
+          "temp_bhst_degc": null,
+          "static_time_h": 4.0,
+          "md_temp_tool_m": 3040.0
+        }
+      ],
+      "core_info": [
+        {
+          "at": "2020-01-01T20:00:00+01:00",
+          "core_number": "1",
+          "md_top_m": 3020.0,
+          "md_bottom_m": 3038.0,
+          "len_recovered_m": 17.1,
+          "recovery_pct": 95.0,
+          "len_barrel_m": 18.0,
+          "inner_barrel_type": "aluminium",
+          "description": "Sandstone, fine grained."
+        }
+      ],
+      "well_tests": [
+        {
+          "at": "2020-01-01T22:00:00+01:00",
+          "test_type": "DST",
+          "test_number": "1",
+          "md_top_m": 3020.0,
+          "md_bottom_m": 3030.0,
+          "choke_orifice_m": 0.0127,
+          "density_oil_gcc": 0.85,
+          "density_water_gcc": 1.03,
+          "density_gas_gcc": null,
+          "flow_rate_oil_m3pd": 500.0,
+          "flow_rate_water_m3pd": 10.0,
+          "flow_rate_gas_m3pd": 100000.0,
+          "pres_shut_in_kpa": 30000.0,
+          "pres_flowing_kpa": 25000.0,
+          "pres_bottom_kpa": 31000.0,
+          "gas_oil_ratio_m3pm3": 200.0,
+          "water_oil_ratio_m3pm3": 0.02,
+          "chloride_ppm": 50000.0,
+          "co2_ppm": 1000.0,
+          "h2s_ppm": 0.0,
+          "vol_oil_total_m3": 250.0,
+          "vol_gas_total_m3": 50000.0,
+          "vol_water_total_m3": 5.0,
+          "vol_oil_stored_m3": 240.0
+        }
+      ],
+      "perforations": [
+        {
+          "open_at": "2020-01-01T21:00:00+01:00",
+          "close_at": "2020-01-01T23:00:00+01:00",
+          "md_top_m": 3020.0,
+          "md_bottom_m": 3030.0
+        }
+      ],
+      "strat_tops": [
+        {
+          "at": "2020-01-01T08:00:00+01:00",
+          "md_top_m": 2961.0,
+          "tvd_top_m": 2725.0,
+          "description": "Balder Fm ."
+        }
+      ],
+      "lith_shows": [
+        {
+          "at": "2020-01-01T08:00:00+01:00",
+          "md_top_m": 2961.0,
+          "md_bottom_m": null,
+          "tvd_top_m": 2725.0,
+          "tvd_bottom_m": null,
+          "show": "Weak oil show",
+          "lithology": "TUFFACEOUS CLAYSTONE - BALDER FORMATION"
+        }
+      ],
+      "gas_readings": [
+        {
+          "at": "2020-01-01T09:00:00+01:00",
+          "reading_type": "drilling gas peak",
+          "md_top_m": 3005.0,
+          "tvd_top_m": 2765.0,
+          "gas_high_pct": 1.2,
+          "methane_ppm": 9000.0,
+          "ethane_ppm": 800.0,
+          "propane_ppm": 300.0,
+          "ibutane_ppm": 50.0,
+          "nbutane_ppm": 60.0,
+          "ipentane_ppm": null
+        }
+      ],
+      "equipment_failures": [
+        {
+          "at": "2020-01-01T14:00:00+01:00",
+          "md_m": 3010.0,
+          "equip_class": "drill floor -- top drive",
+          "missed_production_h": 1.5,
+          "repaired_at": "2020-01-01T15:30:00+01:00",
+          "description": "Top drive hydraulic leak; repaired."
+        }
+      ]
+    }
+  ]
+}

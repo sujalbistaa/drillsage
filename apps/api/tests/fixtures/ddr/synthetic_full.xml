@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Synthetic WITSML 1.4 drillReport for parser golden tests. Every section of the Volve DDR
+     profile appears once; values are invented, and some deliberately use non-SI units
+     (ft, ppg, psi, degF, cP) and null sentinels (-999.99) to exercise normalisation. -->
+<witsml:drillReports xmlns:witsml="http://www.witsml.org/schemas/1series" version="1.4.0.0">
+  <witsml:documentInfo>
+    <witsml:documentName>Synthetic Drill Report</witsml:documentName>
+    <witsml:owner>DrillSage tests</witsml:owner>
+  </witsml:documentInfo>
+  <witsml:drillReport>
+    <witsml:nameWell>NO 99/9-X-1</witsml:nameWell>
+    <witsml:nameWellbore>NO 99/9-X-1 A</witsml:nameWellbore>
+    <witsml:name>name</witsml:name>
+    <witsml:dTimStart>2020-01-01T00:00:00+01:00</witsml:dTimStart>
+    <witsml:dTimEnd>2020-01-02T00:00:00+01:00</witsml:dTimEnd>
+    <witsml:versionKind>normal</witsml:versionKind>
+    <witsml:createDate>2020-01-02T08:00:00+01:00</witsml:createDate>
+    <witsml:wellAlias><witsml:name>99/9-X-1</witsml:name><witsml:namingSystem>NPD code</witsml:namingSystem></witsml:wellAlias>
+    <witsml:wellboreAlias><witsml:name>99/9-X-1 A</witsml:name><witsml:namingSystem>NPD code</witsml:namingSystem></witsml:wellboreAlias>
+    <witsml:wellboreAlias><witsml:name>9001</witsml:name><witsml:namingSystem>NPD number</witsml:namingSystem></witsml:wellboreAlias>
+    <witsml:wellboreInfo>
+      <witsml:dTimPreSpud>2019-12-20T00:00:00+01:00</witsml:dTimPreSpud>
+      <witsml:dTimSpud>2019-12-24T00:00:00+01:00</witsml:dTimSpud>
+      <witsml:dateDrillComplete>2020-02-01</witsml:dateDrillComplete>
+      <witsml:daysAhead>1.5</witsml:daysAhead>
+      <witsml:daysBehind>0</witsml:daysBehind>
+      <witsml:operator>Example Operator</witsml:operator>
+      <witsml:drillContractor>Example Drilling</witsml:drillContractor>
+      <witsml:rigAlias><witsml:name>EXAMPLE RIG</witsml:name><witsml:namingSystem>NPD Name</witsml:namingSystem></witsml:rigAlias>
+    </witsml:wellboreInfo>
+    <witsml:statusInfo>
+      <witsml:reportNo>7</witsml:reportNo>
+      <witsml:dTim>2020-01-02T00:00:00+01:00</witsml:dTim>
+      <witsml:md uom="ft">10000</witsml:md>
+      <witsml:tvd uom="m">2800</witsml:tvd>
+      <witsml:mdPlanned uom="m">-999.99</witsml:mdPlanned>
+      <witsml:distDrill uom="m">150</witsml:distDrill>
+      <witsml:diaHole uom="in">12.25</witsml:diaHole>
+      <witsml:dTimDiaHoleStart>2019-12-30T12:00:00+01:00</witsml:dTimDiaHoleStart>
+      <witsml:mdDiaHoleStart uom="m">2500</witsml:mdDiaHoleStart>
+      <witsml:diaPilot uom="in">8.5</witsml:diaPilot>
+      <witsml:mdKickoff uom="m">1200</witsml:mdKickoff>
+      <witsml:mdPlugTop uom="m">1150</witsml:mdPlugTop>
+      <witsml:strengthForm uom="ppg">14.5</witsml:strengthForm>
+      <witsml:mdStrengthForm uom="m">2490</witsml:mdStrengthForm>
+      <witsml:tvdStrengthForm uom="m">2300</witsml:tvdStrengthForm>
+      <witsml:presTestType>leak off test</witsml:presTestType>
+      <witsml:mdCsgLast uom="m">2480</witsml:mdCsgLast>
+      <witsml:tvdCsgLast uom="m">2290</witsml:tvdCsgLast>
+      <witsml:elevKelly uom="m">25</witsml:elevKelly>
+      <witsml:wellheadElevation uom="m">106.5</witsml:wellheadElevation>
+      <witsml:waterDepth uom="m">85</witsml:waterDepth>
+      <witsml:sum24Hr>Drilled 12 1/4" hole from 2900 m to 3048 m. Observed 20 m3/h losses at 3010 m; pumped LCM pill, losses cured.</witsml:sum24Hr>
+      <witsml:forecast24Hr>Drill ahead to section TD.</witsml:forecast24Hr>
+      <witsml:ropCurrent uom="ft/h">32.8084</witsml:ropCurrent>
+      <witsml:tightWell>0</witsml:tightWell>
+      <witsml:hpht>false</witsml:hpht>
+      <witsml:fixedRig>true</witsml:fixedRig>
+      <witsml:avgPresBH uom="psig">4500</witsml:avgPresBH>
+      <witsml:avgTempBH uom="degF">212</witsml:avgTempBH>
+    </witsml:statusInfo>
+    <witsml:bitRecord>
+      <witsml:numBit>5</witsml:numBit>
+      <witsml:diaBit uom="in">12.25</witsml:diaBit>
+      <witsml:manufacturer>Example Bits</witsml:manufacturer>
+      <witsml:codeMfg>XB-1</witsml:codeMfg>
+      <witsml:codeIADC>M323</witsml:codeIADC>
+      <witsml:condFinalInner>1</witsml:condFinalInner>
+      <witsml:condFinalOuter>2</witsml:condFinalOuter>
+      <witsml:condFinalDull>WT</witsml:condFinalDull>
+      <witsml:condFinalLocation>S</witsml:condFinalLocation>
+      <witsml:condFinalBearing>X</witsml:condFinalBearing>
+      <witsml:condFinalGauge>I</witsml:condFinalGauge>
+      <witsml:condFinalOther>NO</witsml:condFinalOther>
+      <witsml:condFinalReason>TD</witsml:condFinalReason>
+      <witsml:comment>Good condition.</witsml:comment>
+      <witsml:bitRun>
+        <witsml:eTimOpBit uom="h">30</witsml:eTimOpBit>
+        <witsml:mdHoleStart datum="RKB" uom="m">2500</witsml:mdHoleStart>
+        <witsml:mdHoleStop datum="KB" uom="m">3048</witsml:mdHoleStop>
+        <witsml:ropAv uom="m/h">18.3</witsml:ropAv>
+        <witsml:mdTotHoleMade datum="RKB" uom="m">548</witsml:mdTotHoleMade>
+        <witsml:hrsDrilled uom="h">30</witsml:hrsDrilled>
+        <witsml:totHrsDrilled uom="h">30</witsml:totHrsDrilled>
+        <witsml:totRop uom="m/h">18.3</witsml:totRop>
+      </witsml:bitRun>
+      <witsml:nozzle><witsml:numNozzle>3</witsml:numNozzle><witsml:diaNozzle uom="in/32">16</witsml:diaNozzle></witsml:nozzle>
+    </witsml:bitRecord>
+    <witsml:casing_liner_tubing>
+      <witsml:type>c</witsml:type>
+      <witsml:id uom="in">12.347</witsml:id>
+      <witsml:od uom="in">13.375</witsml:od>
+      <witsml:weight uom="lbm/ft">72</witsml:weight>
+      <witsml:grade>P110</witsml:grade>
+      <witsml:connection>BTC</witsml:connection>
+      <witsml:length uom="m">2455</witsml:length>
+      <witsml:mdTop datum="RKB" uom="m">25</witsml:mdTop>
+      <witsml:mdBottom datum="RKB" uom="m">2480</witsml:mdBottom>
+      <witsml:casing_liner_tubing_run>
+        <witsml:casingType>intermediate</witsml:casingType>
+        <witsml:dTimStart>2019-12-28T06:00:00+01:00</witsml:dTimStart>
+        <witsml:dTimEnd>2019-12-29T18:00:00+01:00</witsml:dTimEnd>
+        <witsml:description>Ran and cemented 13 3/8" casing.</witsml:description>
+      </witsml:casing_liner_tubing_run>
+    </witsml:casing_liner_tubing>
+    <witsml:fluid>
+      <witsml:type>OBM</witsml:type>
+      <witsml:locationSample>Active pit</witsml:locationSample>
+      <witsml:dTim>2020-01-01T12:00:00+01:00</witsml:dTim>
+      <witsml:md datum="RKB" uom="m">2950</witsml:md>
+      <witsml:presBopRating uom="bar">690</witsml:presBopRating>
+      <witsml:mudClass>oil based</witsml:mudClass>
+      <witsml:density uom="g/cm3">1.35</witsml:density>
+      <witsml:visFunnel uom="s">-999.99</witsml:visFunnel>
+      <witsml:pv uom="cP">28</witsml:pv>
+      <witsml:yp uom="Pa">9.5</witsml:yp>
+      <witsml:tempHthp uom="degC">120</witsml:tempHthp>
+      <witsml:filtrateLtlp uom="cm3">4.2</witsml:filtrateLtlp>
+      <witsml:filterCakeLtlp uom="mm">1</witsml:filterCakeLtlp>
+    </witsml:fluid>
+    <witsml:porePressure>
+      <witsml:readingKind>estimated</witsml:readingKind>
+      <witsml:equivalentMudWeight uom="g/cm3">1.1</witsml:equivalentMudWeight>
+      <witsml:dTim>2020-01-02T00:00:00+01:00</witsml:dTim>
+      <witsml:md uom="m">3048</witsml:md>
+    </witsml:porePressure>
+    <witsml:surveyStation>
+      <witsml:dTim>2020-01-01T18:00:00+01:00</witsml:dTim>
+      <witsml:md uom="m">3000</witsml:md>
+      <witsml:tvd uom="m">2760.5</witsml:tvd>
+      <witsml:incl uom="dega">25.5</witsml:incl>
+      <witsml:azi uom="dega">148.3</witsml:azi>
+    </witsml:surveyStation>
+    <witsml:activity>
+      <witsml:dTimStart>2020-01-01T00:00:00+01:00</witsml:dTimStart>
+      <witsml:dTimEnd>2020-01-01T10:30:00+01:00</witsml:dTimEnd>
+      <witsml:md uom="m">3010</witsml:md>
+      <witsml:phase>fixed</witsml:phase>
+      <witsml:proprietaryCode>drilling -- drill</witsml:proprietaryCode>
+      <witsml:state>ok</witsml:state>
+      <witsml:stateDetailActivity>success</witsml:stateDetailActivity>
+      <witsml:comments>Drilled 12 1/4" hole from 2900 m to 3010 m.</witsml:comments>
+    </witsml:activity>
+    <witsml:activity>
+      <witsml:dTimStart>2020-01-01T10:30:00+01:00</witsml:dTimStart>
+      <witsml:dTimEnd>2020-01-01T13:00:00+01:00</witsml:dTimEnd>
+      <witsml:md uom="m">3010</witsml:md>
+      <witsml:phase>fixed</witsml:phase>
+      <witsml:proprietaryCode>interruption -- lost circulation</witsml:proprietaryCode>
+      <witsml:state>fail</witsml:state>
+      <witsml:stateDetailActivity>circulation loss</witsml:stateDetailActivity>
+      <witsml:comments>Observed losses of 20 m3/h at 3010 m. Pumped 10 m3 LCM pill; losses cured.</witsml:comments>
+    </witsml:activity>
+    <witsml:logInfo>
+      <witsml:runNumber>1A</witsml:runNumber>
+      <witsml:serviceCompany>Example Logging</witsml:serviceCompany>
+      <witsml:mdTop uom="m">2480</witsml:mdTop>
+      <witsml:mdBottom uom="m">3048</witsml:mdBottom>
+      <witsml:tool>GR-RES</witsml:tool>
+      <witsml:tempBHST uom="degC">-999.99</witsml:tempBHST>
+      <witsml:eTimStatic uom="h">4</witsml:eTimStatic>
+      <witsml:mdTempTool uom="m">3040</witsml:mdTempTool>
+    </witsml:logInfo>
+    <witsml:coreInfo>
+      <witsml:dTim>2020-01-01T20:00:00+01:00</witsml:dTim>
+      <witsml:coreNumber>1</witsml:coreNumber>
+      <witsml:mdTop uom="m">3020</witsml:mdTop>
+      <witsml:mdBottom uom="m">3038</witsml:mdBottom>
+      <witsml:lenRecovered uom="m">17.1</witsml:lenRecovered>
+      <witsml:recoverPc uom="%">95</witsml:recoverPc>
+      <witsml:lenBarrel uom="m">18</witsml:lenBarrel>
+      <witsml:innerBarrelType>aluminium</witsml:innerBarrelType>
+      <witsml:coreDescription>Sandstone, fine grained.</witsml:coreDescription>
+    </witsml:coreInfo>
+    <witsml:wellTestInfo>
+      <witsml:dTim>2020-01-01T22:00:00+01:00</witsml:dTim>
+      <witsml:testType>DST</witsml:testType>
+      <witsml:testNumber>1</witsml:testNumber>
+      <witsml:mdTop uom="m">3020</witsml:mdTop>
+      <witsml:mdBottom uom="m">3030</witsml:mdBottom>
+      <witsml:chokeOrificeSize uom="mm">12.7</witsml:chokeOrificeSize>
+      <witsml:densityOil uom="g/cm3">0.85</witsml:densityOil>
+      <witsml:densityWater uom="g/cm3">1.03</witsml:densityWater>
+      <witsml:densityGas uom="g/cm3">-999.99</witsml:densityGas>
+      <witsml:flowRateOil uom="m3/d">500</witsml:flowRateOil>
+      <witsml:flowRateWater uom="m3/d">10</witsml:flowRateWater>
+      <witsml:flowRateGas uom="M(m3)/d">0.1</witsml:flowRateGas>
+      <witsml:presShutIn uom="MPa">30</witsml:presShutIn>
+      <witsml:presFlowing uom="MPa">25</witsml:presFlowing>
+      <witsml:presBottom uom="MPa">31</witsml:presBottom>
+      <witsml:gasOilRatio uom="m3/m3">200</witsml:gasOilRatio>
+      <witsml:waterOilRatio uom="m3/m3">0.02</witsml:waterOilRatio>
+      <witsml:chloride uom="ppm">50000</witsml:chloride>
+      <witsml:carbonDioxide uom="ppm">1000</witsml:carbonDioxide>
+      <witsml:hydrogenSulfide uom="ppm">0</witsml:hydrogenSulfide>
+      <witsml:volOilTotal uom="m3">250</witsml:volOilTotal>
+      <witsml:volGasTotal uom="M(m3)">0.05</witsml:volGasTotal>
+      <witsml:volWaterTotal uom="m3">5</witsml:volWaterTotal>
+      <witsml:volOilStored uom="m3">240</witsml:volOilStored>
+    </witsml:wellTestInfo>
+    <witsml:perfInfo>
+      <witsml:dTimOpen>2020-01-01T21:00:00+01:00</witsml:dTimOpen>
+      <witsml:dTimClose>2020-01-01T23:00:00+01:00</witsml:dTimClose>
+      <witsml:mdTop uom="m">3020</witsml:mdTop>
+      <witsml:mdBottom uom="m">3030</witsml:mdBottom>
+    </witsml:perfInfo>
+    <witsml:stratInfo>
+      <witsml:dTim>2020-01-01T08:00:00+01:00</witsml:dTim>
+      <witsml:mdTop uom="m">2961</witsml:mdTop>
+      <witsml:tvdTop uom="m">2725</witsml:tvdTop>
+      <witsml:description>Balder Fm .</witsml:description>
+    </witsml:stratInfo>
+    <witsml:lithShowInfo>
+      <witsml:dTim>2020-01-01T08:00:00+01:00</witsml:dTim>
+      <witsml:mdTop uom="m">2961</witsml:mdTop>
+      <witsml:mdBottom uom="m">-999.99</witsml:mdBottom>
+      <witsml:tvdTop uom="m">2725</witsml:tvdTop>
+      <witsml:tvdBottom uom="m">-999.99</witsml:tvdBottom>
+      <witsml:show>Weak oil show</witsml:show>
+      <witsml:lithology>TUFFACEOUS CLAYSTONE - BALDER FORMATION</witsml:lithology>
+    </witsml:lithShowInfo>
+    <witsml:gasReadingInfo>
+      <witsml:dTim>2020-01-01T09:00:00+01:00</witsml:dTim>
+      <witsml:readingType>drilling gas peak</witsml:readingType>
+      <witsml:mdTop uom="m">3005</witsml:mdTop>
+      <witsml:tvdTop uom="m">2765</witsml:tvdTop>
+      <witsml:gasHigh uom="%">1.2</witsml:gasHigh>
+      <witsml:meth uom="ppm">9000</witsml:meth>
+      <witsml:eth uom="ppm">800</witsml:eth>
+      <witsml:prop uom="ppm">300</witsml:prop>
+      <witsml:ibut uom="ppm">50</witsml:ibut>
+      <witsml:nbut uom="ppm">60</witsml:nbut>
+      <witsml:ipent uom="ppm">-999.99</witsml:ipent>
+    </witsml:gasReadingInfo>
+    <witsml:equipFailureInfo>
+      <witsml:dTim>2020-01-01T14:00:00+01:00</witsml:dTim>
+      <witsml:md uom="m">3010</witsml:md>
+      <witsml:equipClass>drill floor -- top drive</witsml:equipClass>
+      <witsml:eTimMissProduction uom="min">90</witsml:eTimMissProduction>
+      <witsml:dTimRepair>2020-01-01T15:30:00+01:00</witsml:dTimRepair>
+      <witsml:description>Top drive hydraulic leak; repaired.</witsml:description>
+    </witsml:equipFailureInfo>
+  </witsml:drillReport>
+</witsml:drillReports>

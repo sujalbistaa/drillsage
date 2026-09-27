@@ -1,0 +1,23 @@
+# Assam-Arakan basin (Upper Assam shelf), Oil India's operating area.
+# DICTIONARY ONLY: unit names and their top-to-bottom order, so DrillSage can align OIL wells
+# by formation the day OIL data is loaded. No well data, depths or hazard statistics for Assam
+# are shipped or implied. Group assignments follow the commonly used Upper Assam
+# lithostratigraphic column; OIL geologists should review and extend this file.
+key: assam_arakan
+name: Assam-Arakan (Upper Assam)
+units:
+  - {name: Dihing Gp, level: group}
+  - {name: Dhekiajuli Fm, level: formation, group: Dihing Gp}
+  - {name: Dupitila Gp, level: group}
+  - {name: Namsang Fm, level: formation, group: Dupitila Gp}
+  - {name: Tipam Gp, level: group}
+  - {name: Girujan Clay Fm, level: formation, group: Tipam Gp, aliases: [Girujan Fm, Girujan Clay]}
+  - {name: Tipam Sandstone Fm, level: formation, group: Tipam Gp, aliases: [Tipam Fm, Tipam Sandstone]}
+  - {name: Barail Gp, level: group}
+  - {name: Barail Coal Shale Fm, level: formation, group: Barail Gp, aliases: [Barail Coal-Shale]}
+  - {name: Barail Main Sand Fm, level: formation, group: Barail Gp, aliases: [Barail Sand]}
+  - {name: Jaintia Gp, level: group}
+  - {name: Kopili Fm, level: formation, group: Jaintia Gp}
+  - {name: Sylhet Fm, level: formation, group: Jaintia Gp, aliases: [Sylhet Limestone]}
+  - {name: Langpar Fm, level: formation, group: Jaintia Gp}
+  - {name: Basement, level: group, aliases: [Granitic Basement]}

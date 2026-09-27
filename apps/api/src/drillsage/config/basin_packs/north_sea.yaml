@@ -1,0 +1,55 @@
+# North Sea (Norwegian sector, Central Graben / South Viking Graben) lithostratigraphy.
+# Unit names follow the Norwegian Offshore Directorate (Sodir) FactPages, which is also where
+# Volve's authoritative formation tops come from. Units are listed top to bottom.
+#
+# Aliases cover spellings seen in Volve daily reports. "NO FORMAL NAME" and
+# "UNDIFFERENTIATED" are Sodir's labels for the unnamed Hordaland claystones in block 15/9;
+# they are scoped to this pack and must not be reused for other basins.
+key: north_sea
+name: North Sea (Norway)
+units:
+  - {name: Nordland Gp, level: group}
+  - {name: Naust Fm, level: formation, group: Nordland Gp}
+  - {name: Utsira Fm, level: formation, group: Nordland Gp}
+  - {name: Hordaland Gp, level: group}
+  - {name: Hordaland Gp undifferentiated, level: formation, group: Hordaland Gp,
+     aliases: [NO FORMAL NAME, UNDIFFERENTIATED]}
+  - {name: Skade Fm, level: formation, group: Hordaland Gp}
+  - {name: Grid Fm, level: formation, group: Hordaland Gp}
+  - {name: Frigg Fm, level: formation, group: Hordaland Gp}
+  - {name: Rogaland Gp, level: group}
+  - {name: Balder Fm, level: formation, group: Rogaland Gp}
+  - {name: Sele Fm, level: formation, group: Rogaland Gp}
+  - {name: Jorsalfare Fm, level: formation, group: Rogaland Gp}
+  - {name: Lista Fm, level: formation, group: Rogaland Gp}
+  - {name: Heimdal Fm, level: formation, group: Rogaland Gp}
+  - {name: Ty Fm, level: formation, group: Rogaland Gp}
+  - {name: Maureen Fm, level: formation, group: Rogaland Gp}
+  - {name: Våle Fm, level: formation, group: Rogaland Gp, aliases: [Vale Fm]}
+  - {name: Shetland Gp, level: group}
+  - {name: Ekofisk Fm, level: formation, group: Shetland Gp}
+  - {name: Tor Fm, level: formation, group: Shetland Gp}
+  - {name: Kyrre Fm, level: formation, group: Shetland Gp}
+  - {name: Tuxen Fm, level: formation, group: Shetland Gp}
+  - {name: Hod Fm, level: formation, group: Shetland Gp}
+  - {name: Hidra Fm, level: formation, group: Shetland Gp}
+  - {name: Blodøks Fm, level: formation, group: Shetland Gp, aliases: [Blodoks Fm]}
+  - {name: Svarte Fm, level: formation, group: Shetland Gp}
+  - {name: Cromer Knoll Gp, level: group}
+  - {name: Rødby Fm, level: formation, group: Cromer Knoll Gp, aliases: [Rodby Fm]}
+  - {name: Sola Fm, level: formation, group: Cromer Knoll Gp}
+  - {name: Åsgard Fm, level: formation, group: Cromer Knoll Gp, aliases: [Asgard Fm]}
+  - {name: Viking Gp, level: group}
+  - {name: Draupne Fm, level: formation, group: Viking Gp}
+  - {name: Heather Fm, level: formation, group: Viking Gp}
+  - {name: Intra Heather Fm SS, level: formation, group: Viking Gp}
+  - {name: Vestland Gp, level: group}
+  - {name: Hugin Fm, level: formation, group: Vestland Gp}
+  - {name: Sleipner Fm, level: formation, group: Vestland Gp}
+  - {name: Tryggvason Fm, level: formation, group: Vestland Gp}
+  - {name: Hegre Gp, level: group}
+  - {name: Skagerrak Fm, level: formation, group: Hegre Gp, aliases: [Skagerak Fm]}
+  - {name: Smith Bank Fm, level: formation, group: Hegre Gp}
+  - {name: Zechstein Gp, level: group}
+  - {name: Kupferschiefer Fm, level: formation, group: Zechstein Gp}
+  - {name: Rotliegend Gp, level: group}

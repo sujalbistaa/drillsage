@@ -1,0 +1,243 @@
+proj  id   now  0923 0919 share0919%  recentShare%
+  19 SIH26120   15   11    5  0.06  0.03 S | Oil India Limited | Digital Twin for Well-to-Surface Optimization of Cyclic Steam Stimulation (CSS) 
+  24 SIH26121   17   10    5  0.06  0.05 S | Oil India Limited | eRTMAC-NWIS (Nearby Wells Intelligence System): An AI-Powered Offset Well Knowle
+  25 SIH26087   18   11    8  0.10  0.05 H | Ministry of Cooperation | AI & LMS - Enabled Cooperative Capacity Building, ERP & Employment Ecosystem
+  27 SIH26211   16    6    2  0.02  0.06 H | AICTE | Student Innovation-Provide ideas in a decentralized and distributed ledger techn
+  28 SIH26116   18    9    3  0.04  0.06 S | Autodesk | Urban Mixed-Use Design Challenge-Design a centrally located mixed-use building i
+  29 SIH26119   20   12    6  0.07  0.05 S | Mangalore Refinery and Petroch | Indigenous GPU-Accelerated Optimization Solver (Sovereign Alternative to Express
+  30 SIH26072   18    7    3  0.04  0.07 S | Ministry of Earth Sciences (Mo | AIML based Nowcasting of thunderstorm and lightning using atmospheric observatio
+  32 SIH26233   19    7    2  0.02  0.08 H | Ministry of Food Processing In | Inline Microbial Contamination Detection Using Hyperspectral
+Edge Sensors
+  37 SIH26084   20    5    2  0.02  0.10 S | Ministry of Earth Sciences (Mo | Convective scale nowcasting for Thunderstorms, Hail & Cloudbursts (06 hr)
+  37 SIH26232   25   14    5  0.06  0.07 H | Ministry of Food Processing In | Low-Cost loT Block chain Nodes for Farm-to-Fork Traceability
+  37 SIH26148   24   12    2  0.02  0.08 S | National Technical Research Or | Creation of scripts/functions with new programming language to commence Computer
+  37 SIH26080   22    8    1  0.01  0.09 S | Ministry of Earth Sciences (Mo | Regime-Aware AI Post-Processing of Monsoon Rainfall Forecasts
+  38 SIH26086   25   13    3  0.04  0.08 S | Ministry of Earth Sciences (Mo | Hyperlocal Monsoon Onset & Break Prediction System (Block/Village Scale)
+  38 SIH26163   23    9    3  0.04  0.09 S | National Technical Research Or | Security Assessment of the World Monitor application
+  39 SIH26150   28   18    9  0.11  0.06 S | National Technical Research Or | Development of a Multi-Vendor DVR/NVR Forensic Analysis Tool for Standardized Ac
+  39 SIH26029   27   16    7  0.09  0.07 H | Ministry of Consumer Affairs,  | Automated High-Current Short-Circuit Test System for IEC 60898-1:2015 MCB Compli
+  39 SIH26098   25   12    6  0.07  0.08 H | Ministry of Defence (MoD) | Development of a Low-Cost Precision Guidance and Smart Electronic Fuze System fo
+  39 SIH26214   25   12    6  0.07  0.08 H | AICTE | Student Innovation-Ideas that showcase the rich cultural heritage and traditions
+  40 SIH26074   23    8    5  0.06  0.10 S | Ministry of Earth Sciences (Mo | Downscaling of weather forecast from Block level to Panchayat level: Inferring h
+  42 SIH26228   30   19   13  0.16  0.07 S | Ministry of defence (MoD) | Trustworthy Computer Vision Integrity Assurance for Data, Models and Inference O
+  44 SIH26144   26   10    3  0.04  0.10 H | National Technical Research Or | Design & Development of a High-Sensitivity Micro barometer Infrasound sensor
+  45 SIH26235   28   13    7  0.09  0.10 H | Ministry of Food Processing In | Development of a Portable Nano engineered Rapid Food Testing Kit for On-Site Det
+  45 SIH26114   26    9    1  0.01  0.11 S | Autodesk | Smart City Site Planning using Autodesk Forma Site Design
+  45 SIH26081   25    7    2  0.02  0.12 S | Ministry of Earth Sciences (Mo | Hybrid AI–NWP Multi-Model Forecast Blending System
+  46 SIH26030   24    4    3  0.04  0.13 H | Ministry of Consumer Affairs,  | Automated Cable Specimen Preparation System for IS 10810 and IS 7098 Compliance.
+  46 SIH26096   24    4    2  0.02  0.13 H | Ministry of Social Justice and | Digital Heritage Archive for Memorials, Manuscripts & Ambedkar: AI-Powered Insti
+  49 SIH26064   30   13    7  0.09  0.11 H | Ministry of Earth Sciences (Mo | Low-Cost Deployable Seafloor Metal Detection Sensor for Ocean Resource Explorati
+  49 SIH26079   28    9    2  0.02  0.12 S | Ministry of Earth Sciences (Mo | AI-Based Forecast Bust Detection for Medium-Range Weather Forecasts
+  50 SIH26160   29   10    4  0.05  0.12 S | National Technical Research Or | AI-Powered IPsec VPN Protocol Analyzer and Security Assessment Framework
+  51 SIH26063   34   19   11  0.14  0.10 S | Ministry of Earth Sciences (Mo | Integrated Polar Science Outreach, Knowledge Repository and Media Dissemination 
+  52 SIH26088   34   18    9  0.11  0.10 H | Ministry of Cooperation | Multilingual Cooperative Governance & Legal Assistance Chatbot
+  52 SIH26237   33   16    8  0.10  0.11 S | Ministry of Defence | Cryptographic Attribution and Immutable Decryption Provenance for Multi-Recipien
+  52 SIH26048   31   12    3  0.04  0.12 H | Ministry of Ayush | iKwath - a pod-based smart Kwatha (Kadha) maker that prepares a fresh, AFI/API-s
+  53 SIH26157   33   15    7  0.09  0.12 S | National Technical Research Or | Supervisory Analytics Tool for SOC Assessment (SAT-SA)
+  54 SIH26161   35   18    8  0.10  0.11 S | National Technical Research Or | Dam Break Inundation Modelling Using Hydrodynamic Modelling of any River
+  54 SIH26010   39   25   10  0.12  0.09 H | Ministry of Rural Development | Survey/Resurvey of Rural Agricultural Land in lndia
+  56 SIH26111   38   22   12  0.15  0.10 S | Ministry of Fisheries, Animal  | Smart Al-Enabled Rapid Feed and Silage Quality Testing System for Dairy Farmers
+  56 SIH26020   34   14    7  0.09  0.13 H | Ministry of MSME | Design and Development of Innovative Hand-Spinning Equipment for Enhancing Khadi
+  56 SIH26147   34   14    5  0.06  0.13 S | National Technical Research Or | Automated model for analysis of .IQ and .wav files along with signal parameter e
+  57 SIH26126   42   28   15  0.19  0.09 S | Bharat Electronics Limited | Vision Based Autonomous Navigation for Unmanned Ground Vehicle for Outdoor envir
+  58 SIH26013   36   16    5  0.06  0.13 S | Ministry of Rural Development | Automated lntegration and lntelligent Harmonization of Multi-source Geospatial D
+  58 SIH26225   34   12    5  0.06  0.14 H | AICTE | Student Innovation-Challenge your creative mind to conceptualize and develop uni
+  59 SIH26182   38   19   12  0.15  0.12 S | Ministry of Home Affairs | Automated Attribution of Unknown Cryptocurrency Wallets to Nearest Virtual Asset
+  59 SIH26015   37   17    8  0.10  0.13 S | Ministry of Rural Development | Application of Geospatial Techniques for visualization and analysis to interpret
+  60 SIH26170   40   22   11  0.14  0.12 S | Indian Space Research Organisa | AI-Driven Anomaly Detection in Component Burn-In & Screening
+  61 SIH26078   32    6    1  0.01  0.17 S | Ministry of Earth Sciences (Mo | AI-Driven Spatio-Temporal Tracking of Extreme Weather Anomalies in Medium-Range 
+  62 SIH26141   36   13    7  0.09  0.15 S | Egreen Quanta | Quantum-Inspired Cyber Threat Detection for Digital Signature Security
+  62 SIH26053   42   24   10  0.12  0.12 S | DRDO | Adaptive Variable Resolution 2.5D Lidar Mapping for Dynamic Environment Percepti
+  62 SIH26065   39   18   12  0.15  0.14 H | Ministry of Earth Sciences (Mo | Autonomous Low-Cost Ocean Observation Platform for Polar and Southern Oceans
+  62 SIH26213   39   18    8  0.10  0.14 H | AICTE | Student Innovation-Ideas that can boost fitness activities and assist in keeping
+  63 SIH26201   45   29   14  0.17  0.10 S | AICTE | Student Innovation-There is a need to design drones and robots that can solve so
+  63 SIH26041   39   17   10  0.12  0.14 S | Government of Jharkhand | AR-Based Vocational Training Simulator for Industrial Safety in Jharkhand's Mini
+  64 SIH26077   43   24   10  0.12  0.12 S | Ministry of Earth Sciences (Mo | AI-Driven Hyper-Local Early Warning System for Severe Weather Nowcasting
+  64 SIH26123   41   20   11  0.14  0.14 S | Bharat Electronics Limited | Edge-AI Based Distributed Fleet Coordination for Autonomous Mobile Robots (AMRs)
+  65 SIH26097   39   16    5  0.06  0.15 S | Ministry of Social Justice and | AI-Driven voice Assistant for livelihood Mapping and NSQF-Aligned Skilling Recom
+  65 SIH26221   41   19    9  0.11  0.14 H | AICTE | Student Innovation-A solution/idea that can boost the current situation of the t
+  66 SIH26194   47   30   19  0.23  0.11 S | AICTE | Student Innovation-Provide ideas in a decentralized and distributed ledger techn
+  67 SIH26155   43   21   12  0.15  0.14 S | National Technical Research Or | AI-Driven Multi-Vendor Network Security Compliance Auditor
+  68 SIH26169   40   15   11  0.14  0.16 S | Indian Space Research Organisa | Development of an AI-Based Virtual Camera Tracking System for Coarse Alignment o
+  68 SIH26216   45   24   16  0.20  0.14 H | AICTE | Student Innovation-Technology ideas in tertiary sectors like Hospitality, Financ
+  68 SIH26138   44   22   11  0.14  0.14 S | Egreen Quanta | Quantum-Inspired Fuel Consumption Prediction and Green Fleet Optimization
+  69 SIH26185   43   20    8  0.10  0.15 H | Ministry of Home Affairs | Helmet mounted conformal antenna for tactical communications in urban CQB enviro
+  69 SIH26112   49   31   13  0.16  0.12 H | Autodesk | Design and Develop a Modular Autonomous Mobile Robot (AMR) Platform for Smart Wa
+  71 SIH26226   45   22   16  0.20  0.15 H | AICTE | Student Innovation-Space technology refers to the application of engineering pri
+  72 SIH26224   46   23   13  0.16  0.15 H | AICTE | Student Innovation-Smart education,a concept that describes learning in digital 
+  73 SIH26156   45   20   13  0.16  0.16 S | National Technical Research Or | Universal Log Pre-processing Framework
+  75 SIH26035   46   20    6  0.07  0.17 S | Ministry of Consumer Affairs,  | Development of a Software Program/Application for Generation of Test Reports for
+  75 SIH26149   53   33   17  0.21  0.13 S | National Technical Research Or | Design and Development of an Integrated Secure Data Erasure and Advanced File Re
+  76 SIH26174   52   30   16  0.20  0.14 S | Indian Space Research Organisa | AI Human Activity Recognition for On-board BAS Experiments
+  78 SIH26142   55   34   12  0.15  0.14 S | National Technical Research Or | Deep Learning Based Super Resolution Mapping (SRM) from Medium Resolution Satell
+  79 SIH26060   52   28    9  0.11  0.16 S | Ministry of Earth Sciences (Mo | Digital Platform for efficient remote management of Indian Antarctic Research St
+  79 SIH26240   50   24    9  0.11  0.17 S | Ministry of Tribal Affairs | AI-Based Spring Revival and Recharge Planning for Tribal Areas
+  80 SIH26159   43   10    3  0.04  0.21 S | National Technical Research Or | SecureMailScope: AI-Assisted Cryptographic Security Posture Assessment for Secur
+  80 SIH26066   51   25   20  0.25  0.17 S | Ministry of Earth Sciences (Mo | OceanEmbed - Satellite Embedding-Based Deep Learning Framework for Reconstructio
+  80 SIH26146   49   21   12  0.15  0.18 S | National Technical Research Or | AI-Powered Monitoring & Analysis of Bitcoin Transaction Traffic
+  81 SIH26058   47   17    8  0.10  0.19 H | Ministry of Earth Sciences (Mo | Development of a Low-Power, Real-Time Adaptive Software-Defined Sonar Transmitte
+  81 SIH26164   51   24   12  0.15  0.18 S | National Technical Research Or | Enterprise Cryptographic Discovery & Analysis Tool (ECDAT)
+  83 SIH26012   54   28   13  0.16  0.17 S | Ministry of Rural Development | AI-Based Automated Urban Parcel Mapping and Cadastral Feature Extraction System 
+  84 SIH26061   60   38   21  0.26  0.14 S | Ministry of Earth Sciences (Mo | AI-Driven Smart Energy Management System for Polar Research Stations
+  85 SIH26175   59   36   19  0.23  0.15 S | Indian Space Research Organisa | DepthWizard - Single-View Height Estimation and 3D Flythrough
+  88 SIH26050   60   35   23  0.28  0.16 H | DRDO | High Altitude Performance Optimization and Robust Design of Anti-Drone System.
+  88 SIH26099   56   27   14  0.17  0.19 S | Ministry of Petroleum & Natura | AI-Driven Standardization and Harmonization of Material Codes Across CPSEs
+  89 SIH26023   58   30    9  0.11  0.18 S | Ministry of Coal | AI-Powered Geological, Mining and other Reporting Solution for CMPDI/CIL subsidi
+  90 SIH26238   55   24   12  0.15  0.20 S | Ministry of Tribal Affairs | Unified Scholarship Mobile Application for Tribal Students
+  90 SIH26082   62   37   26  0.32  0.16 S | Ministry of Earth Sciences (Mo | Air Pollution–Weather Coupled Forecasting System (Delhi NCR Focus)
+  93 SIH26227   64   38   17  0.21  0.17 S | Ministry of defence (MoD) | Semantic Retrieval and Multi-Temporal Change Analysis of Satellite lmagery.
+  93 SIH26154   61   32   23  0.28  0.19 S | National Technical Research Or | Gen AI Platform for Automated Content Transformation
+  94 SIH26019   54   18    7  0.09  0.23 S | Ministry of Rural Development | National Digital Platform for Research, Policy Innovation, and Evidence-Based La
+  95 SIH26179   61   31   15  0.19  0.19 H | Qualcomm Inc | To build an AI-powered retail intelligence platform that delivers real-time shop
+  95 SIH26046   56   21   10  0.12  0.23 S | Ministry of Ayush | AIIA Clinical Trials Dashboard - a real-time, cloud-based, GCP-compliant Clinica
+  98 SIH26105   64   34   17  0.21  0.19 S | All India Council for Technica | AI-Powered Continuous Cyber Risk Quantification and Investment Optimization Plat
+  98 SIH26051   67   39   19  0.23  0.18 S | DRDO | Software Based Model Development for Design of Area Specific Shelter for Thermal
+  98 SIH26230   67   39   29  0.36  0.18 H | Ministry of Home Affairs | Breath-Based Detection Device for Drug Consumption
+  98 SIH26173   58   22   12  0.15  0.23 S | Indian Space Research Organisa | iTantra -Indian Multilingual TTS & STT Aided Neural Transceiver Radio Access for
+ 100 SIH26031   64   32   11  0.14  0.21 S | Ministry of Consumer Affairs,  | Quality assessment and grading of onions are often subjective and vary across pr
+ 100 SIH26055   61   26   13  0.16  0.23 S | DRDO | Smart Scan strategy for Electronic Warfare
+ 100 SIH26062   61   26    8  0.10  0.23 S | Ministry of Earth Sciences (Mo | Integrated Polar Expedition Logistics and Asset Management System
+ 100 SIH26151   60   24   11  0.14  0.23 S | National Technical Research Or | Dark web threat actor de-anonymization
+ 101 SIH26109   65   33   12  0.15  0.21 H | Ministry of Fisheries, Animal  | Al-Based Predictive Modelling for Early Forecasting of Bovine Mastitis in lndian
+ 101 SIH26203   64   31   17  0.21  0.21 S | AICTE | Student Innovation-Creating intelligent devices to improve commutation sector.
+ 101 SIH26140   62   27   13  0.16  0.23 S | Egreen Quanta | AI-Based Interactive Quantum Algorithm Learning Platform
+ 102 SIH26209   68   38   22  0.27  0.19 S | AICTE | Student Innovation-Space technology refers to the application of engineering pri
+ 102 SIH26152   66   34   22  0.27  0.21 S | National Technical Research Or | Social Media Analytics
+ 102 SIH26137   62   26   18  0.22  0.23 S | Egreen Quanta | Quantum-Inspired Intelligent Traffic Route Optimization in Transportation System
+ 103 SIH26136   68   37   27  0.33  0.20 S | Government Of Maharashtra | Startup friendly public procurement mechanism that enables government department
+ 108 SIH26067   68   32   14  0.17  0.23 S | Ministry of Earth Sciences (Mo | Develop a web-based interactive 3D visualization platform that integrates numeri
+ 110 SIH26239   65   25   10  0.12  0.26 S | Ministry of Tribal Affairs | AI-Enabled Scholarship and Fellowship Management System for Scheduled Tribes
+ 110 SIH26130   69   32   17  0.21  0.24 S | Government Of Maharashtra | Efficiency in streamlining industrial approvals,compliance processes,and access 
+ 112 SIH26231   68   29   14  0.17  0.25 S | Ministry of Home Affairs | Digital Companion for Field Drug Testing
+ 113 SIH26059   72   35   21  0.26  0.24 S | Ministry of Earth Sciences (Mo | AI-Enabled Antarctic Sea-Ice, Iceberg Trajectory, and Navigation Decision Suppor
+ 113 SIH26172   72   35   17  0.21  0.24 H | Indian Space Research Organisa | Low Latency and Efficient Voice Activator for Edge Devices
+ 114 SIH26158   75   40   20  0.25  0.23 S | National Technical Research Or | Single-Pass Drone Video to Accurate 3D Model Generation System
+ 115 SIH26108   64   19    5  0.06  0.29 S | Ministry of Consumer Affairs,  | AI-Powered Recommendation Engine for Identifying Applicable Indian Standards for
+ 115 SIH26183   72   34   20  0.25  0.25 S | Ministry of Home Affairs | Real-Time Identification of Fraud-Linked Cryptocurrency Exchanges from Victim-Re
+ 115 SIH26115   74   37   21  0.26  0.24 S | Autodesk | Design and Develop a Smart Mobile Medical-Waste Collection and Segregation Syste
+ 116 SIH26122   78   44   21  0.26  0.22 S | Oil India Limited | Intelligent Data Capture & Schedule-Linking Layer for Infrastructure Project Man
+ 116 SIH26073   68   25   12  0.15  0.28 S | Ministry of Earth Sciences (Mo | AI/ML-Based Intelligent Anomaly Detection for Automatic Weather Stations (AWS)
+ 117 SIH26026   73   34   17  0.21  0.25 H | Ministry of Railways | Development of Mobile (Quadruped)/Handheld Device/System for Real-Time Detection
+ 117 SIH26049   70   28   14  0.17  0.27 H | DRDO | Modifications to improve the reliability, efficiency,and lifespan of electrical 
+ 118 SIH26234   75   37   14  0.17  0.25 S | Ministry of Food Processing In | Al-Powered Smart Food Waste Reduction and Sustainable Redistribution Ecosystem f
+ 120 SIH26222   85   54   26  0.32  0.20 H | AICTE | Student Innovation-Submit your ideas to address the growing pressures on the cit
+ 120 SIH26083   80   44   31  0.38  0.23 S | Ministry of Earth Sciences (Mo | Extreme Heatwave Early Warning and Human Thermal Stress Index
+ 121 SIH26069   73   30   12  0.15  0.28 S | Ministry of Earth Sciences (Mo | National Weather Big Data Analytics Platform
+ 121 SIH26113   81   45   27  0.33  0.23 H | Autodesk | Human augmentation technologies are transforming healthcare,rehabilitation, indu
+ 123 SIH26014   78   38   23  0.28  0.26 S | Ministry of Rural Development | An lntegrated GIS-based Digital Public lnfrastructure for Land Governance
+ 129 SIH26236   71   19   10  0.12  0.34 S | Ministry of Food Processing In | Al-Based Intelligent Food Packaging Material Recommendation System for Food Comm
+ 133 SIH26093   82   37   27  0.33  0.29 S | Ministry of Social Justice and | AI-Based Real-Time Stress and Trauma Assessment Module for Victims/Complainants 
+ 135 SIH26186   84   39   24  0.30  0.29 S | Ministry of Home Affairs | AI-Based Predictive Personnel Stress and Welfare Monitoring System for Uniformed
+ 138 SIH26011   87   42   20  0.25  0.29 S | Ministry of Rural Development | 3D ULPIN Generation and vertical Property Mapping SYstem
+ 138 SIH26118   84   36   11  0.14  0.31 H | Mangalore Refinery and Petroch | Passive Colorimetric H2S Exposure-Dosimeter Wristband with AI-Based Quantitative
+ 142 SIH26071   91   46   24  0.30  0.29 S | Ministry of Earth Sciences (Mo | AI/ML-Based Integrated heavy rainfall Early Warning and Inundation Prediction Sy
+ 143 SIH26125   91   45   29  0.36  0.30 S | Bharat Electronics Limited | Blockchain-Based Secure Platform for Identity,Access Control, and Digital Asset 
+ 143 SIH26139   91   45   29  0.36  0.30 S | Egreen Quanta | Hybrid Quantum Machine Learning Platform for Early Disease Detection
+ 145 SIH26165   94   49   21  0.26  0.29 S | Oil India Limited | AI/NLP Engine to Detect Serious Injury & Fatality (SIF) Precursors in OIL's Unsa
+ 146 SIH26021   97   53   29  0.36  0.29 S | Ministry of MSME | Honey Chain: A block chain-based system for honey traceability and smart beekeep
+ 147 SIH26017   95   49   28  0.35  0.30 S | Ministry of Rural Development | Predictive Analytics System for Early Detection of Land Acquisition Delays
+ 148 SIH26009   96   50   17  0.21  0.30 S | Ministry of Steel | Using AI/ML and Space Technology to Identify Manganese Reserves and Overcome Pro
+ 148 SIH26218   99   55   26  0.32  0.29 H | AICTE | Student Innovation-There is a need to design drones and robots that can solve so
+ 150 SIH26128   99   54   29  0.36  0.29 S | Government Of Maharashtra | Efficient systems for early detection,prevention,and management of livestock dis
+ 150 SIH26166   99   54   33  0.41  0.29 S | Indian Space Research Organisa | Multi-modal, Sun angle and scale invariant image correspondence using Chandrayaa
+ 150 SIH26024   92   40   19  0.23  0.34 S | Ministry of Coal | AI-Based Smart Governance and Compliance Monitoring System for Coal Mines
+ 151 SIH26052   90   36   26  0.32  0.35 H | DRDO | To develop an AI/ML-enabled adaptive noise cancellation (ANC) system that effect
+ 151 SIH26016   97   49   27  0.33  0.31 S | Ministry of Rural Development | Real-Time National Land Acquisition & Management System for End-to-End Digital M
+ 151 SIH26076   97   49   21  0.26  0.31 S | Ministry of Earth Sciences (Mo | Development of personalized homepage for 'Mausam' mobile application:
+ 152 SIH26004   92   39   12  0.15  0.34 H | Ministry of Development of Nor | Al-Assisted Early Detection System for Osteoarthritis (OA) Risk Markers in North
+ 156 SIH26208  100   50   33  0.41  0.32 S | AICTE | Student Innovation-Challenge your creative mind to conceptualize and develop uni
+ 161 SIH26200  105   55   28  0.35  0.32 S | AICTE | Student Innovation-Innovative ideas that help manage and generate renewable /sus
+ 168 SIH26070  108   55   30  0.37  0.34 S | Ministry of Earth Sciences (Mo | To develop an Artificial Intelligence (AI) / Machine Learning (ML) based system 
+ 168 SIH26094  114   66   28  0.35  0.31 S | Ministry of Social Justice and | AI-Powered Dynamic Mental Health Monitoring and Distress Prediction System for V
+ 172 SIH26220  119   72   46  0.57  0.30 H | AICTE | Student Innovation-Creating intelligent devices to improve commutation sector.
+ 174 SIH26168  114   61   27  0.33  0.34 S | Indian Space Research Organisa | AI-ML based Intelligent Dead Reckoning system for seamless navigation
+ 177 SIH26135  107   45   26  0.32  0.40 S | Government Of Maharashtra | Difficulties in tracking employment outcomes,skill gaps, and the impact of skill
+ 179 SIH26176  118   64   30  0.37  0.35 S | Indian Space Research Organisa | ORCA Marine EcOsystem Reasoning with Collaborative Agents
+ 179 SIH26045  115   58   29  0.36  0.37 S | Ministry of Ayush | IP-SAKTI Sahayak a multilingual, RAG-based (source-cited) AI assistant for Intel
+ 180 SIH26129  123   72   40  0.49  0.33 S | Government Of Maharashtra | System integration and interoperability among government digital platforms,resul
+ 185 SIH26054  122   66   31  0.38  0.36 S | DRDO | AI-Enabled Real-Time Digital Twin System for Health Monitoring, Fault Prediction
+ 185 SIH26184  128   77   28  0.35  0.33 S | Ministry of Home Affairs | Development of a Predictive Analytics Framework for Cybercrime Complaints to For
+ 187 SIH26095  121   62   42  0.52  0.38 S | Ministry of Social Justice and | Smart Real-Time Monitoring & Inspection Mobile App
+ 188 SIH26103  125   69   34  0.42  0.36 S | MoSPI | Use case on web-based integrated project-monitoring platform
+ 189 SIH26127  132   81   48  0.59  0.33 S | Bharat Electronics Limited | City-Wide AI Engine for Multi-Camera ANPR Trajectory Tracking and Urban Traffic 
+ 191 SIH26037  130   76   38  0.47  0.35 S | MathWorks | Adaptive Path Planning and Collision Avoidance for Autonomous Vehicles on Unstru
+ 191 SIH26153  121   59   24  0.30  0.40 S | National Technical Research Or | AI based Network Attack Forecasting from Network Traffic Data
+ 195 SIH26008  124   61   24  0.30  0.41 H | Ministry of Steel | Belt Joint Rupture and Conveyor Belt Damages in Iron Ore Mining Industry: Intell
+ 195 SIH26085  130   72   32  0.39  0.38 S | Ministry of Earth Sciences (Mo | Urban Flood Nowcasting System (Drainage and Rainfall Coupling)
+ 198 SIH26036  126   62   28  0.35  0.41 S | Ministry of Consumer Affairs,  | Development of an Online Verification System for Weighing and Measuring Instrume
+ 200 SIH26145  126   60   33  0.41  0.43 S | National Technical Research Or | AI-Based Detection of Cyber Threats in Unidirectional IP Traffic
+ 204 SIH26162  128   61   27  0.33  0.43 S | National Technical Research Or | AI-Based Detection and Classification of Industrial Fires and Persistent Thermal
+ 204 SIH26191  128   61   33  0.41  0.43 S | Ministry of Home Affairs | Intelligent Identification of Hazard-Based Red Zones, Carrying Capacity Assessme
+ 205 SIH26006  128   60   31  0.38  0.44 S | Ministry of Steel | Development of an Intelligent Freight Forecasting Model for Optimized Vessel Cha
+ 206 SIH26181  144   89   46  0.57  0.36 H | Qualcomm Inc | A secure, AI-powered Personal Health Companion that delivers real-time, privacy-
+ 209 SIH26056  130   60   25  0.31  0.45 S | MoSPI | Development of a Real-time Airfare Price Index for India through Automated Web S
+ 222 SIH26028  145   77   40  0.49  0.44 S | Ministry of Railways | Dynamic Forecast of Expected Time of Arrival (ETA) for Coaching Trains
+ 231 SIH26075  145   69   31  0.38  0.49 S | Ministry of Earth Sciences (Mo | Participants are invited to design and develop **CAPACITY CONNECT A Digital Capa
+ 232 SIH26171  146   70   37  0.46  0.49 S | Indian Space Research Organisa | On-device Visual Perception for Light-weight Browser Agents
+ 235 SIH26107  150   75   27  0.33  0.49 S | Ministry of Consumer Affairs,  | Al-powered Intelligent Assistant for Indian Standards and BIS Services for Indus
+ 235 SIH26100  147   69   32  0.39  0.51 S | Ministry of Petroleum & Natura | AI-Powered Integrated Bid Compliance Verification Platform for GeM Procurement
+ 235 SIH26219  152   78   47  0.58  0.48 H | AICTE | Student Innovation-Ideas focused on the intelligent use of resources for transfo
+ 236 SIH26195  153   79   47  0.58  0.48 S | AICTE | Student Innovation-Solutions could be in the form of waste segregation, disposal
+ 241 SIH26134  154   77   47  0.58  0.50 S | Government Of Maharashtra | Challenges in aligning skill development programs with industry requirements and
+ 246 SIH26057  148   61   23  0.28  0.56 S | Ministry of Earth Sciences (Mo | AI-Powered Automated Underwater Marine Debris and Anomaly Detection System using
+ 247 SIH26229  147   58   29  0.36  0.58 S | Ministry of Mines (MoM) | Kabadiwala Connect – Bringing the Informal Collector into the Formal Recycling
+C
+ 251 SIH26022  154   68   32  0.39  0.56 H | Ministry of MSME | Design and develop a smart, solar-powered drying and compact packaging system to
+ 251 SIH26192  160   79   40  0.49  0.53 S | Ministry of Home Affairs | Flash Flood Prediction System for Hilly Regions using Multi-Source Data Theme
+ 252 SIH26025  161   80   42  0.52  0.53 H | Ministry of Coal | Development of an AI-enabled Low Cost Real Time Mine Subsidence Monitoring, Pred
+ 254 SIH26042  169   94   54  0.67  0.49 S | Government of Jharkhand | Al-Powered Vernacular Pedagogy and Real-Time Translation Tool for Mother Tongue-
+ 265 SIH26212  185  114   65  0.80  0.46 H | AICTE | Student Innovation-Solutions could be in the form of waste segregation, disposal
+ 272 SIH26196  178   95   46  0.57  0.54 S | AICTE | Student Innovation-Ideas that can boost fitness activities and assist in keeping
+ 278 SIH26091  182   97   54  0.67  0.55 S | Ministry of Social Justice and | AI-Driven Hyper-Local Business Advisory and Financial Structuring Assistant for 
+ 279 SIH26110  181   94   49  0.60  0.56 H | Ministry of Fisheries, Animal  | Development of a Low-Cost Light-weight Milk Chilling Can for Small-Scale Dairy F
+ 281 SIH26199  178   87   58  0.72  0.59 S | AICTE | Student Innovation-Technology ideas in tertiary sectors like Hospitality, Financ
+ 281 SIH26124  186  102   34  0.42  0.54 S | Bharat Electronics Limited | AI-Powered Mobile Urban Intelligence Platform Using Public Transport Fleet
+ 291 SIH26197  193  106   59  0.73  0.56 S | AICTE | Student Innovation-Ideas that showcase the rich cultural heritage and traditions
+ 294 SIH26223  200  117   71  0.88  0.54 H | AICTE | Student Innovation-Disaster management includes ideas related to risk mitigation
+ 295 SIH26210  190   97   62  0.77  0.60 H | AICTE | Student Innovation-Developing solutions, keeping in mind the need to enhance the
+ 295 SIH26178  195  106   47  0.58  0.58 H | Qualcomm Inc | A resilient, AI-powered environmental monitoring network that provides early det
+ 299 SIH26205  206  124   71  0.88  0.53 S | AICTE | Student Innovation-Submit your ideas to address the growing pressures on the cit
+ 299 SIH26018  188   90   49  0.60  0.64 S | Ministry of Rural Development | Intelligent Land Record Digitization and Validation System
+ 312 SIH26092  204  108   61  0.75  0.62 S | Ministry of Social Justice and | AI-Driven Scheme Matching for Marginalized Entrepreneurs
+ 320 SIH26177  207  107   60  0.74  0.65 H | Qualcomm Inc | A deployable AI-powered autonomous drone that aids search-and-rescue operations 
+ 323 SIH26190  199   89   42  0.52  0.71 S | Ministry of Home Affairs | Secure Digital Document Management System for Legal and Investigation Documents
+ 348 SIH26180  229  124   69  0.85  0.68 H | Qualcomm Inc | A field-deployable AI-powered Smart Farming Assistant that helps farmers detect 
+ 353 SIH26007  220  102   43  0.53  0.77 H | Ministry of Steel | Safe and Efficient Operation of Mine Vehicles in Fog and Low-Visibility Conditio
+ 355 SIH26039  226  112   59  0.73  0.74 H | Government of Jharkhand | Al-Powered Underground Mine Safety, Monitoring and Rescue System.
+ 359 SIH26143  229  114   62  0.77  0.75 S | National Technical Research Or | Leveraging satellite imagery to determine Oil spills at sea along with AIS data 
+ 360 SIH26187  252  156   76  0.94  0.62 S | Ministry of Home Affairs | AI-Based Intelligent Video Analytics Platform for Border Surveillance using exis
+ 389 SIH26215  258  142   76  0.94  0.75 H | AICTE | Student Innovation-Cutting-edge technology in these sectors continues to be in d
+ 403 SIH26217  270  152   92  1.14  0.77 H | AICTE | Student Innovation-Innovative ideas that help manage and generate renewable /sus
+ 421 SIH26102  263  123   60  0.74  0.91 S | MoSPI | Development of an AI-powered system to detect anomalies, fraud, and inefficienci
+ 425 SIH26202  275  142   84  1.04  0.86 S | AICTE | Student Innovation-Ideas focused on the intelligent use of resources for transfo
+ 426 SIH26101  279  149   90  1.11  0.84 S | MoSPI | Develop an AI enabled learning platform that identifies competency gaps, recomme
+ 431 SIH26117  262  113   60  0.74  0.97 S | Mangalore Refinery and Petroch | Sovereign On-Premise Agentic AI Workbench using Open-Weight Multimodal LLMs for 
+ 453 SIH26068  289  144   92  1.14  0.94 S | Ministry of Earth Sciences (Mo | WeatherGPT: Conversational AI for Weather Forecasting, Alerts, and Climate Infor
+ 471 SIH26040  301  151   80  0.99  0.97 H | Government of Jharkhand | Smart Water Purification and Quality Monitoring System for Rural and Mining-Affe
+ 500 SIH26001  500  397  184  2.27  0.67 S | Ministry of Development of Nor | AI-Based early warning and landslide Risk Monitoring System in NER
+ 500 SIH26002  342  153   83  1.02  1.23 S | Ministry of Development of Nor | Al-Based Smart Logistics and Accessibility Intelligence Platform for North Easte
+ 500 SIH26003  500  270  124  1.53  1.49 S | Ministry of Development of Nor | AI-Based Cognitive Gaming and Memory Assistance Platform for Elderly Dementia Pa
+ 500 SIH26005  338  164   79  0.97  1.13 H | Ministry of Development of Nor | Solar-Powered Smart Mini Cold Storage System for Fresh Vegetables in North Easte
+ 500 SIH26027  311  136   58  0.72  1.13 S | Ministry of Railways | Al-Powered Automatic Block Planning to Maximize Asset Availability for Train Ope
+ 500 SIH26032  500  322  163  2.01  1.15 S | Ministry of Consumer Affairs,  | Farmers often face long waiting times, lack of information regarding procurement
+ 500 SIH26033  500  278  138  1.70  1.44 S | Ministry of Consumer Affairs,  | Multiple intermediaries reduce farmers earnings and increase consumer prices.
+ 500 SIH26034  500  359  154  1.90  0.91 S | Ministry of Consumer Affairs,  | Software System to check compliance of Packaged Commodities under Legal Metrolog
+ 500 SIH26038  388  168   77  0.95  1.43 S | MathWorks | Explainable AI for Diabetic Retinopathy Screening in Rural India
+ 500 SIH26043  500  152   80  0.99  2.26 S | Government of Jharkhand | A digital platform to crowdsource societal challenges and facilitate collaborati
+ 500 SIH26044  500  296  138  1.70  1.32 S | Ministry of Ayush | Portal for Academia - Industry collaboration for Skill Mapping, Internships and 
+ 500 SIH26047  500  500  227  2.80  0.00 S | Ministry of Ayush | Patient Case-Taking Software
+ 500 SIH26089  405  185   84  1.04  1.43 S | Ministry of Cooperation | Cooperative Gig Services Platform for Household & Community Services
+ 500 SIH26090  406  175   95  1.17  1.50 S | Ministry of Social Justice and | AI-Driven Market Linkage and Smart Cataloging Mobile Application for Marginalize
+ 500 SIH26104  500  251  132  1.63  1.61 S | All India Council for Technica | AI-Powered Real-Time Detection and Prevention of Voice Cloning Impersonation Att
+ 500 SIH26106  386  168   98  1.21  1.41 S | All India Council for Technica | AI-Powered Email Threat Detection, GeoLocation and Forensic Intelligence Platfor
+ 500 SIH26131  500  252  137  1.69  1.61 S | Government Of Maharashtra | Early detection and management of crop diseases and pest infestations
+ 500 SIH26132  500  224  111  1.37  1.79 S | Government Of Maharashtra | Strengthening market linkages and price discovery for farmers
+ 500 SIH26133  500  227  104  1.28  1.77 S | Government Of Maharashtra | Accessibility and quality of public healthcare services,particularly in rural an
+ 500 SIH26167  319  145   74  0.91  1.13 S | Indian Space Research Organisa | SatQuery AI - An Interactive Vision-Language Assistant for Multimodal Remote Sen
+ 500 SIH26188  500  187  106  1.31  2.03 S | Ministry of Home Affairs | Al-Based Fake Identity & Document Screening System
+ 500 SIH26189  500  174   91  1.12  2.11 S | Ministry of Home Affairs | AI-Powered Criminal Network Analysis System
+ 500 SIH26193  317  134   75  0.93  1.19 S | AICTE | Student Innovation-Developing solutions, keeping in mind the need to enhance the
+ 500 SIH26198  500  203  117  1.44  1.93 S | AICTE | Student Innovation-Cutting-edge technology in these sectors continues to be in d
+ 500 SIH26204  500  239  129  1.59  1.69 S | AICTE | Student Innovation-A solution/idea that can boost the current situation of the t
+ 500 SIH26206  322  150   79  0.97  1.12 S | AICTE | Student Innovation-Disaster management includes ideas related to risk mitigation
+ 500 SIH26207  500  216  132  1.63  1.84 S | AICTE | Student Innovation-Smart education,a concept that describes learning in digital 
