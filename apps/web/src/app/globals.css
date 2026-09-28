@@ -147,6 +147,42 @@
   }
 }
 
+@keyframes fly {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100cqw);
+  }
+}
+
+@keyframes sail {
+  from {
+    transform: translateX(100cqw);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(5px) rotate(-1deg);
+  }
+}
+
+@keyframes flutter {
+  50% {
+    transform: skewY(-2.5deg) scaleY(0.94);
+  }
+}
+
+@keyframes prop {
+  50% {
+    transform: scaleY(0.2);
+  }
+}
+
 @keyframes blink {
   50% {
     opacity: 0;
@@ -287,6 +323,26 @@
   .sonar-rings {
     background: repeating-radial-gradient(circle, transparent 0 70px, var(--hairline) 70px 71.5px);
     mask: radial-gradient(circle, #000 20%, transparent 70%);
+  }
+
+  /* Map traffic (see SkyAndSea): the plane crosses west to east, the ship east to west. */
+  .fly {
+    animation: fly 26s linear -11s infinite; /* already mid-sky when the page opens */
+  }
+  .bob {
+    animation: bob 2.6s ease-in-out infinite;
+  }
+  .banner {
+    transform-origin: right center;
+    animation: flutter 0.9s ease-in-out infinite;
+  }
+  .prop {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: prop 0.12s linear infinite;
+  }
+  .sail {
+    animation: sail 70s linear -28s infinite;
   }
 
   /* Receipt edge for evidence printouts. */

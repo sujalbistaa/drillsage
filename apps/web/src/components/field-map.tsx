@@ -136,6 +136,99 @@ function Locator({ lat, lon, field }: { lat: number; lon: number; field: string 
   );
 }
 
+/** A banner plane and a supply ship crossing the map: team branding, drawn, not data. */
+function SkyAndSea() {
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 z-[2]">
+      <div className="fly absolute top-[9%] left-0 flex items-center">
+        <div className="bob flex items-center">
+          <div className="banner flex items-center gap-2 border-2 border-foreground bg-brand px-3 py-0.5 font-glitch text-sm whitespace-nowrap text-brand-foreground shadow-[3px_3px_0_0_var(--foreground)] md:text-lg">
+            CodeY &middot; SIH 2026
+          </div>
+          <div className="h-px w-8 bg-foreground" />
+          <svg viewBox="0 0 66 28" className="w-14 md:w-16">
+            <path
+              d="M8 13 L3 4 L11 4 L16 12 Z"
+              fill="var(--brand)"
+              stroke="var(--foreground)"
+              strokeWidth={1.5}
+              strokeLinejoin="round"
+            />
+            <path
+              d="M4 14 C 12 10, 42 9, 56 12 L 61 14 L 56 16 C 42 19, 12 18, 4 14 Z"
+              fill="var(--surface)"
+              stroke="var(--foreground)"
+              strokeWidth={1.5}
+              strokeLinejoin="round"
+            />
+            <path d="M12 14 H52" stroke="var(--brand-text)" strokeWidth={1.5} />
+            <path d="M44 11.2 L51 12.3 L49 13.4 L43.5 13 Z" fill="var(--foreground)" />
+            <path
+              d="M26 15 L35 15 L31 25 L24 25 Z"
+              fill="var(--surface)"
+              stroke="var(--foreground)"
+              strokeWidth={1.5}
+              strokeLinejoin="round"
+            />
+            <ellipse
+              className="prop"
+              cx={62.5}
+              cy={14}
+              rx={1.4}
+              ry={8}
+              fill="var(--foreground)"
+              opacity={0.7}
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div className="sail absolute top-[74%] left-0">
+        <svg viewBox="0 0 150 40" className="w-28 md:w-36">
+          <path
+            d="M78 8 L150 -6 M78 32 L150 46"
+            stroke="#fff"
+            strokeOpacity={0.55}
+            strokeWidth={1.5}
+            strokeDasharray="5 5"
+          />
+          <path
+            d="M78 12 L120 6 M78 28 L120 34"
+            stroke="#fff"
+            strokeOpacity={0.35}
+            strokeWidth={1}
+          />
+          <path
+            d="M4 20 L18 9 L72 9 Q80 9 80 20 Q80 31 72 31 L18 31 Z"
+            fill="var(--foreground)"
+            stroke="var(--background)"
+            strokeWidth={1.2}
+          />
+          <rect x={19} y={12} width={14} height={16} fill="var(--brand)" />
+          <rect
+            x={36}
+            y={13}
+            width={38}
+            height={14}
+            fill="none"
+            stroke="var(--background)"
+            strokeOpacity={0.5}
+          />
+          <text
+            x={55}
+            y={23.5}
+            textAnchor="middle"
+            className="fill-background font-mono text-[8px]"
+            style={{ letterSpacing: "0.1em" }}
+          >
+            CodeY
+          </text>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
 export function FieldMap({
   wells,
   events,
@@ -172,7 +265,7 @@ export function FieldMap({
 
   return (
     <div className="grid gap-4 lg:grid-cols-[1fr_280px]">
-      <div className="sea relative overflow-hidden border">
+      <div className="sea @container relative overflow-hidden border">
         <div className="grid-paper absolute inset-0 opacity-60" aria-hidden />
         {radarAt && (
           <div
@@ -185,6 +278,7 @@ export function FieldMap({
           </div>
         )}
         <Locator lat={origin.lat} lon={origin.lon} field={origin.field} />
+        <SkyAndSea />
         <svg
           viewBox={`0 0 ${WIDTH} ${proj.height}`}
           className="relative block w-full"
