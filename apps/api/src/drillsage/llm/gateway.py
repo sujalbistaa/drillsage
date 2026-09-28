@@ -1,4 +1,4 @@
-"""The single choke point for every model call (CLAUDE.md §5).
+"""The single choke point for every model call.
 
 In order, every call:
 1. fails closed when local-only mode forbids the provider;

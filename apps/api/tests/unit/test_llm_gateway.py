@@ -1,4 +1,4 @@
-"""LLM gateway, pricing and estimates. No test here calls a live model (CLAUDE.md §5)."""
+"""LLM gateway, pricing and estimates. No test here calls a live model."""
 
 from dataclasses import dataclass, field, replace
 from typing import Any

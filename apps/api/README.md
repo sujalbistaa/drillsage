@@ -1,7 +1,7 @@
 # DrillSage API
 
-FastAPI service for DrillSage (SIH26121). The architecture, standards and phase plan are in
-the repository's `CLAUDE.md`. Everyday commands go through the root `Makefile`.
+FastAPI service for DrillSage (SIH26121). Design notes are in the repository's `docs/`;
+everyday commands go through the root `Makefile`.
 
 ```bash
 uv sync                                                    # install (Python 3.12)

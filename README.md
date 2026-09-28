@@ -1,72 +1,80 @@
-# DrillSage
+<div align="center">
 
-*Drishti (foresight) for every well you drill.*
+# DRILLSAGE
 
-DrillSage is a Nearby Wells Intelligence System for **Oil India Limited** (Smart India
-Hackathon 2026, problem statement **SIH26121**). It reads historical daily drilling reports,
-extracts every drilling problem with the exact depth, formation and fix, and warns the
-engineer on the active well **before** the bit reaches a zone where nearby wells had
-trouble. Every warning links to the report line behind it.
+**see trouble before the bit does.**
 
-Built by **team CodeY**.
+[**drillsage-web.onrender.com**](https://drillsage-web.onrender.com) &nbsp;·&nbsp; SIH 2026 · SIH26121 · Oil India &nbsp;·&nbsp; made by team **CodeY**
 
-> Status: **Phase 1** complete; **Phase 2 (event extraction)** in progress. See the phase plan in [CLAUDE.md](CLAUDE.md#8-phase-plan-work-phase-by-phase-stop-at-every-gate-for-user-review).
+<sub>free tier: if it naps, give it ~60 s to wake up</sub>
 
-## Quick start
+![DrillSage home](docs/screenshots/hero.jpg)
 
-Prerequisites: Docker, [uv](https://docs.astral.sh/uv/), Node 22+ with pnpm 9.
+</div>
 
-```bash
-make setup     # dependencies + git hooks (creates .env from .env.example)
-make dev       # Postgres + API on :8000 + web on :3000
-make test      # API + web tests
-make lint      # ruff, mypy --strict, eslint, tsc, prettier
-make help      # everything else
-```
+## the pitch, in one breath
 
-Open http://localhost:3000. The API's interactive docs are at http://localhost:8000/docs.
+Every well you drill has neighbours that already hit the losses, kicks, stuck pipe and tight
+spots waiting for you. That knowledge is buried in thousands of daily drilling reports nobody
+has time to read. DrillSage reads all of them, pins every problem to a depth and a formation,
+and lights up the depth strip **before your bit gets there**, with a receipt quoting the exact
+report line behind every warning.
 
-**No Docker?** `make data-fetch && make ui` builds a field snapshot straight from the raw
-reports and runs the API and web cockpit without a database. To put it online, see
-[docs/deploy.md](docs/deploy.md) (Render blueprint, free tier).
+## receipts, not vibes
 
-### Load the data
-
-```bash
-make data      # fetch (pinned + checksummed) → load Postgres → write data reports
-```
-
-`make data` downloads the Volve daily drilling reports (1,380 WITSML files, pinned to one
-commit and verified by SHA-256) and the Norwegian Offshore Directorate's wellbore and
-lithostratigraphy tables into `data/raw/`, then loads them into Postgres. It is idempotent:
-running it again changes nothing. It writes two reports:
-
-- [`eval/reports/parser_fidelity.md`](eval/reports/parser_fidelity.md): every one of the
-  245,516 values in the source reports is accounted for.
-- [`eval/reports/data_qc.md`](eval/reports/data_qc.md): per-wellbore coverage, trajectory
-  quality and formation tops, with trajectories checked against the regulator's final TVDs.
-
-How the data is modelled and cleaned is described in [docs/data-pipeline.md](docs/data-pipeline.md);
-how drilling problems are extracted with evidence, in [docs/event-extraction.md](docs/event-extraction.md);
-the web identity and the field snapshot, in [ADR 0002](docs/adr/0002-web-identity-and-snapshot.md).
-
-## Repository layout
-
-| Path | What |
+| | |
 |---|---|
-| `apps/api` | FastAPI service (Python 3.12): ingestion, extraction, knowledge, risk engine |
-| `apps/web` | Next.js 15 web app: field plan view, well cockpit with look-ahead strip, event logbook |
-| `infra` | Docker Compose (Postgres 16 + pgvector) |
-| `eval` | Evaluation harness and generated metric reports |
-| `docs` | Architecture decisions and domain primer |
-| `research` | SIH 2026 problem-statement research |
+| **1,380** | real daily drilling reports parsed (WITSML), **0** values dropped |
+| **1,120** | drilling problems extracted, **460** of them geological |
+| **5,985 h** | of lost time located by depth and formation |
+| **26** | wellbores, 1992 to 2014, surveyed paths and formation tops |
 
-## Data and licence
+Real data from Equinor's Volve field, North Sea. The UI never shows a number it can't point
+back to a report line.
 
-Contains data from the Volve field dataset, released by Equinor and the Volve licence
-partners under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
-Volve data and anything derived from it may be used for non-commercial purposes only, with
-attribution, under the same licence. Raw data is never committed to this repository.
+## the tour
 
-Wellbore coordinates and lithostratigraphy come from the Norwegian Offshore Directorate
-(Sodir) FactPages, published under the Norwegian Licence for Open Government Data (NLOD).
+**The field from above.** Every well path, every problem where it happened underground.
+Real NASA satellite inset, sonar sweep, and yes, that's our plane.
+
+![Field map](docs/screenshots/map.jpg)
+
+**Drive the bit.** Drag the bit down the hole (or hit Replay). The panel counts what offset
+wells hit in the next 300 m. Honest by default: only wells finished *before* this one started.
+
+![Well cockpit](docs/screenshots/cockpit.jpg)
+
+**The logbook.** Search 1,120 events. The words that gave each one away are highlighted in
+the original report.
+
+![Event logbook](docs/screenshots/logbook.jpg)
+
+**The receipt.** Every event prints its evidence, line by line.
+
+![Evidence receipt](docs/screenshots/receipt.jpg)
+
+## what's under the hood
+
+- **Parser**: XXE-safe WITSML 1.4 DDR parser, unit-normalised, golden-tested
+- **Geometry**: minimum-curvature trajectories reconciled with reported TVD; ED50 to WGS84
+- **Extraction**: operator codes + tuned phrase lexicon + LLM tier that must quote the report verbatim
+- **Stack**: FastAPI · Pydantic · Postgres/pgvector · Next.js 15 · Tailwind 4 · hand-drawn SVG (no chart libs, no icon packs)
+
+## run it yourself
+
+```bash
+make setup                 # deps (uv + pnpm)
+make data-fetch            # pull the public Volve reports + Sodir tables
+make ui                    # API :8000 + web :3000, no Docker needed
+```
+
+Deploying your own copy: [docs/deploy.md](docs/deploy.md).
+
+## credits
+
+Built by **team CodeY** for Smart India Hackathon 2026.
+
+Contains data from the Volve field dataset, released by Equinor and the Volve licence partners
+under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Wellbore
+coordinates and formation tops from the Norwegian Offshore Directorate (Sodir) FactPages
+(NLOD). Locator imagery: NASA Blue Marble (public domain). Non-commercial use only.

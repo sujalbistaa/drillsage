@@ -1,4 +1,4 @@
-"""Model providers. Only `drillsage.llm.gateway` may use them (CLAUDE.md §5: single choke point)."""
+"""Model providers. Only `drillsage.llm.gateway` may use them (the single choke point)."""
 
 from dataclasses import dataclass
 from typing import Any, Literal, Protocol

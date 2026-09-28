@@ -1,6 +1,6 @@
 /**
  * Look-ahead strip maths (pure). Offset events are compared with the active well by TVDSS,
- * never by MD or RKB depth (CLAUDE.md §4).
+ * never by MD or RKB depth.
  *
  * This is an evidence view, not the Phase 4 risk model: it counts what offset wells reported
  * at each depth and shows which of them were finished before this well started.

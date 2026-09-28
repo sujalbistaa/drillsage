@@ -8,7 +8,7 @@
 The web cockpit has to (1) look like a product with its own identity, not a component-kit
 template, in front of Oil India engineers and SIH judges; (2) work offline and on-premises,
 since OIL data is confidential; and (3) demo on a laptop where Docker is not always available.
-ADR 0001 and CLAUDE.md §3 had pencilled in shadcn/ui, an icon set, MapLibre GL and visx/D3.
+ADR 0001 and the original stack plan had pencilled in shadcn/ui, an icon set, MapLibre GL and visx/D3.
 
 ## Decision
 

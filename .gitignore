@@ -39,3 +39,7 @@ test-results/
 
 # Eval artifacts that are regenerated (reports themselves ARE committed)
 eval/.cache/
+
+# Local assistant notes: never published
+CLAUDE.md
+.claude/

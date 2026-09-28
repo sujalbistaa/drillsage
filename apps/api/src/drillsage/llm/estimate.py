@@ -1,4 +1,4 @@
-"""Cost estimate shown to the user before any paid run (CLAUDE.md §5: explicit OK first).
+"""Cost estimate shown to the user before any paid run (explicit OK first).
 
 Input tokens are estimated from characters; output tokens (adaptive thinking plus the JSON)
 are the real unknown, so the estimate is a range. A small online pilot, which records exact

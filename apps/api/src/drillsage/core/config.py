@@ -54,7 +54,7 @@ class Settings(BaseSettings):
     llm_budget_usd: float = Field(default=25.0, ge=0)
     anthropic_api_key: SecretStr | None = Field(default=None, validation_alias="ANTHROPIC_API_KEY")
     llm_provider: Literal["gemini", "anthropic"] = "gemini"
-    """Gemini free tier by default (demo); Anthropic stays available (CLAUDE.md §5)."""
+    """Gemini free tier by default (demo); Anthropic stays available."""
     gemini_api_key: SecretStr | None = Field(default=None, validation_alias="GEMINI_API_KEY")
     llm_fallback_models: list[str] = ["gemini-3.5-flash-lite", "gemini-flash-lite-latest"]
     """Tried in order when the primary model is overloaded or retired (Gemini only)."""
@@ -62,7 +62,7 @@ class Settings(BaseSettings):
     """Pause between calls to stay under free-tier requests-per-minute limits."""
     llm_model_extract: str = "gemini-3.8-flash"
     llm_effort_extract: Literal["low", "medium", "high", "xhigh", "max"] = "medium"
-    """Starting point for extraction; tune on the gold set before changing (CLAUDE.md §5)."""
+    """Starting point for extraction; tune on the gold set before changing."""
     llm_max_tokens_extract: int = Field(default=16_000, ge=1_024)
     llm_refusal_fallback: bool = True
     """Server-side `fallbacks: "default"` on online calls (not available on the Batches API)."""
