@@ -1,11 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import {
-  Bricolage_Grotesque,
-  Climate_Crisis,
-  Instrument_Serif,
-  Martian_Mono,
-  Rubik_Glitch,
-} from "next/font/google";
+import { Archivo, IBM_Plex_Mono, IBM_Plex_Sans, Instrument_Serif } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { AppShell } from "@/components/app-shell";
@@ -14,17 +8,19 @@ import { TAGLINE } from "@/lib/constants";
 
 import "./globals.css";
 
-/** Display: Climate Crisis. Its YEAR axis melts the letters; hover the wordmark. */
-const melt = Climate_Crisis({ variable: "--font-melt", subsets: ["latin"], axes: ["YEAR"] });
-/** Data and labels: a wide monospace, so depths line up like a mud log. */
-const data = Martian_Mono({ variable: "--font-data", subsets: ["latin"], axes: ["wdth"] });
-/** Stickers and team branding: a glitched grotesque. */
-const glitch = Rubik_Glitch({ variable: "--font-sticker", subsets: ["latin"], weight: "400" });
-const body = Bricolage_Grotesque({
-  variable: "--font-body",
+/** Headlines, wordmark, big numbers and stickers: Archivo, whose width axis we widen for display. */
+const display = Archivo({
+  variable: "--font-display-face",
   subsets: ["latin"],
-  axes: ["opsz", "wdth"],
+  axes: ["wdth"],
 });
+/** Data and labels: a report-style monospace, so depths line up like a mud log. */
+const data = IBM_Plex_Mono({
+  variable: "--font-data",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+const body = IBM_Plex_Sans({ variable: "--font-body", subsets: ["latin"], axes: ["wdth"] });
 const accent = Instrument_Serif({
   variable: "--font-accent",
   subsets: ["latin"],
@@ -53,9 +49,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${melt.variable} ${data.variable} ${body.variable} ${accent.variable} ${glitch.variable}`}
-      >
+      <body className={`${display.variable} ${data.variable} ${body.variable} ${accent.variable}`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

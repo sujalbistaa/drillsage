@@ -109,7 +109,7 @@ export async function AppShell({ children }: { children: ReactNode }) {
         </p>
         <div
           aria-hidden
-          className="melt outline-text pointer-events-none -mb-[0.18em] px-2 text-center text-[12.5vw] leading-none uppercase select-none"
+          className="headline outline-text pointer-events-none -mb-[0.18em] px-2 text-center text-[12.5vw] leading-none uppercase select-none"
         >
           DrillSage
         </div>

@@ -456,7 +456,7 @@ export function LookaheadStrip({
         >
           <p className="label opacity-70">Ahead of the bit &middot; next {aheadM} m</p>
           <div className="mt-2 flex items-end gap-4">
-            <span className="melt text-8xl leading-none">{ahead.length}</span>
+            <span className="headline text-8xl leading-none">{ahead.length}</span>
             <span className="pb-2 text-lg leading-tight font-semibold">
               {ahead.length === 1 ? "offset event" : "offset events"}
               <br />

@@ -21,7 +21,7 @@ export function SpinBadge({ value, ring }: { value: string; ring: string }) {
         </text>
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-brand-foreground">
-        <span className="melt text-6xl md:text-7xl">{value}</span>
+        <span className="headline text-6xl md:text-7xl">{value}</span>
       </div>
     </div>
   );

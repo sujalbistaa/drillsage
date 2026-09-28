@@ -70,7 +70,7 @@ export default async function WellPage({ params }: Params) {
           / {well.name}
         </nav>
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <div className="melt-hover">
+          <div className="headline-hover">
             <p className="label text-muted-foreground">
               {well.kind.replaceAll("_", " ")} &middot; {well.purpose ?? well.era}
               {parent && (
@@ -86,7 +86,7 @@ export default async function WellPage({ params }: Params) {
                 </>
               )}
             </p>
-            <h1 className="melt mt-2 text-[clamp(2.5rem,10vw,8rem)] uppercase">
+            <h1 className="headline mt-2 text-[clamp(2.5rem,10vw,8rem)] uppercase">
               {shortName(well.name)}
             </h1>
           </div>

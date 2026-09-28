@@ -4,7 +4,7 @@ export function NoSignal({ reason }: { reason: string }) {
     <div className="mx-auto max-w-3xl px-4 py-24 md:px-8">
       <div className="brutal bg-surface p-6 md:p-10">
         <p className="label text-danger">No signal from the rig</p>
-        <h1 className="melt mt-3 text-5xl uppercase md:text-7xl">Dead air.</h1>
+        <h1 className="headline mt-3 text-5xl uppercase md:text-7xl">Dead air.</h1>
         <p className="mt-6 text-lg text-pretty">{reason}</p>
         <pre className="label mt-6 overflow-x-auto border bg-background p-4 leading-6 normal-case">
           {

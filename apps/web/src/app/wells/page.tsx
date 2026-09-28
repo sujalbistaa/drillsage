@@ -62,7 +62,7 @@ function WellCard({
   return (
     <Link
       href={`/wells/${wellSlug(well.name)}`}
-      className="melt-hover brutal-hover group flex gap-4 border bg-surface p-4 hover:border-foreground"
+      className="headline-hover brutal-hover group flex gap-4 border bg-surface p-4 hover:border-foreground"
     >
       <MiniStrip well={well} events={events.filter((e) => e.geological)} maxDepth={maxDepth} />
       <div className="flex min-w-0 flex-1 flex-col justify-between gap-3">
@@ -71,7 +71,7 @@ function WellCard({
             {well.kind.replaceAll("_", " ")}
             {well.parent_name && ` of ${shortName(well.parent_name)}`}
           </p>
-          <h3 className="melt mt-1 text-3xl uppercase">{shortName(well.name)}</h3>
+          <h3 className="headline mt-1 text-3xl uppercase">{shortName(well.name)}</h3>
         </div>
         <dl className="label grid grid-cols-2 gap-x-3 gap-y-1 text-muted-foreground">
           <dt>Events</dt>
@@ -104,7 +104,7 @@ export default async function WellsPage() {
   return (
     <div className="mx-auto flex max-w-[1400px] flex-col gap-16 px-4 pt-10 md:px-8 md:pt-16">
       <header className="flex flex-col gap-4">
-        <h1 className="melt text-[clamp(2rem,8vw,7rem)] uppercase">
+        <h1 className="headline text-[clamp(2rem,8vw,7rem)] uppercase">
           {field.wellbores.length} holes
           <br />
           in the ground.

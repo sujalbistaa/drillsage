@@ -12,12 +12,14 @@ ADR 0001 and the original stack plan had pencilled in shadcn/ui, an icon set, Ma
 
 ## Decision
 
-- **Identity.** Display type is Climate Crisis (a variable font whose `YEAR` axis melts the
-  letters; the wordmark melts on hover), data and labels are Martian Mono, body text is
-  Bricolage Grotesque, accents are Instrument Serif italic. The palette is ink black and bone
-  with one acid-lime signal colour; each hazard has its own colour token, saturated for
-  geological hazards and muted for operational ones. Light and dark themes share the tokens in
-  `globals.css`.
+- **Identity.** Headlines, the wordmark, big numbers and sticker tags are Archivo (extra bold,
+  widened with its width axis; condensed for stickers), data and labels are IBM Plex Mono, body
+  text is IBM Plex Sans, accents are Instrument Serif italic. Formal enough for an engineering
+  review panel, distinct from default app fonts. (A first cut used Climate Crisis and Rubik
+  Glitch; they read as too playful for the audience and were replaced on 2026-09-29.) The
+  palette is ink black and bone with one acid-lime signal colour; each hazard has its own colour
+  token, saturated for geological hazards and muted for operational ones. Light and dark themes
+  share the tokens in `globals.css`.
 - **No icon library and no emoji.** Glyphs are drawn for DrillSage (wordmark, spark, north
   arrow, bit marker); hazards are two-letter stamps (`LC`, `WC`, `SP`…) that drillers read
   faster than pictograms. `lucide-react` was removed.

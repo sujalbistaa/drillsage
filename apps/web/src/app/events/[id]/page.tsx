@@ -88,7 +88,7 @@ export default async function EventPage({ params }: Params) {
           </span>
         </div>
         <h1
-          className="melt melt-hover text-[clamp(2rem,7vw,6rem)] uppercase"
+          className="headline headline-hover text-[clamp(2rem,7vw,6rem)] uppercase"
           style={{ color: meta.color }}
         >
           {meta.label}
@@ -164,7 +164,7 @@ export default async function EventPage({ params }: Params) {
         className="perforated self-start bg-[#f4f1e8] px-6 py-9 font-mono text-[#0b0b0c] shadow-[8px_8px_0_0_var(--shadow)] md:px-8"
       >
         <header className="flex flex-col items-center gap-1 border-b border-dashed border-[#0b0b0c]/40 pb-4 text-center">
-          <span className="melt text-2xl uppercase">DrillSage</span>
+          <span className="headline text-2xl uppercase">DrillSage</span>
           <span className="text-[11px] tracking-[0.2em] uppercase">Evidence receipt</span>
           <span className="text-[11px]">
             #{String(event.id).padStart(6, "0")} &middot; {day(event.start_at)}

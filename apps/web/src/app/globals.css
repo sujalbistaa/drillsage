@@ -117,9 +117,9 @@
   --color-shadow: var(--shadow);
   --font-sans: var(--font-body);
   --font-mono: var(--font-data);
-  --font-display: var(--font-melt);
+  --font-display: var(--font-display-face);
   --font-serif: var(--font-accent);
-  --font-glitch: var(--font-sticker);
+  --font-glitch: var(--font-display-face);
 
   --animate-marquee: marquee 38s linear infinite;
   --animate-blink: blink 1.1s steps(1) infinite;
@@ -132,12 +132,6 @@
   }
   to {
     transform: translateX(-50%);
-  }
-}
-
-@keyframes jitter {
-  50% {
-    transform: translate(0.02em, -0.015em) skewX(-2deg);
   }
 }
 
@@ -233,34 +227,35 @@
 }
 
 @layer components {
-  /* Climate Crisis: its YEAR axis melts the letters from 1979 (full) to 2050 (thin). */
-  .melt {
-    font-family: var(--font-melt);
-    font-variation-settings: "YEAR" 1979;
-    transition: font-variation-settings 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
-    line-height: 0.86;
-    letter-spacing: -0.01em;
+  /* Headlines: Archivo, extra bold and widened like engineering signage. On hover the width
+     eases back to normal: a subtle "breath", readable at every moment. */
+  .headline {
+    font-family: var(--font-display-face);
+    font-weight: 800;
+    font-variation-settings: "wdth" 118;
+    transition: font-variation-settings 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    line-height: 0.92;
+    letter-spacing: -0.015em;
   }
-  /* Hover melts only part-way (still readable) and splits into lime/pink like a bad signal. */
-  .melt-hover:hover .melt,
-  .melt.melt-hover:hover {
-    font-variation-settings: "YEAR" 2012;
-    text-shadow:
-      0.045em 0 0 var(--hz-wc),
-      -0.045em 0 0 var(--brand);
-    animation: jitter 180ms steps(2) 3;
+  .headline-hover:hover .headline,
+  .headline.headline-hover:hover {
+    font-variation-settings: "wdth" 100;
   }
-  .melt-thin {
-    font-variation-settings: "YEAR" 2035;
+
+  /* Sticker tags: the same family, condensed and heavy, like a safety label. */
+  .font-glitch {
+    font-weight: 800;
+    font-variation-settings: "wdth" 72;
+    letter-spacing: 0.03em;
   }
 
   /* Mono labels: wide, small, tracked. */
   .label {
     font-family: var(--font-data);
     font-size: 0.6875rem;
-    letter-spacing: 0.08em;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    font-variation-settings: "wdth" 112.5;
   }
 
   /* Hard offset shadow: the sticker look. */

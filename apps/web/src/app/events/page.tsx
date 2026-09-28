@@ -113,7 +113,7 @@ export default async function EventsPage({ searchParams }: { searchParams: Searc
     <div className="mx-auto flex max-w-[1400px] flex-col gap-10 px-4 pt-10 md:px-8 md:pt-16">
       <header className="grid items-end gap-6 lg:grid-cols-[1fr_auto]">
         <div className="flex flex-col gap-4">
-          <h1 className="melt text-[clamp(2rem,8vw,7rem)] uppercase">The logbook.</h1>
+          <h1 className="headline text-[clamp(2rem,8vw,7rem)] uppercase">The logbook.</h1>
           <p className="max-w-2xl text-lg text-pretty text-muted-foreground">
             Every problem DrillSage pulled out of the daily reports, with the words that gave it
             away highlighted in the original text.
@@ -121,7 +121,7 @@ export default async function EventsPage({ searchParams }: { searchParams: Searc
         </div>
         <div className="brutal bg-surface px-5 py-4">
           <p className="label text-muted-foreground">Matching</p>
-          <p className="melt text-6xl">{int(page.total)}</p>
+          <p className="headline text-6xl">{int(page.total)}</p>
           <p className="label text-brand-text">{hours(page.npt_h)} lost</p>
         </div>
       </header>
@@ -198,7 +198,7 @@ export default async function EventsPage({ searchParams }: { searchParams: Searc
 
       {page.items.length === 0 ? (
         <div className="border border-dashed px-6 py-16 text-center">
-          <p className="melt text-4xl uppercase">Dry hole.</p>
+          <p className="headline text-4xl uppercase">Dry hole.</p>
           <p className="mt-3 text-muted-foreground">
             Nothing matches. Loosen a filter or search for something else.
           </p>

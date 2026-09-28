@@ -121,7 +121,7 @@ export default async function FieldPage() {
               Oil India Ltd
             </li>
           </ul>
-          <h1 className="melt melt-hover text-[clamp(2.25rem,9.5vw,9rem)] uppercase">
+          <h1 className="headline headline-hover text-[clamp(2.25rem,9.5vw,9rem)] uppercase">
             See{" "}
             <span className="inline-block -rotate-2 bg-brand px-[0.08em] text-brand-foreground">
               trouble
@@ -169,7 +169,7 @@ export default async function FieldPage() {
             className={`flex flex-col gap-3 p-5 md:p-7 ${i > 0 ? "border-l" : ""} ${i > 1 ? "max-lg:border-t" : ""} ${i === 2 ? "max-lg:border-l-0" : ""}`}
           >
             <span className="label text-muted-foreground">{stat.label}</span>
-            <span className="melt text-[clamp(1.75rem,3.7vw,3.9rem)] whitespace-nowrap">
+            <span className="headline text-[clamp(1.75rem,3.7vw,3.9rem)] whitespace-nowrap">
               {stat.value}
             </span>
             <span className="label text-brand-text">{stat.note}</span>
@@ -200,9 +200,9 @@ export default async function FieldPage() {
         <SectionHead title="How it works" />
         <ol className="grid gap-4 md:grid-cols-3">
           {STEPS.map((step) => (
-            <li key={step.n} className="melt-hover brutal flex flex-col gap-4 bg-surface p-6">
-              <span className="melt text-7xl text-brand-text">{step.n}</span>
-              <h3 className="melt text-3xl uppercase">{step.title}</h3>
+            <li key={step.n} className="headline-hover brutal flex flex-col gap-4 bg-surface p-6">
+              <span className="headline text-7xl text-brand-text">{step.n}</span>
+              <h3 className="headline text-3xl uppercase">{step.title}</h3>
               <p className="leading-relaxed text-pretty text-muted-foreground">{step.body}</p>
             </li>
           ))}

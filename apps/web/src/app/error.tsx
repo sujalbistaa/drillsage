@@ -9,7 +9,7 @@ export default function ErrorPage({
   return (
     <div className="mx-auto flex max-w-3xl flex-col items-start gap-6 px-4 py-24 md:px-8">
       <p className="label text-danger">Unexpected error</p>
-      <h1 className="melt text-[clamp(3rem,11vw,8rem)] uppercase">Well shut in.</h1>
+      <h1 className="headline text-[clamp(3rem,11vw,8rem)] uppercase">Well shut in.</h1>
       <p className="text-lg text-muted-foreground">
         Something broke while loading this page. Nothing was lost; try again.
       </p>
