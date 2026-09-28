@@ -1,0 +1,307 @@
+{
+  "extractor_version": "rules-1.0.0",
+  "events": 1121,
+  "npt_h": 6000.4,
+  "hazards": [
+    {
+      "hazard": "TIGHT_HOLE",
+      "geological": true,
+      "events": 230,
+      "wellbores": 23,
+      "npt_h": 279.2,
+      "detected_by_code_only": 0,
+      "detected_by_text_only": 230,
+      "detected_by_both": 0,
+      "code_events_corroborated_by_text_pct": null,
+      "with_depth_pct": 99.1,
+      "depth_stated_in_text_pct": 67.8,
+      "with_formation_pct": 85.7,
+      "with_mitigation_pct": 42.2,
+      "severity_3_or_4": 24,
+      "led_to_sidetrack": 20
+    },
+    {
+      "hazard": "LOST_CIRCULATION",
+      "geological": true,
+      "events": 78,
+      "wellbores": 21,
+      "npt_h": 319.8,
+      "detected_by_code_only": 7,
+      "detected_by_text_only": 62,
+      "detected_by_both": 9,
+      "code_events_corroborated_by_text_pct": 56.2,
+      "with_depth_pct": 100.0,
+      "depth_stated_in_text_pct": 12.8,
+      "with_formation_pct": 93.6,
+      "with_mitigation_pct": 30.8,
+      "severity_3_or_4": 13,
+      "led_to_sidetrack": 4
+    },
+    {
+      "hazard": "STUCK_PIPE",
+      "geological": true,
+      "events": 58,
+      "wellbores": 18,
+      "npt_h": 263.8,
+      "detected_by_code_only": 3,
+      "detected_by_text_only": 48,
+      "detected_by_both": 7,
+      "code_events_corroborated_by_text_pct": 70.0,
+      "with_depth_pct": 98.3,
+      "depth_stated_in_text_pct": 15.5,
+      "with_formation_pct": 94.8,
+      "with_mitigation_pct": 43.1,
+      "severity_3_or_4": 8,
+      "led_to_sidetrack": 5
+    },
+    {
+      "hazard": "WELLBORE_INSTABILITY",
+      "geological": true,
+      "events": 49,
+      "wellbores": 16,
+      "npt_h": 45.0,
+      "detected_by_code_only": 0,
+      "detected_by_text_only": 49,
+      "detected_by_both": 0,
+      "code_events_corroborated_by_text_pct": null,
+      "with_depth_pct": 100.0,
+      "depth_stated_in_text_pct": 26.5,
+      "with_formation_pct": 95.9,
+      "with_mitigation_pct": 36.7,
+      "severity_3_or_4": 4,
+      "led_to_sidetrack": 5
+    },
+    {
+      "hazard": "WELL_CONTROL",
+      "geological": true,
+      "events": 41,
+      "wellbores": 12,
+      "npt_h": 69.8,
+      "detected_by_code_only": 3,
+      "detected_by_text_only": 37,
+      "detected_by_both": 1,
+      "code_events_corroborated_by_text_pct": 25.0,
+      "with_depth_pct": 100.0,
+      "depth_stated_in_text_pct": 0.0,
+      "with_formation_pct": 90.2,
+      "with_mitigation_pct": 43.9,
+      "severity_3_or_4": 1,
+      "led_to_sidetrack": 0
+    },
+    {
+      "hazard": "SHALLOW_GAS_H2S",
+      "geological": true,
+      "events": 5,
+      "wellbores": 3,
+      "npt_h": 15.0,
+      "detected_by_code_only": 0,
+      "detected_by_text_only": 5,
+      "detected_by_both": 0,
+      "code_events_corroborated_by_text_pct": null,
+      "with_depth_pct": 100.0,
+      "depth_stated_in_text_pct": 0.0,
+      "with_formation_pct": 60.0,
+      "with_mitigation_pct": 0.0,
+      "severity_3_or_4": 1,
+      "led_to_sidetrack": 0
+    },
+    {
+      "hazard": "EQUIPMENT_FAILURE",
+      "geological": false,
+      "events": 501,
+      "wellbores": 26,
+      "npt_h": 2698.8,
+      "detected_by_code_only": 417,
+      "detected_by_text_only": 14,
+      "detected_by_both": 70,
+      "code_events_corroborated_by_text_pct": 14.4,
+      "with_depth_pct": 98.6,
+      "depth_stated_in_text_pct": 1.0,
+      "with_formation_pct": 60.3,
+      "with_mitigation_pct": 0.0,
+      "severity_3_or_4": 115,
+      "led_to_sidetrack": 12
+    },
+    {
+      "hazard": "WAITING",
+      "geological": false,
+      "events": 120,
+      "wellbores": 24,
+      "npt_h": 1744.2,
+      "detected_by_code_only": 50,
+      "detected_by_text_only": 8,
+      "detected_by_both": 62,
+      "code_events_corroborated_by_text_pct": 55.4,
+      "with_depth_pct": 96.7,
+      "depth_stated_in_text_pct": 2.5,
+      "with_formation_pct": 65.8,
+      "with_mitigation_pct": 0.0,
+      "severity_3_or_4": 60,
+      "led_to_sidetrack": 1
+    },
+    {
+      "hazard": "FISHING_JUNK",
+      "geological": false,
+      "events": 22,
+      "wellbores": 12,
+      "npt_h": 563.8,
+      "detected_by_code_only": 8,
+      "detected_by_text_only": 6,
+      "detected_by_both": 8,
+      "code_events_corroborated_by_text_pct": 50.0,
+      "with_depth_pct": 100.0,
+      "depth_stated_in_text_pct": 31.8,
+      "with_formation_pct": 77.3,
+      "with_mitigation_pct": 36.4,
+      "severity_3_or_4": 10,
+      "led_to_sidetrack": 2
+    },
+    {
+      "hazard": "DIRECTIONAL",
+      "geological": false,
+      "events": 9,
+      "wellbores": 5,
+      "npt_h": 0.0,
+      "detected_by_code_only": 0,
+      "detected_by_text_only": 9,
+      "detected_by_both": 0,
+      "code_events_corroborated_by_text_pct": null,
+      "with_depth_pct": 100.0,
+      "depth_stated_in_text_pct": 11.1,
+      "with_formation_pct": 44.4,
+      "with_mitigation_pct": 0.0,
+      "severity_3_or_4": 0,
+      "led_to_sidetrack": 0
+    },
+    {
+      "hazard": "CEMENTING",
+      "geological": false,
+      "events": 7,
+      "wellbores": 7,
+      "npt_h": 0.0,
+      "detected_by_code_only": 0,
+      "detected_by_text_only": 7,
+      "detected_by_both": 0,
+      "code_events_corroborated_by_text_pct": null,
+      "with_depth_pct": 100.0,
+      "depth_stated_in_text_pct": 0.0,
+      "with_formation_pct": 57.1,
+      "with_mitigation_pct": 0.0,
+      "severity_3_or_4": 0,
+      "led_to_sidetrack": 0
+    },
+    {
+      "hazard": "CASING_RUNNING",
+      "geological": false,
+      "events": 1,
+      "wellbores": 1,
+      "npt_h": 1.0,
+      "detected_by_code_only": 0,
+      "detected_by_text_only": 1,
+      "detected_by_both": 0,
+      "code_events_corroborated_by_text_pct": null,
+      "with_depth_pct": 100.0,
+      "depth_stated_in_text_pct": 0.0,
+      "with_formation_pct": 100.0,
+      "with_mitigation_pct": 0.0,
+      "severity_3_or_4": 0,
+      "led_to_sidetrack": 0
+    }
+  ],
+  "evidence_spans": {
+    "total": 1682,
+    "resolving_to_source_text": 1682
+  },
+  "top_formation_hazards": [
+    {
+      "formation": "Skade Fm",
+      "hazard": "TIGHT_HOLE",
+      "events": 42,
+      "npt_h": 56.8
+    },
+    {
+      "formation": "Lista Fm",
+      "hazard": "TIGHT_HOLE",
+      "events": 29,
+      "npt_h": 3.5
+    },
+    {
+      "formation": "Hordaland Gp undifferentiated",
+      "hazard": "TIGHT_HOLE",
+      "events": 21,
+      "npt_h": 120.0
+    },
+    {
+      "formation": "Hugin Fm",
+      "hazard": "TIGHT_HOLE",
+      "events": 20,
+      "npt_h": 2.5
+    },
+    {
+      "formation": "Skade Fm",
+      "hazard": "LOST_CIRCULATION",
+      "events": 17,
+      "npt_h": 73.8
+    },
+    {
+      "formation": "Grid Fm",
+      "hazard": "TIGHT_HOLE",
+      "events": 17,
+      "npt_h": 30.5
+    },
+    {
+      "formation": "Skade Fm",
+      "hazard": "WELLBORE_INSTABILITY",
+      "events": 16,
+      "npt_h": 14.8
+    },
+    {
+      "formation": "Hod Fm",
+      "hazard": "TIGHT_HOLE",
+      "events": 13,
+      "npt_h": 1.0
+    },
+    {
+      "formation": "Utsira Fm",
+      "hazard": "TIGHT_HOLE",
+      "events": 11,
+      "npt_h": 2.0
+    },
+    {
+      "formation": "Tor Fm",
+      "hazard": "TIGHT_HOLE",
+      "events": 10,
+      "npt_h": 3.5
+    },
+    {
+      "formation": "Lista Fm",
+      "hazard": "LOST_CIRCULATION",
+      "events": 10,
+      "npt_h": 9.5
+    },
+    {
+      "formation": "Sleipner Fm",
+      "hazard": "TIGHT_HOLE",
+      "events": 9,
+      "npt_h": 0.0
+    },
+    {
+      "formation": "Skade Fm",
+      "hazard": "STUCK_PIPE",
+      "events": 9,
+      "npt_h": 67.5
+    },
+    {
+      "formation": "Lista Fm",
+      "hazard": "STUCK_PIPE",
+      "events": 8,
+      "npt_h": 7.2
+    },
+    {
+      "formation": "Sleipner Fm",
+      "hazard": "STUCK_PIPE",
+      "events": 8,
+      "npt_h": 3.0
+    }
+  ]
+}

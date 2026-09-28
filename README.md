@@ -8,7 +8,7 @@ extracts every drilling problem with the exact depth, formation and fix, and war
 engineer on the active well **before** the bit reaches a zone where nearby wells had
 trouble. Every warning links to the report line behind it.
 
-> Status: **Phase 1 (data and canonical model)** complete. See the phase plan in [CLAUDE.md](CLAUDE.md#8-phase-plan-work-phase-by-phase-stop-at-every-gate-for-user-review).
+> Status: **Phase 1** complete; **Phase 2 (event extraction)** in progress. See the phase plan in [CLAUDE.md](CLAUDE.md#8-phase-plan-work-phase-by-phase-stop-at-every-gate-for-user-review).
 
 ## Quick start
 
@@ -40,7 +40,8 @@ running it again changes nothing. It writes two reports:
 - [`eval/reports/data_qc.md`](eval/reports/data_qc.md): per-wellbore coverage, trajectory
   quality and formation tops, with trajectories checked against the regulator's final TVDs.
 
-How the data is modelled and cleaned is described in [docs/data-pipeline.md](docs/data-pipeline.md).
+How the data is modelled and cleaned is described in [docs/data-pipeline.md](docs/data-pipeline.md);
+how drilling problems are extracted with evidence, in [docs/event-extraction.md](docs/event-extraction.md).
 
 ## Repository layout
 

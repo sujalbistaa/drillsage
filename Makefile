@@ -38,7 +38,7 @@ migrate: ## Apply database migrations
 
 # ---------------------------------------------------------------- data
 .PHONY: data data-fetch data-load data-qc eval eval-parser
-data: data-fetch db-up migrate data-load eval-parser data-qc ## Fetch sources, load Postgres (idempotent), write data reports
+data: data-fetch db-up migrate data-load eval-parser data-qc extract ## Fetch sources, load Postgres (idempotent), write data reports
 
 data-fetch: ## Download the pinned DDR mirror and Sodir tables into data/raw
 	cd $(API) && uv run drillsage-data fetch
@@ -52,7 +52,21 @@ data-qc: ## Per-wellbore data QC report -> eval/reports/data_qc.{md,json}
 eval-parser: ## Parser fidelity report -> eval/reports/parser_fidelity.{md,json}
 	cd $(API) && uv run drillsage-data fidelity
 
-eval: eval-parser ## Every evaluation report (later phases add extraction, retrieval, backtest)
+eval: eval-parser extract ## Every evaluation report (later phases add retrieval, backtest)
+
+.PHONY: gold-sample gold-eval
+gold-sample: ## Stratified gold sample for hand labelling -> data/processed/gold (open eval/labeling/label.html)
+	cd $(API) && uv run drillsage-data gold-sample
+
+gold-eval: ## Score extraction tiers against eval/gold/labels-gold-v1.json -> eval/reports/extraction_gold.*
+	cd $(API) && uv run drillsage-data gold-eval
+
+.PHONY: extract llm-estimate
+extract: ## Rebuild events (rules + stored LLM results; never calls a model) + extraction report
+	cd $(API) && uv run drillsage-data extract
+
+llm-estimate: ## Cost estimate for the LLM extraction pilot (never calls a model)
+	cd $(API) && uv run drillsage-data llm-estimate --pilot 50
 
 # ---------------------------------------------------------------- run
 .PHONY: dev api web

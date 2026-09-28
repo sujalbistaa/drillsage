@@ -397,3 +397,135 @@ class FormationTop(Base):
         UniqueConstraint("wellbore_id", "name", "level"),
         Index("ix_formation_tops_name", "name"),
     )
+
+
+class Event(Base):
+    """A drilling problem episode extracted from daily reports (Phase 2).
+
+    One row per extractor tier: the rule tier is rebuilt deterministically; later tiers
+    (`llm`, `rule+llm`, `human`) are merged by `drillsage.extract.merge`.
+    """
+
+    __tablename__ = "events"
+
+    id: Mapped[int] = _pk()
+    wellbore_id: Mapped[int] = mapped_column(ForeignKey("wellbores.id", ondelete="CASCADE"))
+    hazard: Mapped[str] = mapped_column(String(32))
+    subtype: Mapped[str | None] = mapped_column(String(64))
+    start_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    end_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    md_top_m: Mapped[float | None] = mapped_column(Double)
+    md_bottom_m: Mapped[float | None] = mapped_column(Double)
+    depth_source: Mapped[str] = mapped_column(String(16))
+    tvd_top_m: Mapped[float | None] = mapped_column(Double)
+    tvd_bottom_m: Mapped[float | None] = mapped_column(Double)
+    tvdss_top_m: Mapped[float | None] = mapped_column(Double)
+    tvdss_bottom_m: Mapped[float | None] = mapped_column(Double)
+    formation: Mapped[str | None] = mapped_column(String(64))
+    formation_group: Mapped[str | None] = mapped_column(String(64))
+    formation_source: Mapped[str | None] = mapped_column(String(16))
+    hole_diameter_m: Mapped[float | None] = mapped_column(Double)
+    mud_density_gcc: Mapped[float | None] = mapped_column(Double)
+    mud_class: Mapped[str | None] = mapped_column(String(32))
+    severity: Mapped[int] = mapped_column(SmallInteger)
+    npt_h: Mapped[float] = mapped_column(Double)
+    led_to_sidetrack: Mapped[bool] = mapped_column(Boolean)
+    detected_by: Mapped[str] = mapped_column(String(16))
+    confidence_tier: Mapped[str] = mapped_column(String(16))
+    extractor_version: Mapped[str] = mapped_column(String(32))
+    n_activities: Mapped[int] = mapped_column(Integer)
+    mitigations: Mapped[list[dict[str, Any]]] = mapped_column(
+        JSONB, default=list, server_default=text("'[]'::jsonb")
+    )
+    """`[{action, outcome, activity_id, span, outcome_activity_id, outcome_span}]`."""
+
+    __table_args__ = (
+        CheckConstraint("severity BETWEEN 1 AND 4", name="severity"),
+        CheckConstraint("npt_h >= 0", name="npt"),
+        CheckConstraint(
+            "confidence_tier IN ('rule', 'llm', 'rule+llm', 'human')", name="confidence_tier"
+        ),
+        Index("ix_events_wellbore_hazard", "wellbore_id", "hazard"),
+        Index("ix_events_formation", "formation"),
+        Index("ix_events_tier", "confidence_tier"),
+    )
+
+
+class EventEvidence(Base):
+    """Why an event exists: the activity and, for text, the exact character span."""
+
+    __tablename__ = "event_evidence"
+
+    id: Mapped[int] = _pk()
+    event_id: Mapped[int] = mapped_column(ForeignKey("events.id", ondelete="CASCADE"), index=True)
+    activity_id: Mapped[int] = mapped_column(
+        ForeignKey("activities.id", ondelete="CASCADE"), index=True
+    )
+    kind: Mapped[str] = mapped_column(String(16))
+    """`code`, `trigger`, `mitigation` or `outcome`."""
+    rule_id: Mapped[str] = mapped_column(String(64))
+    char_start: Mapped[int | None] = mapped_column(Integer)
+    char_end: Mapped[int | None] = mapped_column(Integer)
+    """Half-open span into `activities.comments`; null for code evidence."""
+
+    __table_args__ = (
+        CheckConstraint(
+            "(char_start IS NULL AND char_end IS NULL)"
+            " OR (char_start >= 0 AND char_end > char_start)",
+            name="span",
+        ),
+    )
+
+
+class LLMCall(Base):
+    """Budget ledger: one row per model call (cached results cost nothing and are not logged)."""
+
+    __tablename__ = "llm_calls"
+
+    id: Mapped[int] = _pk()
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    purpose: Mapped[str] = mapped_column(String(32))
+    provider: Mapped[str] = mapped_column(String(16))
+    model: Mapped[str] = mapped_column(String(64))
+    served_model: Mapped[str | None] = mapped_column(String(64))
+    """The model that actually answered (differs when a refusal fallback ran)."""
+    cache_key: Mapped[str] = mapped_column(String(64), index=True)
+    batch: Mapped[bool] = mapped_column(Boolean)
+    input_tokens: Mapped[int] = mapped_column(Integer)
+    output_tokens: Mapped[int] = mapped_column(Integer)
+    cache_creation_input_tokens: Mapped[int] = mapped_column(Integer)
+    cache_read_input_tokens: Mapped[int] = mapped_column(Integer)
+    cost_usd: Mapped[float] = mapped_column(Double)
+    stop_reason: Mapped[str | None] = mapped_column(String(32))
+    status: Mapped[str] = mapped_column(String(16))
+    """`ok`, `refused`, `truncated`, `invalid` or `error`."""
+    request_id: Mapped[str | None] = mapped_column(String(128))
+
+    __table_args__ = (CheckConstraint("cost_usd >= 0", name="cost"),)
+
+
+class LLMResult(Base):
+    """Validated model output keyed by the hash of everything that determines it."""
+
+    __tablename__ = "llm_results"
+
+    cache_key: Mapped[str] = mapped_column(String(64), primary_key=True)
+    purpose: Mapped[str] = mapped_column(String(32))
+    model: Mapped[str] = mapped_column(String(64))
+    prompt_version: Mapped[str] = mapped_column(String(32))
+    output: Mapped[dict[str, Any]] = mapped_column(JSONB)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class LLMExtraction(Base):
+    """Which cached result holds the LLM extraction for each daily report."""
+
+    __tablename__ = "llm_extractions"
+
+    report_id: Mapped[int] = mapped_column(
+        ForeignKey("daily_reports.id", ondelete="CASCADE"), primary_key=True
+    )
+    prompt_version: Mapped[str] = mapped_column(String(32), primary_key=True)
+    cache_key: Mapped[str] = mapped_column(ForeignKey("llm_results.cache_key", ondelete="CASCADE"))
+    rejected_quotes: Mapped[int] = mapped_column(Integer)
+    """Evidence quotes that did not match the source text and were dropped."""

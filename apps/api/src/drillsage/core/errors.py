@@ -65,6 +65,27 @@ class DependencyUnavailableError(DrillSageError):
     slug = "dependency-unavailable"
 
 
+class BudgetExceededError(DrillSageError):
+    """An LLM call would take total spend past `DRILLSAGE_LLM_BUDGET_USD`."""
+
+    status = HTTPStatus.PAYMENT_REQUIRED
+    slug = "llm-budget-exceeded"
+
+
+class LocalOnlyViolationError(DrillSageError):
+    """A remote model call was attempted while `DRILLSAGE_LOCAL_ONLY=true` (fails closed)."""
+
+    status = HTTPStatus.FORBIDDEN
+    slug = "local-only-violation"
+
+
+class LLMOutputError(DrillSageError):
+    """The model declined, was cut off, or returned output that failed validation."""
+
+    status = HTTPStatus.BAD_GATEWAY
+    slug = "llm-output"
+
+
 def _problem_response(problem: Problem) -> JSONResponse:
     return JSONResponse(
         status_code=problem.status,

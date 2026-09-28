@@ -23,6 +23,8 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from drillsage.core.config import Environment, Settings
 from drillsage.db import models as m
 from drillsage.db.session import Database
+from drillsage.extract import report as extraction_report
+from drillsage.extract.pipeline import run_extraction
 from drillsage.ingest import reports
 from drillsage.ingest.cli import main as cli_main
 from drillsage.ingest.pipeline import run_ingest, table_counts
@@ -270,3 +272,45 @@ def test_parser_fidelity_report_on_synthetic_corpus(data_dir: Path, tmp_path: Pa
     assert result.coverage_pct == 100.0
     assert result.unmapped_values == 0
     assert "PASS" in (tmp_path / "parser_fidelity.md").read_text()
+
+
+async def test_rule_extraction_on_the_loaded_field(
+    session: AsyncSession, data_dir: Path, tmp_path: Path
+) -> None:
+    await run_ingest(session, data_dir, "north_sea")  # no-op if the first test already loaded
+    stats = await run_extraction(session)
+    again = await run_extraction(session)
+    assert (stats.events, stats.evidence) == (again.events, again.evidence)
+    assert stats.by_hazard["LOST_CIRCULATION"] == 1
+
+    event = (
+        await session.execute(select(m.Event).where(m.Event.hazard == "LOST_CIRCULATION"))
+    ).scalar_one()
+    assert (event.md_top_m, event.depth_source, event.detected_by) == (1450, "text", "code+text")
+    assert event.formation == "Balder Fm"
+    assert event.tvd_top_m == pytest.approx(500 + 950 * COS30, abs=0.5)
+    assert event.npt_h == 4.0
+    assert event.confidence_tier == "rule"
+
+    spans = (
+        (
+            await session.execute(
+                select(m.EventEvidence.char_start, m.EventEvidence.char_end, m.Activity.comments)
+                .join(m.Activity, m.Activity.id == m.EventEvidence.activity_id)
+                .where(
+                    m.EventEvidence.event_id == event.id, m.EventEvidence.char_start.is_not(None)
+                )
+            )
+        )
+        .tuples()
+        .all()
+    )
+    assert spans
+    assert all((text or "")[start:end].lower().startswith("loss") for start, end, text in spans)
+
+    payload = await extraction_report.collect(session)
+    assert (
+        payload["evidence_spans"]["total"] == payload["evidence_spans"]["resolving_to_source_text"]
+    )
+    extraction_report.write(payload, tmp_path)
+    assert "LOST_CIRCULATION" in (tmp_path / "extraction_rules.md").read_text()
