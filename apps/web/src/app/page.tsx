@@ -76,6 +76,13 @@ export default async function FieldPage() {
       : [],
   );
 
+  const heads = field.wellbores;
+  const origin = {
+    lat: heads.reduce((sum, w) => sum + w.lat_deg, 0) / Math.max(1, heads.length),
+    lon: heads.reduce((sum, w) => sum + w.lon_deg, 0) / Math.max(1, heads.length),
+    field: field.field,
+  };
+
   const stats = [
     {
       value: int(s.events),
@@ -103,9 +110,17 @@ export default async function FieldPage() {
     <div className="mx-auto flex max-w-[1400px] flex-col gap-24 px-4 pt-10 md:px-8 md:pt-16">
       <section className="grid items-center gap-10 lg:grid-cols-[1fr_auto]">
         <div className="flex flex-col gap-7">
-          <p className="label text-muted-foreground">
-            Nearby wells intelligence &middot; SIH26121 &middot; Oil India Ltd
-          </p>
+          <ul aria-label="About DrillSage" className="flex flex-wrap items-center gap-2.5">
+            <li className="-rotate-2 bg-foreground px-3 py-1 font-glitch text-lg text-background uppercase md:text-xl">
+              Nearby wells intelligence
+            </li>
+            <li className="brutal rotate-2 bg-brand px-3 py-0.5 font-glitch text-lg text-brand-foreground uppercase md:text-xl">
+              SIH26121
+            </li>
+            <li className="-rotate-1 bg-[var(--hz-wc)] px-3 py-1 font-glitch text-lg text-white uppercase md:text-xl">
+              Oil India Ltd
+            </li>
+          </ul>
           <h1 className="melt melt-hover text-[clamp(2.25rem,9.5vw,9rem)] uppercase">
             See{" "}
             <span className="inline-block -rotate-2 bg-brand px-[0.08em] text-brand-foreground">
@@ -163,17 +178,17 @@ export default async function FieldPage() {
       </section>
 
       <section className="flex flex-col gap-6">
-        <SectionHead n="01" kicker="plan view, UTM 31N" title="The field from above">
+        <SectionHead title="The field from above">
           <p className="max-w-sm text-sm text-muted-foreground">
             Well paths from minimum-curvature surveys. Each dot is a problem at the place it
             happened underground. Hover to inspect, click to open.
           </p>
         </SectionHead>
-        <FieldMap wells={wells} events={events} />
+        <FieldMap wells={wells} events={events} origin={origin} />
       </section>
 
       <section className="flex flex-col gap-6">
-        <SectionHead n="02" kicker="non-productive time" title="Where the hours went">
+        <SectionHead title="Where the hours went">
           <p className="label text-muted-foreground">
             {hours(s.npt_h)} across {s.wellbores} wellbores
           </p>
@@ -182,7 +197,7 @@ export default async function FieldPage() {
       </section>
 
       <section className="flex flex-col gap-6">
-        <SectionHead n="03" kicker="the pipeline" title="How it works" />
+        <SectionHead title="How it works" />
         <ol className="grid gap-4 md:grid-cols-3">
           {STEPS.map((step) => (
             <li key={step.n} className="melt-hover brutal flex flex-col gap-4 bg-surface p-6">

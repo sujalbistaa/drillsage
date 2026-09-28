@@ -113,7 +113,6 @@ export default async function EventsPage({ searchParams }: { searchParams: Searc
     <div className="mx-auto flex max-w-[1400px] flex-col gap-10 px-4 pt-10 md:px-8 md:pt-16">
       <header className="grid items-end gap-6 lg:grid-cols-[1fr_auto]">
         <div className="flex flex-col gap-4">
-          <p className="label text-muted-foreground">03 / events</p>
           <h1 className="melt text-[clamp(2rem,8vw,7rem)] uppercase">The logbook.</h1>
           <p className="max-w-2xl text-lg text-pretty text-muted-foreground">
             Every problem DrillSage pulled out of the daily reports, with the words that gave it

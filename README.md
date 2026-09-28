@@ -8,6 +8,8 @@ extracts every drilling problem with the exact depth, formation and fix, and war
 engineer on the active well **before** the bit reaches a zone where nearby wells had
 trouble. Every warning links to the report line behind it.
 
+Built by **team CodeY**.
+
 > Status: **Phase 1** complete; **Phase 2 (event extraction)** in progress. See the phase plan in [CLAUDE.md](CLAUDE.md#8-phase-plan-work-phase-by-phase-stop-at-every-gate-for-user-review).
 
 ## Quick start
@@ -25,7 +27,8 @@ make help      # everything else
 Open http://localhost:3000. The API's interactive docs are at http://localhost:8000/docs.
 
 **No Docker?** `make data-fetch && make ui` builds a field snapshot straight from the raw
-reports and runs the API and web cockpit without a database.
+reports and runs the API and web cockpit without a database. To put it online, see
+[docs/deploy.md](docs/deploy.md) (Render blueprint, free tier).
 
 ### Load the data
 

@@ -4,6 +4,7 @@ import {
   Climate_Crisis,
   Instrument_Serif,
   Martian_Mono,
+  Rubik_Glitch,
 } from "next/font/google";
 import type { ReactNode } from "react";
 
@@ -17,6 +18,8 @@ import "./globals.css";
 const melt = Climate_Crisis({ variable: "--font-melt", subsets: ["latin"], axes: ["YEAR"] });
 /** Data and labels: a wide monospace, so depths line up like a mud log. */
 const data = Martian_Mono({ variable: "--font-data", subsets: ["latin"], axes: ["wdth"] });
+/** Stickers and team branding: a glitched grotesque. */
+const glitch = Rubik_Glitch({ variable: "--font-sticker", subsets: ["latin"], weight: "400" });
 const body = Bricolage_Grotesque({
   variable: "--font-body",
   subsets: ["latin"],
@@ -36,6 +39,8 @@ export const metadata: Metadata = {
   },
   description: `${TAGLINE} Evidence-backed warnings from nearby wells, for Oil India drilling teams.`,
   applicationName: "DrillSage",
+  authors: [{ name: "Team CodeY" }],
+  creator: "Team CodeY",
 };
 
 export const viewport: Viewport = {
@@ -48,8 +53,15 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${melt.variable} ${data.variable} ${body.variable} ${accent.variable}`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+      <body
+        className={`${melt.variable} ${data.variable} ${body.variable} ${accent.variable} ${glitch.variable}`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
           <AppShell>{children}</AppShell>
         </ThemeProvider>
       </body>

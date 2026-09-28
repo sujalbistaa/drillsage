@@ -1,3 +1,4 @@
+import { fetchSystemStatus } from "@/lib/api/system-status";
 import type { SystemStatus } from "@/lib/api/status";
 import { cn } from "@/lib/utils";
 
@@ -26,6 +27,20 @@ export function StatusPill({ status }: { status: SystemStatus }) {
       />
       {TEXT[status.level]}
       <span className="sr-only">{status.headline}</span>
+    </span>
+  );
+}
+
+/** Fetches its own status so a slow readiness probe never holds up the page. */
+export async function LiveStatusPill() {
+  return <StatusPill status={await fetchSystemStatus()} />;
+}
+
+export function StatusPillPlaceholder() {
+  return (
+    <span className="label hidden items-center gap-2 border px-2 py-1 text-muted-foreground sm:inline-flex">
+      <span aria-hidden className="size-2 bg-muted-foreground" />
+      Checking
     </span>
   );
 }

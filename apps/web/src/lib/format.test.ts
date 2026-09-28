@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { boundsOf, niceLength, project } from "./geo";
+import { boundsOf, mercatorPx, niceLength, project } from "./geo";
 import { density, holeInches, hours, metres } from "./format";
 import { hazardMeta, isHazardKey } from "./hazards";
 import { findBySlug, shortName, wellSlug } from "./wells";
@@ -54,5 +54,8 @@ describe("geo", () => {
     expect([p.x(1000), p.y(500)]).toEqual([100, 0]);
     expect(niceLength(730)).toBe(1000);
     expect(niceLength(180)).toBe(200);
+    // Volve lies in zoom-5 tile (16, 9), the centre of the shipped 3x3 basemap.
+    const [x, y] = mercatorPx(58.4353, 1.9281, 5).map((v) => Math.floor(v / 256));
+    expect([x, y]).toEqual([16, 9]);
   });
 });

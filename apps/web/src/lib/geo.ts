@@ -50,3 +50,12 @@ export function niceLength(targetM: number): number {
   const steps = [1, 2, 5, 10];
   return power * (steps.find((s) => s * power >= targetM) ?? 10);
 }
+
+/** Web Mercator pixel coordinates of a WGS84 point at `zoom` (256-pixel tiles). */
+export function mercatorPx(latDeg: number, lonDeg: number, zoom: number): [number, number] {
+  const size = 256 * 2 ** zoom;
+  const lat = (latDeg * Math.PI) / 180;
+  const x = ((lonDeg + 180) / 360) * size;
+  const y = ((1 - Math.log(Math.tan(lat) + 1 / Math.cos(lat)) / Math.PI) / 2) * size;
+  return [x, y];
+}

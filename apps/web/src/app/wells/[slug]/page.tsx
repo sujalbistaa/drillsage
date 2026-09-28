@@ -109,7 +109,7 @@ export default async function WellPage({ params }: Params) {
       </header>
 
       <section className="flex flex-col gap-6">
-        <SectionHead n="A" kicker="look-ahead" title="Drive the bit" />
+        <SectionHead title="Drive the bit" />
         <LookaheadStrip
           well={{
             name: well.name,
@@ -130,7 +130,7 @@ export default async function WellPage({ params }: Params) {
       </section>
 
       <section className="flex flex-col gap-6">
-        <SectionHead n="B" kicker="geological, shallow to deep" title="What this well hit">
+        <SectionHead title="What this well hit">
           <Link
             href={`/events?well=${encodeURIComponent(well.name)}`}
             className="label text-muted-foreground hover:text-foreground"

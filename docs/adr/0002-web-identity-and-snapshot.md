@@ -23,8 +23,12 @@ ADR 0001 and CLAUDE.md §3 had pencilled in shadcn/ui, an icon set, MapLibre GL 
   faster than pictograms. `lucide-react` was removed.
 - **Charts are hand-written SVG.** The field plan view and the look-ahead depth strip are
   small, domain-specific drawings (tens of wells, one depth axis); a map or charting library
-  would add weight and online tile dependencies without adding capability. A tiled basemap
-  (MapLibre) can be added for onshore Assam fields where roads and villages matter.
+  would add weight and online tile dependencies without adding capability. Volve is open sea,
+  where no imagery provider has detail at field scale, so the field view is a "sonar" plan
+  (sea gradient, decorative sweep and range rings) with a real locator inset: NASA Blue Marble
+  with bathymetry (public domain), nine zoom-5 tiles shipped in `public/basemap` so it works
+  offline. A tiled basemap (MapLibre) can be added for onshore Assam fields where roads and
+  villages matter.
 - **Field snapshot.** `drillsage-data snapshot` builds the whole field (wellbores,
   trajectories, formation tops, offsets, rule-tier events with evidence spans) from the raw
   files with the same domain code the database pipeline uses, and writes

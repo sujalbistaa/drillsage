@@ -6,7 +6,7 @@ import { useMemo, useState } from "react";
 
 import { HazardCode } from "@/components/hazard";
 import { hours, int, metres } from "@/lib/format";
-import { boundsOf, niceLength, project } from "@/lib/geo";
+import { boundsOf, mercatorPx, niceLength, project } from "@/lib/geo";
 import { GEOLOGICAL_KEYS, HAZARD_KEYS, hazardMeta, type HazardKey } from "@/lib/hazards";
 import { cn } from "@/lib/utils";
 import { shortName } from "@/lib/wells";
@@ -39,7 +39,9 @@ function radius(npt: number): number {
 }
 
 /** Wellheads within 60 m of each other share a slot (a template or a re-entered well). */
-function slots(wells: readonly MapWell[]): { e: number; n: number; label: string }[] {
+function slots(
+  wells: readonly MapWell[],
+): { e: number; n: number; label: string; bores: number }[] {
   const groups: { e: number; n: number; names: string[] }[] = [];
   for (const w of wells) {
     const head = w.path[0];
@@ -55,12 +57,94 @@ function slots(wells: readonly MapWell[]): { e: number; n: number; label: string
     return {
       e: g.e,
       n: g.n,
+      bores: g.names.length,
       label: g.names.length > 1 ? `${base} · ${g.names.length} bores` : base,
     };
   });
 }
 
-export function FieldMap({ wells, events }: { wells: MapWell[]; events: MapEvent[] }) {
+/** Tiles shipped in /public/basemap: NASA Blue Marble with bathymetry, zoom 5, x 15-17, y 8-10. */
+const TILE_ZOOM = 5;
+const TILE_X0 = 15;
+const TILE_Y0 = 8;
+const TILES = [0, 1, 2].flatMap((j) => [0, 1, 2].map((i) => [i, j] as const));
+const PLACES = [
+  { name: "Norway", lat: 60.8, lon: 7.5 },
+  { name: "Denmark", lat: 56.2, lon: 9.1 },
+  { name: "UK", lat: 57.2, lon: -3.8 },
+] as const;
+
+function local(lat: number, lon: number): [number, number] {
+  const [x, y] = mercatorPx(lat, lon, TILE_ZOOM);
+  return [x - TILE_X0 * 256, y - TILE_Y0 * 256];
+}
+
+/** Where on Earth this is: real satellite imagery with a pin on the field. */
+function Locator({ lat, lon, field }: { lat: number; lon: number; field: string }) {
+  const [px, py] = local(lat, lon);
+  const w = 440;
+  const h = 330;
+  return (
+    <figure className="brutal pointer-events-none absolute top-3 left-3 z-[1] w-40 bg-background md:w-56">
+      <svg viewBox={`${px - w / 2} ${py - h / 2} ${w} ${h}`} className="block w-full" aria-hidden>
+        {TILES.map(([i, j]) => (
+          <image
+            key={`${i}-${j}`}
+            href={`/basemap/bm5-${TILE_X0 + i}-${TILE_Y0 + j}.jpg`}
+            x={i * 256}
+            y={j * 256}
+            width={256.5}
+            height={256.5}
+            className="dark:[filter:saturate(1.35)_contrast(1.1)_brightness(0.85)]"
+          />
+        ))}
+        {PLACES.map((p) => {
+          const [x, y] = local(p.lat, p.lon);
+          return (
+            <text
+              key={p.name}
+              x={x}
+              y={y}
+              textAnchor="middle"
+              className="fill-white font-mono text-[15px] uppercase"
+              style={{
+                letterSpacing: "0.12em",
+                paintOrder: "stroke",
+                stroke: "#0008",
+                strokeWidth: 3,
+              }}
+            >
+              {p.name}
+            </text>
+          );
+        })}
+        <circle
+          cx={px}
+          cy={py}
+          r={9}
+          fill="var(--brand)"
+          className="animate-ping"
+          style={{ transformBox: "fill-box", transformOrigin: "center" }}
+        />
+        <circle cx={px} cy={py} r={6} fill="var(--brand)" stroke="#0a0a0b" strokeWidth={2} />
+      </svg>
+      <figcaption className="label flex items-center justify-between gap-2 border-t bg-background px-2 py-1">
+        <span className="text-foreground">{field} &middot; North Sea</span>
+        <span className="text-[9px] text-muted-foreground normal-case">NASA</span>
+      </figcaption>
+    </figure>
+  );
+}
+
+export function FieldMap({
+  wells,
+  events,
+  origin,
+}: {
+  wells: MapWell[];
+  events: MapEvent[];
+  origin: { lat: number; lon: number; field: string };
+}) {
   const router = useRouter();
   const [active, setActive] = useState<Set<HazardKey>>(() => new Set(GEOLOGICAL_KEYS));
   const [hoverWell, setHoverWell] = useState<string | null>(null);
@@ -70,6 +154,10 @@ export function FieldMap({ wells, events }: { wells: MapWell[]; events: MapEvent
   const slotMarks = useMemo(() => slots(wells), [wells]);
   const visible = events.filter((e) => active.has(e.hazard as HazardKey));
   const bar = niceLength((WIDTH * proj.scale) / 6);
+  const busiest = [...slotMarks].sort((a, b) => b.bores - a.bores)[0];
+  const radarAt = busiest
+    ? { left: (proj.x(busiest.e) / WIDTH) * 100, top: (proj.y(busiest.n) / proj.height) * 100 }
+    : null;
 
   const toggle = (key: HazardKey) =>
     setActive((prev) => {
@@ -84,8 +172,19 @@ export function FieldMap({ wells, events }: { wells: MapWell[]; events: MapEvent
 
   return (
     <div className="grid gap-4 lg:grid-cols-[1fr_280px]">
-      <div className="relative border bg-surface">
-        <div className="grid-paper absolute inset-0 opacity-70" aria-hidden />
+      <div className="sea relative overflow-hidden border">
+        <div className="grid-paper absolute inset-0 opacity-60" aria-hidden />
+        {radarAt && (
+          <div
+            aria-hidden
+            className="pointer-events-none absolute aspect-square w-[150%] -translate-x-1/2 -translate-y-1/2"
+            style={{ left: `${radarAt.left}%`, top: `${radarAt.top}%` }}
+          >
+            <div className="sonar-rings absolute inset-0 rounded-full" />
+            <div className="radar absolute inset-0 rounded-full" />
+          </div>
+        )}
+        <Locator lat={origin.lat} lon={origin.lon} field={origin.field} />
         <svg
           viewBox={`0 0 ${WIDTH} ${proj.height}`}
           className="relative block w-full"

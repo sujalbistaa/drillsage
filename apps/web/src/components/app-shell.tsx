@@ -1,19 +1,18 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
 
 import { Nav } from "@/components/nav";
-import { StatusPill } from "@/components/status-pill";
+import { LiveStatusPill, StatusPillPlaceholder } from "@/components/status-pill";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Ticker } from "@/components/ticker";
 import { Wordmark } from "@/components/wordmark";
 import { fetchField } from "@/lib/api/field";
-import { fetchSystemStatus } from "@/lib/api/system-status";
 import { VOLVE_ATTRIBUTION } from "@/lib/constants";
 import { day, hours, int } from "@/lib/format";
 
 async function tickerItems(): Promise<string[]> {
   const field = await fetchField();
-  if (!field.ok) return ["No field snapshot yet", "Run make snapshot", "Then refresh"];
+  if (!field.ok) return ["No field snapshot yet", "Run make snapshot", "Made by team CodeY"];
   const s = field.data.stats;
   return [
     `${int(s.events)} drilling problems extracted`,
@@ -24,16 +23,13 @@ async function tickerItems(): Promise<string[]> {
     "Every event linked to its report line",
     `${field.data.field} field, North Sea`,
     "Built for Oil India",
+    "Made by team CodeY",
     "SIH26121",
   ];
 }
 
 export async function AppShell({ children }: { children: ReactNode }) {
-  const [status, items, field] = await Promise.all([
-    fetchSystemStatus(),
-    tickerItems(),
-    fetchField(),
-  ]);
+  const [items, field] = await Promise.all([tickerItems(), fetchField()]);
 
   return (
     <div className="flex min-h-dvh flex-col">
@@ -52,13 +48,18 @@ export async function AppShell({ children }: { children: ReactNode }) {
               className="flex items-center border-r px-3 py-2.5 md:px-5"
             >
               <Wordmark />
+              <span className="ml-2.5 hidden -rotate-6 bg-foreground px-1.5 py-0.5 font-glitch text-xs text-background lg:inline">
+                by CodeY
+              </span>
             </Link>
             <div className="hidden md:flex">
               <Nav />
             </div>
           </div>
           <div className="flex items-center gap-2 pr-3 md:pr-5">
-            <StatusPill status={status} />
+            <Suspense fallback={<StatusPillPlaceholder />}>
+              <LiveStatusPill />
+            </Suspense>
             <ThemeToggle />
           </div>
         </div>
@@ -76,6 +77,12 @@ export async function AppShell({ children }: { children: ReactNode }) {
         <div className="mx-auto grid max-w-[1400px] gap-8 px-4 pt-10 pb-6 md:grid-cols-3 md:px-8">
           <div className="flex flex-col gap-3">
             <Wordmark />
+            <p className="flex flex-wrap items-center gap-2 text-lg">
+              Made by team
+              <span className="brutal -rotate-3 bg-brand px-2.5 py-0.5 font-glitch text-2xl text-brand-foreground">
+                CodeY
+              </span>
+            </p>
             <p className="font-serif text-2xl leading-tight italic">
               Drishti (foresight) for every well you drill.
             </p>
@@ -102,9 +109,9 @@ export async function AppShell({ children }: { children: ReactNode }) {
         </p>
         <div
           aria-hidden
-          className="melt outline-text pointer-events-none -mb-[0.18em] px-2 text-center text-[20vw] leading-none uppercase select-none"
+          className="melt outline-text pointer-events-none -mb-[0.18em] px-2 text-center text-[12.5vw] leading-none uppercase select-none"
         >
-          Drishti
+          DrillSage
         </div>
       </footer>
     </div>

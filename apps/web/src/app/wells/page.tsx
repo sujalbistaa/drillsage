@@ -104,7 +104,6 @@ export default async function WellsPage() {
   return (
     <div className="mx-auto flex max-w-[1400px] flex-col gap-16 px-4 pt-10 md:px-8 md:pt-16">
       <header className="flex flex-col gap-4">
-        <p className="label text-muted-foreground">02 / wells</p>
         <h1 className="melt text-[clamp(2rem,8vw,7rem)] uppercase">
           {field.wellbores.length} holes
           <br />
@@ -121,11 +120,11 @@ export default async function WellsPage() {
         const years = wells.map((w) => year(w.first_report_at));
         return (
           <section key={era.key} className="flex flex-col gap-6">
-            <SectionHead
-              n={`${Math.min(...years)}–${String(Math.max(...years)).slice(2)}`}
-              kicker={era.note}
-              title={era.title}
-            />
+            <SectionHead title={era.title}>
+              <span className="label text-muted-foreground">
+                {Math.min(...years)}&ndash;{String(Math.max(...years)).slice(2)} &middot; {era.note}
+              </span>
+            </SectionHead>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {wells.map((w) => (
                 <WellCard
