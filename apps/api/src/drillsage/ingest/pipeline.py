@@ -164,7 +164,7 @@ def _summarise(files: Sequence[DdrFile]) -> dict[str, DdrWellboreSummary]:
 # ----------------------------------------------------------------------------- wells
 
 
-def _surface(record: WellboreRecord) -> SurfaceLocation:
+def surface_location(record: WellboreRecord) -> SurfaceLocation:
     loc = record.location
     return to_wgs84(loc.lat_deg, loc.lon_deg, loc.geodetic_datum)
 
@@ -177,7 +177,7 @@ async def _upsert_wells(
         by_well.setdefault(record.well_name, record)
     ids: dict[str, int] = {}
     for well_name, record in sorted(by_well.items()):
-        surface = _surface(record)
+        surface = surface_location(record)
         values = {
             "name": well_name,
             "field": record.location.field,
@@ -423,7 +423,7 @@ async def _rebuild_trajectories(
         wid = wellbore_ids[name]
         computed = compose_trajectory(registry, stations, name)
         trajectories[name] = traj.Trajectory(computed)
-        surface = _surface(record)
+        surface = surface_location(record)
         kb = record.kb_elevation_m
         rows = [
             {
@@ -455,28 +455,24 @@ async def _rebuild_trajectories(
     return trajectories
 
 
-async def _own_tops(
-    session: AsyncSession,
-    bundle: SourceBundle,
-    wellbore_ids: dict[str, int],
+def own_tops(
+    registry: dict[str, WellboreRecord],
+    picks: dict[str, list[tuple[str, float]]],
+    sodir_tops: Sequence[SodirLithoTop],
     pack: BasinPack,
 ) -> tuple[dict[str, list[FormationTop]], dict[str, int]]:
-    """Each wellbore's own resolved tops (Sodir + DDR picks) and the unresolved pick names."""
+    """Each wellbore's own resolved tops (Sodir + DDR picks) and the unresolved pick names.
+
+    `picks` maps a wellbore to its DDR formation picks as (description, MD top).
+    """
     sodir_by_npdid: dict[int, list[SodirLithoTop]] = defaultdict(list)
-    for sodir_top in bundle.sodir_tops:
+    for sodir_top in sodir_tops:
         sodir_by_npdid[sodir_top.npdid_wellbore].append(sodir_top)
     unresolved: dict[str, int] = defaultdict(int)
     own: dict[str, list[FormationTop]] = {}
-    for name, record in bundle.registry.items():
-        picks = await session.execute(
-            select(m.StratPick.description, m.StratPick.md_top_m)
-            .join(m.DailyReport, m.DailyReport.id == m.StratPick.report_id)
-            .where(m.DailyReport.wellbore_id == wellbore_ids[name])
-        )
+    for name, record in registry.items():
         candidates = [
-            resolve_top(pack, desc, md, None, TopSource.DDR)
-            for desc, md in picks.tuples()
-            if desc and md is not None
+            resolve_top(pack, desc, md, None, TopSource.DDR) for desc, md in picks.get(name, [])
         ]
         # Sodir tops describe the regulator's hole for this id: the latest technical sidetrack.
         # A wellbore that was redrilled (no Sodir TD recorded for it) gets DDR picks only.
@@ -490,6 +486,20 @@ async def _own_tops(
                 unresolved[candidate.raw_name] += 1
         own[name] = consolidate_tops(candidates)
     return own, dict(sorted(unresolved.items()))
+
+
+async def _ddr_picks(
+    session: AsyncSession, wellbore_ids: dict[str, int]
+) -> dict[str, list[tuple[str, float]]]:
+    picks: dict[str, list[tuple[str, float]]] = {}
+    for name, wid in wellbore_ids.items():
+        rows = await session.execute(
+            select(m.StratPick.description, m.StratPick.md_top_m)
+            .join(m.DailyReport, m.DailyReport.id == m.StratPick.report_id)
+            .where(m.DailyReport.wellbore_id == wid)
+        )
+        picks[name] = [(desc, md) for desc, md in rows.tuples() if desc and md is not None]
+    return picks
 
 
 def final_tops(
@@ -529,7 +539,10 @@ async def _rebuild_formation_tops(
     pack: BasinPack,
     stats: IngestStats,
 ) -> None:
-    own, stats.unresolved_formation_names = await _own_tops(session, bundle, wellbore_ids, pack)
+    picks = await _ddr_picks(session, wellbore_ids)
+    own, stats.unresolved_formation_names = own_tops(
+        bundle.registry, picks, bundle.sodir_tops, pack
+    )
     for name, tops in sorted(final_tops(bundle.registry, own, trajectories).items()):
         wid = wellbore_ids[name]
         kb = bundle.registry[name].kb_elevation_m
@@ -600,7 +613,10 @@ __all__ = [
     "IngestStats",
     "SourceBundle",
     "compose_trajectory",
+    "final_tops",
+    "own_tops",
     "read_sources",
     "run_ingest",
+    "surface_location",
     "table_counts",
 ]

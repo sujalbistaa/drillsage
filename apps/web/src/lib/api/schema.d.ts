@@ -4,177 +4,743 @@
  */
 
 export interface paths {
-    "/api/v1/meta": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /** Service metadata */
-        get: operations["meta"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+  "/api/v1/events": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/healthz": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Liveness probe
-         * @description The process is up and serving requests. Checks no dependencies.
-         */
-        get: operations["healthz"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** Search drilling events with their evidence */
+    get: operations["list_events"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/events/{event_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    "/readyz": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Readiness probe
-         * @description Ready to take traffic: every hard dependency answers.
-         */
-        get: operations["readyz"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
+    /** One event with every evidence line */
+    get: operations["get_event"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/field": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
+    /** Field overview: wellbores, trajectories, formation tops and event locations */
+    get: operations["field_overview"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/meta": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Service metadata */
+    get: operations["meta"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/healthz": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Liveness probe
+     * @description The process is up and serving requests. Checks no dependencies.
+     */
+    get: operations["healthz"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/readyz": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Readiness probe
+     * @description Ready to take traffic: every hard dependency answers.
+     */
+    get: operations["readyz"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
-    schemas: {
-        /** Liveness */
-        Liveness: {
-            /**
-             * Status
-             * @default ok
-             * @constant
-             */
-            status: "ok";
-        };
-        /** Readiness */
-        Readiness: {
-            /** Checks */
-            checks: {
-                [key: string]: "ok" | "unavailable";
-            };
-            /**
-             * Status
-             * @enum {string}
-             */
-            status: "ready" | "not_ready";
-        };
-        /** ServiceMeta */
-        ServiceMeta: {
-            /** Data Attribution */
-            data_attribution: string;
-            /** Environment */
-            environment: string;
-            /** Local Only */
-            local_only: boolean;
-            /** Name */
-            name: string;
-            /** Version */
-            version: string;
-        };
+  schemas: {
+    /** EventOut */
+    EventOut: {
+      /** Confidence Tier */
+      confidence_tier: string;
+      /** Depth Source */
+      depth_source: string;
+      /** Detected By */
+      detected_by: string;
+      /** Easting M */
+      easting_m: number | null;
+      /**
+       * End At
+       * Format: date-time
+       */
+      end_at: string;
+      /** Evidence */
+      evidence: components["schemas"]["EvidenceLine"][];
+      /** Evidence Lines Total */
+      evidence_lines_total: number;
+      /** Formation */
+      formation: string | null;
+      /** Formation Group */
+      formation_group: string | null;
+      /** Geological */
+      geological: boolean;
+      /** Hazard */
+      hazard: string;
+      /** Hole Diameter M */
+      hole_diameter_m: number | null;
+      /** Id */
+      id: number;
+      /** Led To Sidetrack */
+      led_to_sidetrack: boolean;
+      /** Md Bottom M */
+      md_bottom_m: number | null;
+      /** Md Top M */
+      md_top_m: number | null;
+      /** Mitigations */
+      mitigations: components["schemas"]["MitigationOut"][];
+      /** Mud Density Gcc */
+      mud_density_gcc: number | null;
+      /** Northing M */
+      northing_m: number | null;
+      /** Npt H */
+      npt_h: number;
+      /** Severity */
+      severity: number;
+      /**
+       * Start At
+       * Format: date-time
+       */
+      start_at: string;
+      /** Subtype */
+      subtype: string | null;
+      /** Tvdss Bottom M */
+      tvdss_bottom_m: number | null;
+      /** Tvdss Top M */
+      tvdss_top_m: number | null;
+      /** Wellbore */
+      wellbore: string;
     };
-    responses: never;
-    parameters: never;
-    requestBodies: never;
-    headers: never;
-    pathItems: never;
+    /** EventPage */
+    EventPage: {
+      /** Items */
+      items: components["schemas"]["EventOut"][];
+      /** Limit */
+      limit: number;
+      /** Npt H */
+      npt_h: number;
+      /** Offset */
+      offset: number;
+      /** Total */
+      total: number;
+    };
+    /**
+     * EventPoint
+     * @description An event without its evidence: enough to draw it on the map and the depth strip.
+     */
+    EventPoint: {
+      /** Easting M */
+      easting_m: number | null;
+      /** Formation */
+      formation: string | null;
+      /** Geological */
+      geological: boolean;
+      /** Hazard */
+      hazard: string;
+      /** Id */
+      id: number;
+      /** Md Top M */
+      md_top_m: number | null;
+      /** Northing M */
+      northing_m: number | null;
+      /** Npt H */
+      npt_h: number;
+      /** Severity */
+      severity: number;
+      /**
+       * Start At
+       * Format: date-time
+       */
+      start_at: string;
+      /** Tvdss Top M */
+      tvdss_top_m: number | null;
+      /** Wellbore */
+      wellbore: string;
+    };
+    /**
+     * EventSort
+     * @enum {string}
+     */
+    EventSort: "recent" | "npt" | "severity" | "depth";
+    /**
+     * EvidenceLine
+     * @description One report line behind an event, with the character spans that triggered it.
+     */
+    EvidenceLine: {
+      /**
+       * At
+       * Format: date-time
+       */
+      at: string;
+      /** Code */
+      code: string | null;
+      /** Line */
+      line: number;
+      /** Md M */
+      md_m: number | null;
+      /**
+       * Report On
+       * Format: date
+       */
+      report_on: string;
+      /** Spans */
+      spans: components["schemas"]["SpanOut"][];
+      /** Text */
+      text: string;
+    };
+    /**
+     * FieldOverview
+     * @description The snapshot without evidence text: the payload of every map and depth view.
+     */
+    FieldOverview: {
+      /** Attribution */
+      attribution: string;
+      /** Basin Pack */
+      basin_pack: string;
+      /** Events */
+      events: components["schemas"]["EventPoint"][];
+      /** Extractor Version */
+      extractor_version: string;
+      /** Field */
+      field: string;
+      /** Formations */
+      formations: components["schemas"]["FormationUnit"][];
+      /**
+       * Generated At
+       * Format: date-time
+       */
+      generated_at: string;
+      /** Hazards */
+      hazards: components["schemas"]["HazardSummary"][];
+      stats: components["schemas"]["FieldStats"];
+      /** Version */
+      version: string;
+      /** Wellbores */
+      wellbores: components["schemas"]["WellboreOut"][];
+    };
+    /** FieldStats */
+    FieldStats: {
+      /** Activities */
+      activities: number;
+      /** Events */
+      events: number;
+      /** Evidence Spans */
+      evidence_spans: number;
+      /**
+       * First Report On
+       * Format: date
+       */
+      first_report_on: string;
+      /** Geological Events */
+      geological_events: number;
+      /**
+       * Last Report On
+       * Format: date
+       */
+      last_report_on: string;
+      /** Npt H */
+      npt_h: number;
+      /** Reports */
+      reports: number;
+      /** Wellbores */
+      wellbores: number;
+    };
+    /**
+     * FormationUnit
+     * @description A unit of the basin pack that appears in this field, in stratigraphic order.
+     */
+    FormationUnit: {
+      /**
+       * Level
+       * @enum {string}
+       */
+      level: "group" | "formation";
+      /** Name */
+      name: string;
+      /** Order */
+      order: number;
+    };
+    /** HTTPValidationError */
+    HTTPValidationError: {
+      /** Detail */
+      detail?: components["schemas"]["ValidationError"][];
+    };
+    /** HazardSummary */
+    HazardSummary: {
+      /** Events */
+      events: number;
+      /** Geological */
+      geological: boolean;
+      /** Hazard */
+      hazard: string;
+      /** Npt H */
+      npt_h: number;
+      /** Wellbores */
+      wellbores: number;
+    };
+    /** Liveness */
+    Liveness: {
+      /**
+       * Status
+       * @default ok
+       * @constant
+       */
+      status: "ok";
+    };
+    /** MitigationOut */
+    MitigationOut: {
+      /** Action */
+      action: string;
+      /** Outcome */
+      outcome: string;
+    };
+    /**
+     * OffsetOut
+     * @description Another wellbore of the field, as an offset for this one.
+     */
+    OffsetOut: {
+      /** Completed Before Spud */
+      completed_before_spud: boolean;
+      /** Name */
+      name: string;
+      /** Surface Distance M */
+      surface_distance_m: number;
+    };
+    /**
+     * Problem
+     * @description RFC 7807 problem details, extended with the correlation id.
+     */
+    Problem: {
+      /** Detail */
+      detail?: string | null;
+      /**
+       * Errors
+       * @description Field-level validation errors, when applicable
+       */
+      errors?:
+        | {
+            [key: string]: unknown;
+          }[]
+        | null;
+      /** Instance */
+      instance?: string | null;
+      /** Request Id */
+      request_id?: string | null;
+      /** Status */
+      status: number;
+      /** Title */
+      title: string;
+      /**
+       * Type
+       * @description URI identifying the problem type
+       */
+      type: string;
+    };
+    /** Readiness */
+    Readiness: {
+      /** Checks */
+      checks: {
+        [key: string]: "ok" | "unavailable";
+      };
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "ready" | "not_ready";
+    };
+    /** ServiceMeta */
+    ServiceMeta: {
+      /** Data Attribution */
+      data_attribution: string;
+      /** Environment */
+      environment: string;
+      /** Local Only */
+      local_only: boolean;
+      /** Name */
+      name: string;
+      /** Version */
+      version: string;
+    };
+    /** SpanOut */
+    SpanOut: {
+      /** End */
+      end: number;
+      /** Kind */
+      kind: string;
+      /** Rule Id */
+      rule_id: string;
+      /** Start */
+      start: number;
+    };
+    /** TopOut */
+    TopOut: {
+      /**
+       * Level
+       * @enum {string}
+       */
+      level: "group" | "formation";
+      /** Md Top M */
+      md_top_m: number;
+      /** Name */
+      name: string;
+      /** Source */
+      source: string;
+      /** Tvdss Top M */
+      tvdss_top_m: number | null;
+    };
+    /** TrajectoryPoint */
+    TrajectoryPoint: {
+      /** Easting M */
+      easting_m: number;
+      /** Md M */
+      md_m: number;
+      /** Northing M */
+      northing_m: number;
+      /** Tvdss M */
+      tvdss_m: number;
+    };
+    /** ValidationError */
+    ValidationError: {
+      /** Context */
+      ctx?: Record<string, never>;
+      /** Input */
+      input?: unknown;
+      /** Location */
+      loc: (string | number)[];
+      /** Message */
+      msg: string;
+      /** Error Type */
+      type: string;
+    };
+    /** WellboreOut */
+    WellboreOut: {
+      /** Completed On */
+      completed_on: string | null;
+      /** Easting M */
+      easting_m: number;
+      /**
+       * Era
+       * @enum {string}
+       */
+      era: "exploration" | "development";
+      /** Events */
+      events: number;
+      /**
+       * First Report At
+       * Format: date-time
+       */
+      first_report_at: string;
+      /** Kb Elevation M */
+      kb_elevation_m: number | null;
+      /** Kind */
+      kind: string;
+      /**
+       * Last Report At
+       * Format: date-time
+       */
+      last_report_at: string;
+      /** Lat Deg */
+      lat_deg: number;
+      /** Lon Deg */
+      lon_deg: number;
+      /** Name */
+      name: string;
+      /** Northing M */
+      northing_m: number;
+      /** Npt H */
+      npt_h: number;
+      /** Offsets */
+      offsets: components["schemas"]["OffsetOut"][];
+      /** Parent Name */
+      parent_name: string | null;
+      /** Purpose */
+      purpose: string | null;
+      /** Reports */
+      reports: number;
+      /** Spud At */
+      spud_at: string | null;
+      /** Td Md M */
+      td_md_m: number;
+      /** Td Tvdss M */
+      td_tvdss_m: number | null;
+      /** Tops */
+      tops: components["schemas"]["TopOut"][];
+      /** Trajectory */
+      trajectory: components["schemas"]["TrajectoryPoint"][];
+      /** Utm Epsg */
+      utm_epsg: number;
+      /** Water Depth M */
+      water_depth_m: number | null;
+      /** Well Name */
+      well_name: string;
+    };
+  };
+  responses: never;
+  parameters: never;
+  requestBodies: never;
+  headers: never;
+  pathItems: never;
 }
 export type $defs = Record<string, never>;
 export interface operations {
-    meta: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ServiceMeta"];
-                };
-            };
-        };
+  list_events: {
+    parameters: {
+      query?: {
+        hazard?: string | null;
+        wellbore?: string | null;
+        geological?: boolean | null;
+        severity_min?: number | null;
+        q?: string | null;
+        sort?: components["schemas"]["EventSort"];
+        offset?: number;
+        limit?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
-    healthz: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
         };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Liveness"];
-                };
-            };
+        content: {
+          "application/json": components["schemas"]["EventPage"];
         };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+      /** @description The field snapshot is not built */
+      503: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Problem"];
+        };
+      };
     };
-    readyz: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Readiness"];
-                };
-            };
-            /** @description Service Unavailable */
-            503: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Readiness"];
-                };
-            };
-        };
+  };
+  get_event: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        event_id: number;
+      };
+      cookie?: never;
     };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["EventOut"];
+        };
+      };
+      /** @description Not Found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Problem"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+      /** @description The field snapshot is not built */
+      503: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Problem"];
+        };
+      };
+    };
+  };
+  field_overview: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FieldOverview"];
+        };
+      };
+      /** @description The field snapshot is not built */
+      503: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Problem"];
+        };
+      };
+    };
+  };
+  meta: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ServiceMeta"];
+        };
+      };
+    };
+  };
+  healthz: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Liveness"];
+        };
+      };
+    };
+  };
+  readyz: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Readiness"];
+        };
+      };
+      /** @description Service Unavailable */
+      503: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Readiness"];
+        };
+      };
+    };
+  };
 }

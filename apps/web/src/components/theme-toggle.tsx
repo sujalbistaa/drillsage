@@ -1,20 +1,19 @@
 "use client";
 
-import { Monitor, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
 
 import { cn } from "@/lib/utils";
 
 const OPTIONS = [
-  { value: "light", label: "Light theme", Icon: Sun },
-  { value: "dark", label: "Dark theme", Icon: Moon },
-  { value: "system", label: "System theme", Icon: Monitor },
+  { value: "light", label: "Lite", title: "Light theme" },
+  { value: "dark", label: "Dark", title: "Dark theme" },
+  { value: "system", label: "Auto", title: "Follow the system theme" },
 ] as const;
 
 const subscribe = () => () => {};
 
-/** Three-way theme switch. Renders neutral until mounted to avoid a hydration mismatch. */
+/** Three-way theme switch in words. Renders neutral until mounted to avoid a hydration mismatch. */
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const mounted = useSyncExternalStore(
@@ -24,12 +23,8 @@ export function ThemeToggle() {
   );
 
   return (
-    <div
-      role="radiogroup"
-      aria-label="Colour theme"
-      className="inline-flex items-center gap-0.5 rounded-lg border bg-surface-muted p-0.5"
-    >
-      {OPTIONS.map(({ value, label, Icon }) => {
+    <div role="radiogroup" aria-label="Colour theme" className="label flex border">
+      {OPTIONS.map(({ value, label, title }) => {
         const active = mounted && theme === value;
         return (
           <button
@@ -37,15 +32,14 @@ export function ThemeToggle() {
             type="button"
             role="radio"
             aria-checked={active}
-            aria-label={label}
-            title={label}
+            title={title}
             onClick={() => setTheme(value)}
             className={cn(
-              "rounded-md p-1.5 text-muted-foreground transition-colors hover:text-foreground",
-              active && "bg-surface text-foreground shadow-sm",
+              "px-2 py-1 text-muted-foreground transition-colors hover:text-foreground",
+              active && "bg-foreground text-background hover:text-background",
             )}
           >
-            <Icon className="size-4" aria-hidden />
+            {label}
           </button>
         );
       })}

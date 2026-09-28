@@ -10,7 +10,8 @@ drillsage-data llm-extract --pilot 50 --online --yes   # paid: needs --yes, resp
 drillsage-data llm-extract --all --yes [--resume-batch ID]   # Batches API backfill
 drillsage-data gold-sample # stratified gold sample → data/processed/gold/gold-v1.jsonl
 drillsage-data gold-eval   # score tiers against eval/gold/labels-gold-v1.json
-drillsage-data all         # fetch, load, fidelity, qc, extract (never calls a model)
+drillsage-data snapshot    # field snapshot for the web cockpit, from raw files (no database)
+drillsage-data all         # fetch, load, fidelity, qc, extract, snapshot (never calls a model)
 """
 
 import argparse
@@ -32,6 +33,7 @@ from drillsage.evaluation import report as gold_report
 from drillsage.extract import llm_run
 from drillsage.extract import report as extraction_report
 from drillsage.extract.pipeline import load_activity_records, run_extraction
+from drillsage.field.snapshot import build_snapshot, write_snapshot
 from drillsage.ingest import reports
 from drillsage.ingest.fetch import fetch_all
 from drillsage.ingest.pipeline import run_ingest, table_counts
@@ -155,6 +157,7 @@ def main(argv: list[str] | None = None) -> int:
             "llm-extract",
             "gold-sample",
             "gold-eval",
+            "snapshot",
             "all",
         ],
     )
@@ -192,6 +195,10 @@ def main(argv: list[str] | None = None) -> int:
         asyncio.run(_qc(reports_dir))
     if command in ("extract", "all"):
         asyncio.run(_extract(reports_dir))
+    if command in ("snapshot", "all"):
+        snapshot = build_snapshot(data_dir, settings.basin_pack)
+        path = write_snapshot(snapshot, data_dir)
+        log.info("snapshot_written", path=str(path), events=snapshot.stats.events)
     if command == "gold-sample":
         path = data_dir / "processed" / "gold" / f"{gold.SAMPLE_VERSION}.jsonl"
         gold.write_sample(gold.draw_sample(gold.read_lines(data_dir)), path)

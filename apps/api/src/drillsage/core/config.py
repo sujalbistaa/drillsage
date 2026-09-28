@@ -13,6 +13,12 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[5]
 
+VOLVE_ATTRIBUTION = (
+    "Contains data from the Volve field dataset, released by Equinor and the Volve "
+    "licence partners under CC BY-NC-SA 4.0."
+)
+"""Required by the Volve licence wherever its data is shown."""
+
 
 class Environment(StrEnum):
     DEVELOPMENT = "development"

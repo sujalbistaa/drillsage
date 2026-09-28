@@ -12,12 +12,13 @@ from fastapi.routing import APIRoute
 from prometheus_client import make_asgi_app
 
 from drillsage import __version__
-from drillsage.api.routers import health
+from drillsage.api.routers import field, health
 from drillsage.core.config import Settings, get_settings
 from drillsage.core.errors import register_exception_handlers
 from drillsage.core.logging import configure_logging, get_logger
 from drillsage.core.middleware import REQUEST_ID_HEADER, RequestContextMiddleware
 from drillsage.db.session import Database
+from drillsage.field.store import SnapshotStore
 
 log = get_logger(__name__)
 
@@ -35,6 +36,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         app.state.settings = settings
         app.state.database = Database(settings)
+        app.state.snapshots = SnapshotStore(settings.data_dir)
         log.info("startup", environment=settings.environment.value, version=__version__)
         try:
             yield
@@ -64,5 +66,6 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.add_middleware(RequestContextMiddleware)
 
     app.include_router(health.router)
+    app.include_router(field.router)
     app.mount("/metrics", make_asgi_app())
     return app

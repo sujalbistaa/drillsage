@@ -3,42 +3,96 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
- * DrillSage design tokens.
- * Light: drafting-table neutrals. Dark (default): a rig "control room" palette.
- * Semantic colours carry meaning across the product and must not be used decoratively:
- *   --ok      nominal / no offset-well history of trouble
- *   --warn    elevated risk ahead / attention
- *   --danger  high risk, active alert, failure
- *   --brand   DrillSage identity (bit-steel amber)
+ * DrillSage design tokens: "core log after midnight".
+ * Dark (default): ink-black control room, bone text, one acid-lime signal colour.
+ * Light: bone paper, black rules, the same lime used as a highlighter.
+ *
+ * Semantic colours carry meaning and are never decorative:
+ *   --brand   DrillSage identity and the look-ahead window (acid lime)
+ *   --ok      nominal            --warn  attention            --danger  alert / failure
+ * Hazard colours (--hz-*) belong to the taxonomy: geological hazards are saturated so they
+ * pop on the depth strip; operational ones are muted greys and browns.
  */
 :root {
-  --background: oklch(0.985 0.004 250);
-  --foreground: oklch(0.21 0.02 255);
-  --surface: oklch(1 0 0);
-  --surface-muted: oklch(0.965 0.006 250);
-  --border: oklch(0.9 0.008 250);
-  --muted-foreground: oklch(0.5 0.02 255);
-  --brand: oklch(0.7 0.16 62);
-  --brand-foreground: oklch(0.2 0.03 60);
-  --ok: oklch(0.62 0.13 170);
-  --warn: oklch(0.74 0.16 75);
-  --danger: oklch(0.6 0.21 27);
-  --ring: oklch(0.7 0.16 62);
+  --background: #eeeadf;
+  --foreground: #0b0b0c;
+  --surface: #f7f4ec;
+  --surface-muted: #e3ded1;
+  --border: #0b0b0c;
+  --hairline: rgb(11 11 12 / 0.14);
+  --muted-foreground: #5b574e;
+  --brand: #c6ff1a;
+  --brand-text: #3d5a00;
+  --brand-foreground: #0b0b0c;
+  --ok: #0a8f5a;
+  --warn: #c75a00;
+  --danger: #d4104a;
+  --ring: #0b0b0c;
+  --shadow: #0b0b0c;
+  --grain-opacity: 0.09;
+
+  --hz-lc: #2563ff;
+  --hz-wc: #e8114f;
+  --hz-sp: #f06400;
+  --hz-th: #c99a00;
+  --hz-wi: #8a3ffc;
+  --hz-gs: #00a37a;
+  --hz-cm: #8d8a83;
+  --hz-cs: #a39a8a;
+  --hz-dd: #5d86a8;
+  --hz-eq: #6f6c66;
+  --hz-fj: #a8805a;
+  --hz-wt: #b9b4a8;
+
+  --fm-0: #d9cfb8;
+  --fm-1: #c9bb9c;
+  --fm-2: #c4ccc0;
+  --fm-3: #d3c9dc;
+  --fm-4: #ddd4a8;
+  --fm-5: #c2cad8;
+  --fm-6: #dcc4bb;
+  --fm-7: #c8d3b6;
 }
 
 .dark {
-  --background: oklch(0.16 0.018 255);
-  --foreground: oklch(0.93 0.01 250);
-  --surface: oklch(0.2 0.02 255);
-  --surface-muted: oklch(0.24 0.022 255);
-  --border: oklch(0.3 0.025 255);
-  --muted-foreground: oklch(0.68 0.02 255);
-  --brand: oklch(0.76 0.15 65);
-  --brand-foreground: oklch(0.18 0.03 60);
-  --ok: oklch(0.72 0.13 170);
-  --warn: oklch(0.8 0.15 80);
-  --danger: oklch(0.68 0.2 27);
-  --ring: oklch(0.76 0.15 65);
+  --background: #0a0a0b;
+  --foreground: #f2eee3;
+  --surface: #121214;
+  --surface-muted: #1b1b1e;
+  --border: #2b2b30;
+  --hairline: rgb(242 238 227 / 0.09);
+  --muted-foreground: #97938a;
+  --brand: #c6ff1a;
+  --brand-text: #c6ff1a;
+  --brand-foreground: #0a0a0b;
+  --ok: #5cffb0;
+  --warn: #ff8a1f;
+  --danger: #ff2e63;
+  --ring: #c6ff1a;
+  --shadow: #c6ff1a;
+  --grain-opacity: 0.07;
+
+  --hz-lc: #4d8dff;
+  --hz-wc: #ff2e63;
+  --hz-sp: #ff7a1a;
+  --hz-th: #ffd60a;
+  --hz-wi: #a970ff;
+  --hz-gs: #2ef2b5;
+  --hz-cm: #77746e;
+  --hz-cs: #8f877a;
+  --hz-dd: #6f93b3;
+  --hz-eq: #5a5854;
+  --hz-fj: #a07a55;
+  --hz-wt: #3e3d3a;
+
+  --fm-0: #2f2c25;
+  --fm-1: #3a3128;
+  --fm-2: #25302e;
+  --fm-3: #2f2939;
+  --fm-4: #36331f;
+  --fm-5: #242a35;
+  --fm-6: #3a2a28;
+  --fm-7: #2a3324;
 }
 
 @theme inline {
@@ -47,15 +101,49 @@
   --color-surface: var(--surface);
   --color-surface-muted: var(--surface-muted);
   --color-border: var(--border);
+  --color-hairline: var(--hairline);
   --color-muted-foreground: var(--muted-foreground);
   --color-brand: var(--brand);
+  --color-brand-text: var(--brand-text);
   --color-brand-foreground: var(--brand-foreground);
   --color-ok: var(--ok);
   --color-warn: var(--warn);
   --color-danger: var(--danger);
   --color-ring: var(--ring);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-shadow: var(--shadow);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-data);
+  --font-display: var(--font-melt);
+  --font-serif: var(--font-accent);
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-blink: blink 1.1s steps(1) infinite;
+  --animate-scan: scan 2.8s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes scan {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
 }
 
 @layer base {
@@ -72,7 +160,111 @@
     @apply bg-background font-sans text-foreground antialiased;
     font-feature-settings: "tnum" 1; /* tabular numerals: depths and rates line up */
   }
+  /* Film grain over everything: keeps flat blacks from looking like a template. */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  ::selection {
+    background: var(--brand);
+    color: var(--brand-foreground);
+  }
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-ring;
+  }
+}
+
+@layer components {
+  /* Climate Crisis: its YEAR axis melts the letters from 1979 (full) to 2050 (thin). */
+  .melt {
+    font-family: var(--font-melt);
+    font-variation-settings: "YEAR" 1979;
+    transition: font-variation-settings 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    line-height: 0.86;
+    letter-spacing: -0.01em;
+  }
+  .melt-hover:hover .melt,
+  .melt.melt-hover:hover {
+    font-variation-settings: "YEAR" 2050;
+  }
+  .melt-thin {
+    font-variation-settings: "YEAR" 2035;
+  }
+
+  /* Mono labels: wide, small, tracked. */
+  .label {
+    font-family: var(--font-data);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-variation-settings: "wdth" 112.5;
+  }
+
+  /* Hard offset shadow: the sticker look. */
+  .brutal {
+    border: 1.5px solid var(--border);
+    box-shadow: 4px 4px 0 0 var(--shadow);
+  }
+  .brutal-hover {
+    transition:
+      transform 120ms ease,
+      box-shadow 120ms ease;
+  }
+  .brutal-hover:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 var(--shadow);
+  }
+  .brutal-hover:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 0 var(--shadow);
+  }
+
+  /* Outlined display text. */
+  .outline-text {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--foreground);
+  }
+
+  /* The evidence highlighter. */
+  .hl {
+    background: linear-gradient(transparent 8%, var(--brand) 8%, var(--brand) 92%, transparent 92%);
+    color: var(--brand-foreground);
+    padding: 0 0.15em;
+    border-radius: 2px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  /* Graph-paper backdrop for plots. */
+  .grid-paper {
+    background-image:
+      linear-gradient(var(--hairline) 1px, transparent 1px),
+      linear-gradient(90deg, var(--hairline) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Receipt edge for evidence printouts. */
+  .perforated {
+    --r: 6px;
+    mask:
+      radial-gradient(var(--r) at 50% 0, #0000 98%, #000) 50% 0 / calc(2 * var(--r) + 6px) 51%
+        repeat-x,
+      radial-gradient(var(--r) at 50% 100%, #0000 98%, #000) 50% 100% / calc(2 * var(--r) + 6px) 51%
+        repeat-x;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 }

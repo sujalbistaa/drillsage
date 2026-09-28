@@ -24,6 +24,9 @@ make help      # everything else
 
 Open http://localhost:3000. The API's interactive docs are at http://localhost:8000/docs.
 
+**No Docker?** `make data-fetch && make ui` builds a field snapshot straight from the raw
+reports and runs the API and web cockpit without a database.
+
 ### Load the data
 
 ```bash
@@ -41,14 +44,15 @@ running it again changes nothing. It writes two reports:
   quality and formation tops, with trajectories checked against the regulator's final TVDs.
 
 How the data is modelled and cleaned is described in [docs/data-pipeline.md](docs/data-pipeline.md);
-how drilling problems are extracted with evidence, in [docs/event-extraction.md](docs/event-extraction.md).
+how drilling problems are extracted with evidence, in [docs/event-extraction.md](docs/event-extraction.md);
+the web identity and the field snapshot, in [ADR 0002](docs/adr/0002-web-identity-and-snapshot.md).
 
 ## Repository layout
 
 | Path | What |
 |---|---|
 | `apps/api` | FastAPI service (Python 3.12): ingestion, extraction, knowledge, risk engine |
-| `apps/web` | Next.js 15 web app: field map, well cockpit, alerts, cited Q&A |
+| `apps/web` | Next.js 15 web app: field plan view, well cockpit with look-ahead strip, event logbook |
 | `infra` | Docker Compose (Postgres 16 + pgvector) |
 | `eval` | Evaluation harness and generated metric reports |
 | `docs` | Architecture decisions and domain primer |

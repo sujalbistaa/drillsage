@@ -8,11 +8,7 @@ from pydantic import BaseModel
 
 from drillsage import __version__
 from drillsage.api.deps import DatabaseDep, SettingsDep
-
-VOLVE_ATTRIBUTION = (
-    "Contains data from the Volve field dataset, released by Equinor and the Volve "
-    "licence partners under CC BY-NC-SA 4.0."
-)
+from drillsage.core.config import VOLVE_ATTRIBUTION
 
 CheckStatus = Literal["ok", "unavailable"]
 

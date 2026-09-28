@@ -38,7 +38,7 @@ migrate: ## Apply database migrations
 
 # ---------------------------------------------------------------- data
 .PHONY: data data-fetch data-load data-qc eval eval-parser
-data: data-fetch db-up migrate data-load eval-parser data-qc extract ## Fetch sources, load Postgres (idempotent), write data reports
+data: data-fetch db-up migrate data-load eval-parser data-qc extract snapshot ## Fetch, load Postgres (idempotent), data reports, field snapshot
 
 data-fetch: ## Download the pinned DDR mirror and Sodir tables into data/raw
 	cd $(API) && uv run drillsage-data fetch
@@ -61,7 +61,10 @@ gold-sample: ## Stratified gold sample for hand labelling -> data/processed/gold
 gold-eval: ## Score extraction tiers against eval/gold/labels-gold-v1.json -> eval/reports/extraction_gold.*
 	cd $(API) && uv run drillsage-data gold-eval
 
-.PHONY: extract llm-estimate
+.PHONY: extract llm-estimate snapshot
+snapshot: ## Field snapshot for the web cockpit, straight from raw files (no database)
+	cd $(API) && uv run drillsage-data snapshot
+
 extract: ## Rebuild events (rules + stored LLM results; never calls a model) + extraction report
 	cd $(API) && uv run drillsage-data extract
 
@@ -69,8 +72,15 @@ llm-estimate: ## Cost estimate for the LLM extraction pilot (never calls a model
 	cd $(API) && uv run drillsage-data llm-estimate --pilot 50
 
 # ---------------------------------------------------------------- run
-.PHONY: dev api web
+.PHONY: dev ui api web
 dev: db-up migrate ## Run API (:8000) and web (:3000) with reload; Ctrl-C stops both
+	@trap 'kill 0' INT TERM EXIT; \
+	  ( cd $(API) && uv run uvicorn drillsage.api.app:create_app --factory --reload --port 8000 ) & \
+	  ( cd $(WEB) && pnpm dev --port 3000 ) & \
+	  wait
+
+ui: ## API (:8000) + web (:3000) from the field snapshot; no database or Docker needed
+	@test -f data/processed/web/field-snapshot.json || $(MAKE) snapshot
 	@trap 'kill 0' INT TERM EXIT; \
 	  ( cd $(API) && uv run uvicorn drillsage.api.app:create_app --factory --reload --port 8000 ) & \
 	  ( cd $(WEB) && pnpm dev --port 3000 ) & \

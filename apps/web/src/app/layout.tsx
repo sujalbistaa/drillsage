@@ -1,5 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Bricolage_Grotesque,
+  Climate_Crisis,
+  Instrument_Serif,
+  Martian_Mono,
+} from "next/font/google";
 import type { ReactNode } from "react";
 
 import { AppShell } from "@/components/app-shell";
@@ -8,29 +13,42 @@ import { TAGLINE } from "@/lib/constants";
 
 import "./globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+/** Display: Climate Crisis. Its YEAR axis melts the letters; hover the wordmark. */
+const melt = Climate_Crisis({ variable: "--font-melt", subsets: ["latin"], axes: ["YEAR"] });
+/** Data and labels: a wide monospace, so depths line up like a mud log. */
+const data = Martian_Mono({ variable: "--font-data", subsets: ["latin"], axes: ["wdth"] });
+const body = Bricolage_Grotesque({
+  variable: "--font-body",
+  subsets: ["latin"],
+  axes: ["opsz", "wdth"],
+});
+const accent = Instrument_Serif({
+  variable: "--font-accent",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+});
 
 export const metadata: Metadata = {
   title: {
-    default: "DrillSage · Offset-well drilling intelligence",
+    default: "DrillSage · See trouble before the bit does",
     template: "%s · DrillSage",
   },
-  description: `${TAGLINE} Proactive, evidence-backed warnings from nearby wells, for Oil India drilling teams.`,
+  description: `${TAGLINE} Evidence-backed warnings from nearby wells, for Oil India drilling teams.`,
   applicationName: "DrillSage",
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fafbfd" },
-    { media: "(prefers-color-scheme: dark)", color: "#12161f" },
+    { media: "(prefers-color-scheme: light)", color: "#eeeadf" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0b" },
   ],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${melt.variable} ${data.variable} ${body.variable} ${accent.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <AppShell>{children}</AppShell>
         </ThemeProvider>

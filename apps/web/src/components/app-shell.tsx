@@ -1,60 +1,112 @@
-import { Gauge } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { BrandMark } from "@/components/brand-mark";
+import { Nav } from "@/components/nav";
+import { StatusPill } from "@/components/status-pill";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Ticker } from "@/components/ticker";
+import { Wordmark } from "@/components/wordmark";
+import { fetchField } from "@/lib/api/field";
+import { fetchSystemStatus } from "@/lib/api/system-status";
 import { VOLVE_ATTRIBUTION } from "@/lib/constants";
+import { day, hours, int } from "@/lib/format";
 
-/** Primary navigation. Each phase adds its screen here when the screen ships. */
-const NAV_ITEMS = [{ href: "/", label: "Overview", Icon: Gauge }] as const;
+async function tickerItems(): Promise<string[]> {
+  const field = await fetchField();
+  if (!field.ok) return ["No field snapshot yet", "Run make snapshot", "Then refresh"];
+  const s = field.data.stats;
+  return [
+    `${int(s.events)} drilling problems extracted`,
+    `${hours(s.npt_h)} of lost time, located`,
+    `${s.wellbores} wellbores`,
+    `${int(s.reports)} daily reports read`,
+    `${int(s.activities)} report lines`,
+    "Every event linked to its report line",
+    `${field.data.field} field, North Sea`,
+    "Built for Oil India",
+    "SIH26121",
+  ];
+}
 
-export function AppShell({ children }: { children: ReactNode }) {
+export async function AppShell({ children }: { children: ReactNode }) {
+  const [status, items, field] = await Promise.all([
+    fetchSystemStatus(),
+    tickerItems(),
+    fetchField(),
+  ]);
+
   return (
-    <div className="flex min-h-dvh flex-col md:flex-row">
-      <aside className="flex shrink-0 flex-col border-b bg-surface md:w-60 md:border-r md:border-b-0">
-        <div className="flex items-center justify-between gap-3 px-4 py-4 md:px-5">
-          <Link href="/" className="flex items-center gap-2.5" aria-label="DrillSage home">
-            <BrandMark className="size-8" />
-            <span className="flex flex-col leading-tight">
-              <span className="font-semibold tracking-tight">DrillSage</span>
-              <span className="text-[11px] text-muted-foreground">Offset-well intelligence</span>
-            </span>
-          </Link>
-          <div className="md:hidden">
+    <div className="flex min-h-dvh flex-col">
+      <a
+        href="#main"
+        className="label sr-only z-50 bg-brand px-3 py-2 text-brand-foreground focus:not-sr-only focus:fixed focus:top-2 focus:left-2"
+      >
+        Skip to content
+      </a>
+      <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur-md">
+        <div className="flex items-stretch justify-between gap-2">
+          <div className="flex items-stretch">
+            <Link
+              href="/"
+              aria-label="DrillSage home"
+              className="flex items-center border-r px-3 py-2.5 md:px-5"
+            >
+              <Wordmark />
+            </Link>
+            <div className="hidden md:flex">
+              <Nav />
+            </div>
+          </div>
+          <div className="flex items-center gap-2 pr-3 md:pr-5">
+            <StatusPill status={status} />
             <ThemeToggle />
           </div>
         </div>
-        <nav aria-label="Primary" className="px-2 pb-2 md:flex-1 md:px-3">
-          <ul className="flex gap-1 md:flex-col">
-            {NAV_ITEMS.map(({ href, label, Icon }) => (
-              <li key={href}>
-                <Link
-                  href={href}
-                  className="flex items-center gap-2.5 rounded-md bg-surface-muted px-3 py-2 text-sm font-medium text-foreground"
-                  aria-current="page"
-                >
-                  <Icon className="size-4 text-brand" aria-hidden />
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="hidden border-t px-5 py-4 md:block">
-          <ThemeToggle />
+        <div className="border-t md:hidden">
+          <Nav />
         </div>
-      </aside>
+        <Ticker items={items} />
+      </header>
 
-      <div className="flex min-w-0 flex-1 flex-col">
-        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 md:px-8">{children}</main>
-        <footer className="border-t px-4 py-4 text-xs text-muted-foreground md:px-8">
-          <p>{VOLVE_ATTRIBUTION}</p>
-          <p className="mt-1">
-            Built for Smart India Hackathon 2026 · Problem statement SIH26121 · Oil India Limited
-          </p>
-        </footer>
-      </div>
+      <main id="main" className="w-full flex-1">
+        {children}
+      </main>
+
+      <footer className="relative mt-24 overflow-hidden border-t">
+        <div className="mx-auto grid max-w-[1400px] gap-8 px-4 pt-10 pb-6 md:grid-cols-3 md:px-8">
+          <div className="flex flex-col gap-3">
+            <Wordmark />
+            <p className="font-serif text-2xl leading-tight italic">
+              Drishti (foresight) for every well you drill.
+            </p>
+          </div>
+          <div className="label flex flex-col gap-1.5 text-muted-foreground">
+            <span>Smart India Hackathon 2026</span>
+            <span>Problem statement SIH26121</span>
+            <span>Oil India Limited</span>
+          </div>
+          <div className="label flex flex-col gap-1.5 text-muted-foreground">
+            {field.ok ? (
+              <>
+                <span>Snapshot {day(field.data.generated_at)}</span>
+                <span>Extractor {field.data.extractor_version}</span>
+                <span>Basin pack {field.data.basin_pack}</span>
+              </>
+            ) : (
+              <span>No snapshot loaded</span>
+            )}
+          </div>
+        </div>
+        <p className="mx-auto max-w-[1400px] px-4 pb-6 text-xs text-muted-foreground md:px-8">
+          {VOLVE_ATTRIBUTION}
+        </p>
+        <div
+          aria-hidden
+          className="melt outline-text pointer-events-none -mb-[0.18em] px-2 text-center text-[20vw] leading-none uppercase select-none"
+        >
+          Drishti
+        </div>
+      </footer>
     </div>
   );
 }

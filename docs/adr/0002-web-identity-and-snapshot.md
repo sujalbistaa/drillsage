@@ -1,0 +1,42 @@
+# ADR 0002: Web identity, drawn charts, and a database-free field snapshot
+
+- **Status:** Accepted
+- **Date:** 2026-09-29
+
+## Context
+
+The web cockpit has to (1) look like a product with its own identity, not a component-kit
+template, in front of Oil India engineers and SIH judges; (2) work offline and on-premises,
+since OIL data is confidential; and (3) demo on a laptop where Docker is not always available.
+ADR 0001 and CLAUDE.md §3 had pencilled in shadcn/ui, an icon set, MapLibre GL and visx/D3.
+
+## Decision
+
+- **Identity.** Display type is Climate Crisis (a variable font whose `YEAR` axis melts the
+  letters; the wordmark melts on hover), data and labels are Martian Mono, body text is
+  Bricolage Grotesque, accents are Instrument Serif italic. The palette is ink black and bone
+  with one acid-lime signal colour; each hazard has its own colour token, saturated for
+  geological hazards and muted for operational ones. Light and dark themes share the tokens in
+  `globals.css`.
+- **No icon library and no emoji.** Glyphs are drawn for DrillSage (wordmark, spark, north
+  arrow, bit marker); hazards are two-letter stamps (`LC`, `WC`, `SP`…) that drillers read
+  faster than pictograms. `lucide-react` was removed.
+- **Charts are hand-written SVG.** The field plan view and the look-ahead depth strip are
+  small, domain-specific drawings (tens of wells, one depth axis); a map or charting library
+  would add weight and online tile dependencies without adding capability. A tiled basemap
+  (MapLibre) can be added for onshore Assam fields where roads and villages matter.
+- **Field snapshot.** `drillsage-data snapshot` builds the whole field (wellbores,
+  trajectories, formation tops, offsets, rule-tier events with evidence spans) from the raw
+  files with the same domain code the database pipeline uses, and writes
+  `data/processed/web/field-snapshot.json`. The API serves it (`GET /api/v1/field`,
+  `/api/v1/events`, `/api/v1/events/{id}`), so the web client still talks only to the typed
+  API. `make ui` runs API + web with no database.
+
+## Consequences
+
+- The UI runs on any machine that has run `make data-fetch`, with no Docker and no network.
+- The snapshot carries the rule tier only (LLM results live in the database); its
+  `extractor_version` says so. When the database is up, later phases can serve the same DTOs
+  from Postgres without changing the web app.
+- Four web fonts (~latin subsets) are loaded; they are self-hosted by `next/font`, so no
+  request leaves the machine at runtime.
