@@ -4,18 +4,25 @@
 
 | Service | Build | Serves |
 |---|---|---|
-| `drillsage-api` | `uv sync`, then `drillsage-data fetch` and `snapshot` (downloads the pinned public Volve DDR mirror and Sodir tables, builds the field snapshot) | FastAPI on `$PORT`; no database needed |
+| `drillsage-api` | `uv sync`, then downloads the field snapshot from the `field-snapshot` GitHub Release and validates it against the code's schema | FastAPI on `$PORT`; no database needed |
 | `drillsage-web` | `pnpm install`, `next build` (standalone output) | Next.js server; finds the API from `API_RENDER_HOST` |
+
+The snapshot is built on a developer machine, not at deploy time: Sodir's FactPages do not
+answer requests from Render's network. It is a release asset, not a committed file (derived
+data stays out of git history).
 
 ## First deploy
 
-1. Push the repository to GitHub.
-2. On [render.com](https://render.com), sign in with GitHub, then **New > Blueprint**, pick the
+1. Build and publish the snapshot: `make snapshot-publish` (needs `gh auth login`).
+2. Push the repository to GitHub.
+3. On [render.com](https://render.com), sign in with GitHub, then **New > Blueprint**, pick the
    repository, and **Apply**. Render creates both services and builds them (about 5 to 10
    minutes).
-3. Open the `drillsage-web` URL.
+4. Open the `drillsage-web` URL.
 
-Every push to `main` redeploys both services.
+Every push to `main` redeploys both services. After changing the extraction or the snapshot
+schema, run `make snapshot-publish` again before pushing; a snapshot that no longer matches
+the code fails the API build rather than serving broken data.
 
 ## Things to know
 

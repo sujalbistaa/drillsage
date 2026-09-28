@@ -1,6 +1,8 @@
 # Render blueprint: https://render.com/docs/blueprint-spec
-# Two free web services. The API builds the field snapshot from the public raw data at build
-# time and serves it without a database; the web app talks to it over HTTPS.
+# Two free web services. The API downloads the prebuilt field snapshot (a GitHub Release asset,
+# published with `make snapshot-publish`), checks it against the code's schema, and serves it
+# without a database; the web app talks to it over HTTPS. The raw sources are not fetched at
+# deploy time because Sodir's FactPages do not answer requests from Render.
 # Free services sleep after 15 minutes idle: the first visit after that takes about a minute.
 services:
   - type: web
@@ -12,8 +14,9 @@ services:
       pip install uv==0.12.19 &&
       cd apps/api &&
       uv sync --frozen --no-dev &&
-      uv run --no-sync drillsage-data fetch &&
-      uv run --no-sync drillsage-data snapshot
+      mkdir -p ../../data/processed/web &&
+      curl -fsSL --retry 3 "$SNAPSHOT_URL" -o ../../data/processed/web/field-snapshot.json &&
+      uv run --no-sync python -c "from pathlib import Path; from drillsage.field.snapshot import read_snapshot; print(read_snapshot(Path('../../data')).stats)"
     startCommand: >-
       cd apps/api &&
       uv run --no-sync uvicorn drillsage.api.app:create_app --factory --host 0.0.0.0 --port $PORT
@@ -25,6 +28,8 @@ services:
         value: production
       - key: DRILLSAGE_LOG_JSON
         value: "true"
+      - key: SNAPSHOT_URL
+        value: https://github.com/sujalbistaa/drillsage/releases/download/field-snapshot/field-snapshot.json
 
   - type: web
     name: drillsage-web

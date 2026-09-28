@@ -61,9 +61,13 @@ gold-sample: ## Stratified gold sample for hand labelling -> data/processed/gold
 gold-eval: ## Score extraction tiers against eval/gold/labels-gold-v1.json -> eval/reports/extraction_gold.*
 	cd $(API) && uv run drillsage-data gold-eval
 
-.PHONY: extract llm-estimate snapshot
+.PHONY: extract llm-estimate snapshot snapshot-publish
 snapshot: ## Field snapshot for the web cockpit, straight from raw files (no database)
 	cd $(API) && uv run drillsage-data snapshot
+
+snapshot-publish: snapshot ## Upload the field snapshot as the GitHub Release asset the Render deploy downloads
+	gh release view field-snapshot >/dev/null 2>&1 || gh release create field-snapshot --title "Field snapshot" --notes "Derived from the Volve field dataset (Equinor and the Volve licence partners, CC BY-NC-SA 4.0) and Sodir FactPages (NLOD). Built by make snapshot; downloaded by the Render deploy."
+	gh release upload field-snapshot data/processed/web/field-snapshot.json --clobber
 
 extract: ## Rebuild events (rules + stored LLM results; never calls a model) + extraction report
 	cd $(API) && uv run drillsage-data extract
