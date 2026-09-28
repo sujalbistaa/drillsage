@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
 
 /**
- * The DrillSage wordmark: a lime bit-block and the name in widened Archivo, which eases to its
- * normal width when hovered. The block's notch is the bit; the bar under it is the hole.
+ * The DrillSage wordmark: a lime bit-block and the name in widened Archivo, which picks up a
+ * lime offset shadow when hovered. The block's notch is the bit; the bar under it is the hole.
  */
 export function Wordmark({ className }: { className?: string }) {
   return (

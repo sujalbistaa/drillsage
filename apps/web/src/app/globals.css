@@ -227,19 +227,20 @@
 }
 
 @layer components {
-  /* Headlines: Archivo, extra bold and widened like engineering signage. On hover the width
-     eases back to normal: a subtle "breath", readable at every moment. */
+  /* Headlines: Archivo, extra bold and widened like engineering signage. The hover effect is a
+     hard lime offset shadow: it never changes the text's size, so the layout cannot reflow
+     under the pointer (a width change here once made the hero flicker in and out of hover). */
   .headline {
     font-family: var(--font-display-face);
     font-weight: 800;
     font-variation-settings: "wdth" 118;
-    transition: font-variation-settings 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: text-shadow 180ms ease;
     line-height: 0.92;
     letter-spacing: -0.015em;
   }
   .headline-hover:hover .headline,
   .headline.headline-hover:hover {
-    font-variation-settings: "wdth" 100;
+    text-shadow: 0.045em 0.045em 0 var(--brand);
   }
 
   /* Sticker tags: the same family, condensed and heavy, like a safety label. */
