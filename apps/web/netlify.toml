@@ -1,0 +1,10 @@
+# Netlify: the web app only. In the site settings, leave Base directory empty and set
+# Package directory to `apps/web`; paths below are relative to the repository root.
+# The API stays on Render (see docs/deploy.md). Set API_INTERNAL_URL and API_TIMEOUT_MS in
+# the Netlify UI: variables declared here reach the build, not the server at runtime.
+[build]
+  command = "pnpm --filter web build"
+  publish = "apps/web/.next"
+
+[build.environment]
+  NODE_VERSION = "22"
