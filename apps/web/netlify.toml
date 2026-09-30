@@ -8,3 +8,8 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Netlify's Next.js runtime (server-rendered pages as functions). Declared explicitly because
+# framework detection does not always see Next.js inside a workspace package.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
