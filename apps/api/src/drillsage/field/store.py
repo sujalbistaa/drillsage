@@ -150,6 +150,14 @@ class SnapshotStore:
                 )
             return self._loaded
 
+    def available(self) -> bool:
+        """True when the snapshot file exists and matches the schema."""
+        try:
+            self._current()
+        except (DependencyUnavailableError, ValueError):
+            return False
+        return True
+
     def overview(self) -> FieldOverview:
         return self._current().overview
 

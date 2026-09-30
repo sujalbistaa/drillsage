@@ -1,3 +1,5 @@
+import { AutoRetry } from "@/components/auto-retry";
+
 /** Shown when the API or the field snapshot is unavailable: say why and what to run. */
 export function NoSignal({ reason }: { reason: string }) {
   return (
@@ -6,6 +8,7 @@ export function NoSignal({ reason }: { reason: string }) {
         <p className="label text-danger">No signal from the rig</p>
         <h1 className="headline mt-3 text-5xl uppercase md:text-7xl">Dead air.</h1>
         <p className="mt-6 text-lg text-pretty">{reason}</p>
+        <AutoRetry />
         <pre className="label mt-6 overflow-x-auto border bg-background p-4 leading-6 normal-case">
           {
             "make data-fetch   # once: raw Volve reports\nmake snapshot     # build the field snapshot\nmake ui           # API + web, no database needed"

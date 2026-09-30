@@ -17,6 +17,7 @@ export interface SystemStatus {
 
 const CHECK_LABELS: Record<string, string> = {
   database: "Database",
+  field_snapshot: "Field snapshot",
 };
 
 /**

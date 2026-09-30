@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import httpx
 import pytest
 from fastapi import FastAPI
@@ -5,7 +7,15 @@ from fastapi import FastAPI
 from drillsage.api.app import create_app
 from drillsage.core.config import Settings
 from drillsage.core.errors import PROBLEM_JSON, NotFoundError
+from drillsage.field.snapshot import SNAPSHOT_PATH, build_snapshot, write_snapshot
 from tests.conftest import open_client
+from tests.fixtures.field import synthetic_field
+
+
+def _synthetic(tmp_path: Path) -> Path:
+    raw = tmp_path / "raw-field"
+    synthetic_field(raw)
+    return raw
 
 
 async def test_healthz_is_ok_without_dependencies(client: httpx.AsyncClient) -> None:
@@ -14,10 +24,31 @@ async def test_healthz_is_ok_without_dependencies(client: httpx.AsyncClient) -> 
     assert response.json() == {"status": "ok"}
 
 
-async def test_readyz_reports_unavailable_database_with_503(client: httpx.AsyncClient) -> None:
+async def test_readyz_reports_unavailable_dependencies_with_503(client: httpx.AsyncClient) -> None:
     response = await client.get("/readyz")
     assert response.status_code == 503
-    assert response.json() == {"status": "not_ready", "checks": {"database": "unavailable"}}
+    assert response.json() == {
+        "status": "not_ready",
+        "checks": {"database": "unavailable", "field_snapshot": "unavailable"},
+    }
+
+
+async def test_snapshot_only_mode_is_ready_without_a_database(
+    unit_settings: Settings, tmp_path: Path
+) -> None:
+    snapshot = tmp_path / SNAPSHOT_PATH
+    snapshot.parent.mkdir(parents=True)
+    snapshot.write_text("{}")  # present but invalid: not ready
+    settings = unit_settings.model_copy(update={"snapshot_only": True, "data_dir": tmp_path})
+    async for c in open_client(create_app(settings)):
+        response = await c.get("/readyz")
+        assert response.status_code == 503
+        assert response.json()["checks"] == {"field_snapshot": "unavailable"}
+
+        write_snapshot(build_snapshot(_synthetic(tmp_path), "north_sea"), tmp_path)
+        response = await c.get("/readyz")
+        assert response.status_code == 200
+        assert response.json() == {"status": "ready", "checks": {"field_snapshot": "ok"}}
 
 
 async def test_meta_exposes_version_and_data_attribution(client: httpx.AsyncClient) -> None:

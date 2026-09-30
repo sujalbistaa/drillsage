@@ -28,6 +28,8 @@ services:
         value: production
       - key: DRILLSAGE_LOG_JSON
         value: "true"
+      - key: DRILLSAGE_SNAPSHOT_ONLY
+        value: "true"
       - key: SNAPSHOT_URL
         value: https://github.com/sujalbistaa/drillsage/releases/download/field-snapshot/field-snapshot.json
 

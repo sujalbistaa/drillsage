@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 const TEXT = {
   operational: "All systems go",
-  degraded: "DB offline · snapshot",
+  degraded: "offline",
   down: "API down",
 } as const;
 
@@ -25,7 +25,12 @@ export function StatusPill({ status }: { status: SystemStatus }) {
           status.level === "down" && "bg-danger",
         )}
       />
-      {TEXT[status.level]}
+      {status.level === "degraded"
+        ? `${status.checks
+            .filter((c) => !c.healthy)
+            .map((c) => c.name)
+            .join(" + ")} ${TEXT.degraded}`
+        : TEXT[status.level]}
       <span className="sr-only">{status.headline}</span>
     </span>
   );

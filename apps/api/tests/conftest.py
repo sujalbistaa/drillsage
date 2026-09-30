@@ -6,6 +6,7 @@ configured database and are skipped when it is not reachable.
 """
 
 from collections.abc import AsyncIterator
+from pathlib import Path
 
 import httpx
 import pytest
@@ -19,8 +20,9 @@ UNREACHABLE_DB = PostgresDsn("postgresql+asyncpg://nobody:nothing@127.0.0.1:1/no
 
 
 @pytest.fixture
-def unit_settings() -> Settings:
+def unit_settings(tmp_path: Path) -> Settings:
     return Settings(
+        data_dir=tmp_path,  # no field snapshot unless a test writes one
         environment=Environment.TEST,
         database_url=UNREACHABLE_DB,
         database_connect_timeout_s=0.5,

@@ -4,6 +4,8 @@ import { cache } from "react";
 
 import { SERVER_FETCH_TIMEOUT_MS } from "@/lib/config";
 
+import { untilAwake, type Attempt } from "./retry";
+
 import {
   serverApiClient,
   type DrillEvent,
@@ -22,7 +24,8 @@ export type Result<T> = { ok: true; data: T } | Unavailable;
 
 const API_DOWN: Unavailable = {
   ok: false,
-  reason: "The DrillSage API is not answering. Start it with `make api`.",
+  reason:
+    "The DrillSage API is not answering. On the hosted demo it sleeps when idle and takes about a minute to wake; this page keeps retrying. Locally, start it with `make ui`.",
 };
 
 function problemDetail(error: unknown): string | null {
@@ -33,18 +36,34 @@ function problemDetail(error: unknown): string | null {
   return null;
 }
 
-/** The field overview, fetched once per render however many components ask for it. */
-export const fetchField = cache(async (): Promise<Result<FieldOverview>> => {
-  try {
-    const { data, error } = await serverApiClient().GET("/api/v1/field", {
-      signal: AbortSignal.timeout(SERVER_FETCH_TIMEOUT_MS),
-    });
-    if (data) return { ok: true, data };
-    return { ok: false, reason: problemDetail(error) ?? "The field overview is unavailable." };
-  } catch {
-    return API_DOWN;
+/** Call the API, riding out a cold start, and turn the outcome into data or a reason. */
+async function awake<T>(
+  call: (signal: AbortSignal) => Promise<Attempt<T>>,
+  fallback: string,
+): Promise<Result<T> | { ok: false; status: number; reason: string }> {
+  const outcome = await untilAwake(call, { budgetMs: SERVER_FETCH_TIMEOUT_MS });
+  switch (outcome.kind) {
+    case "data":
+      return { ok: true, data: outcome.data };
+    case "unreachable":
+      return API_DOWN;
+    case "error":
+      return {
+        ok: false,
+        status: outcome.status,
+        reason:
+          problemDetail(outcome.error) ?? (outcome.status >= 500 ? API_DOWN.reason : fallback),
+      };
   }
-});
+}
+
+/** The field overview, fetched once per render however many components ask for it. */
+export const fetchField = cache((): Promise<Result<FieldOverview>> =>
+  awake(
+    (signal) => serverApiClient().GET("/api/v1/field", { signal }),
+    "The field overview is unavailable.",
+  ),
+);
 
 export interface EventFilters {
   hazard?: string;
@@ -57,41 +76,38 @@ export interface EventFilters {
   limit?: number;
 }
 
-export async function fetchEvents(filters: EventFilters): Promise<Result<EventPage>> {
-  try {
-    const { data, error } = await serverApiClient().GET("/api/v1/events", {
-      params: {
-        query: {
-          hazard: filters.hazard,
-          wellbore: filters.wellbore,
-          geological: filters.geological,
-          severity_min: filters.severityMin,
-          q: filters.q,
-          sort: filters.sort,
-          offset: filters.offset,
-          limit: filters.limit,
+export function fetchEvents(filters: EventFilters): Promise<Result<EventPage>> {
+  return awake(
+    (signal) =>
+      serverApiClient().GET("/api/v1/events", {
+        params: {
+          query: {
+            hazard: filters.hazard,
+            wellbore: filters.wellbore,
+            geological: filters.geological,
+            severity_min: filters.severityMin,
+            q: filters.q,
+            sort: filters.sort,
+            offset: filters.offset,
+            limit: filters.limit,
+          },
         },
-      },
-      signal: AbortSignal.timeout(SERVER_FETCH_TIMEOUT_MS),
-    });
-    if (data) return { ok: true, data };
-    return { ok: false, reason: problemDetail(error) ?? "The event search failed." };
-  } catch {
-    return API_DOWN;
-  }
+        signal,
+      }),
+    "The event search failed.",
+  );
 }
 
 /** One event, or null when it does not exist (a 404 is an answer, not an outage). */
 export async function fetchEvent(id: number): Promise<Result<DrillEvent | null>> {
-  try {
-    const { data, error, response } = await serverApiClient().GET("/api/v1/events/{event_id}", {
-      params: { path: { event_id: id } },
-      signal: AbortSignal.timeout(SERVER_FETCH_TIMEOUT_MS),
-    });
-    if (data) return { ok: true, data };
-    if (response.status === 404) return { ok: true, data: null };
-    return { ok: false, reason: problemDetail(error) ?? "The event is unavailable." };
-  } catch {
-    return API_DOWN;
-  }
+  const result = await awake(
+    (signal) =>
+      serverApiClient().GET("/api/v1/events/{event_id}", {
+        params: { path: { event_id: id } },
+        signal,
+      }),
+    "The event is unavailable.",
+  );
+  if (!result.ok && "status" in result && result.status === 404) return { ok: true, data: null };
+  return result;
 }

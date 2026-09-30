@@ -51,6 +51,9 @@ class Settings(BaseSettings):
     basin_pack: str = "north_sea"
 
     local_only: bool = False
+    snapshot_only: bool = False
+    """Serve only the field snapshot (the hosted demo): no database is used, so readiness does
+    not check one. Set with `DRILLSAGE_SNAPSHOT_ONLY=true`."""
     llm_budget_usd: float = Field(default=25.0, ge=0)
     anthropic_api_key: SecretStr | None = Field(default=None, validation_alias="ANTHROPIC_API_KEY")
     llm_provider: Literal["gemini", "anthropic"] = "gemini"

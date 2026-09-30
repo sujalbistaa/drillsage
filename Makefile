@@ -86,7 +86,7 @@ dev: db-up migrate ## Run API (:8000) and web (:3000) with reload; Ctrl-C stops 
 ui: ## API (:8000) + web (:3000) from the field snapshot; no database or Docker needed
 	@test -f data/processed/web/field-snapshot.json || $(MAKE) snapshot
 	@trap 'kill 0' INT TERM EXIT; \
-	  ( cd $(API) && uv run uvicorn drillsage.api.app:create_app --factory --reload --port 8000 ) & \
+	  ( cd $(API) && DRILLSAGE_SNAPSHOT_ONLY=true uv run uvicorn drillsage.api.app:create_app --factory --reload --port 8000 ) & \
 	  ( cd $(WEB) && pnpm dev --port 3000 ) & \
 	  wait
 
